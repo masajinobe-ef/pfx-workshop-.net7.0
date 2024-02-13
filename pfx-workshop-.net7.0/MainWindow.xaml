@@ -1,0 +1,128 @@
+﻿<Window x:Class="pfx_workshop_.net7._0.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:pfx_workshop_.net7._0"
+    mc:Ignorable="d"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+    Title="Мастерская Аудио-оборудования: Priscilla Custom Effects"
+    Height="450"
+    Width="800"
+    ResizeMode="CanResize"
+    WindowState="Normal"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    Background="White"
+    MouseLeftButtonDown="DragWindow">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Button Content="{materialIcons:MaterialIconExt Kind=ArrowBack}"
+                Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Left" />
+
+        <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Grid.Column="1" 
+                    Grid.Row="0">
+
+            <Button x:Name="MinButton" Content="{materialIcons:MaterialIconExt Kind=Minus}"
+                Style="{StaticResource MaterialDesignFlatButton}" 
+                Click="MinButton_Click" />
+
+            <Button x:Name="CloseButton" Content="{materialIcons:MaterialIconExt Kind=Close}"
+                Style="{StaticResource MaterialDesignFlatButton}" 
+                Click="CloseButton_Click" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon
+                        Kind="CheckAll"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Заказы"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AudioVideo"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Товары"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AccountMultiple"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Клиенты"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Shopping"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Поставщики"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Archive"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Склад"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+
+        <StackPanel Grid.Column="0"
+            Grid.Row="2">
+
+            <Button Content="{materialIcons:MaterialIconExt Kind=Settings}"
+                Style="{StaticResource MaterialDesignFlatButton}" />
+        </StackPanel>
+
+    </Grid>
+</Window>
