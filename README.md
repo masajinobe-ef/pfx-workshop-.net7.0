@@ -1,14 +1,14 @@
-# 🧢PostgreSQL Management Program with .NET-8
+# 🧢PostgreSQL Management Program with .NET-7.0
 
 ![pic](pic.png)
 
 ## Overview
 
-This is a management program designed to work seamlessly with PostgreSQL databases using the .NET-8 framework. It provides a user-friendly interface for database management tasks, allowing users to interact with PostgreSQL databases efficiently.
+This is a management program designed to work seamlessly with PostgreSQL databases using the .NET-7.0 framework. It provides a user-friendly interface for database management tasks, allowing users to interact with PostgreSQL databases efficiently.
 
 ## Requirements
 
-- .NET-8 runtime
+- .NET-7.0 runtime
 - PostgreSQL
 
 ## Installation
@@ -16,7 +16,7 @@ This is a management program designed to work seamlessly with PostgreSQL databas
 Clone the repository:
 
 ```bash
-git clone https://github.com/masajinobe-ef/pfx-workshop-.net8
+git clone https://github.com/masajinobe-ef/pfx-workshop-.net7.0
 ```
 
 ## License

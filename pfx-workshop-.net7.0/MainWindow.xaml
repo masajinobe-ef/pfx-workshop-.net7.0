@@ -7,7 +7,7 @@
     mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-    Title="Мастерская Аудио-оборудования: Priscilla Custom Effects"
+    Title="Priscilla Custom Effects"
     Height="450"
     Width="800"
     ResizeMode="CanResize"
@@ -15,7 +15,9 @@
     WindowStartupLocation="CenterScreen"
     WindowStyle="None"
     Background="White"
-    MouseLeftButtonDown="DragWindow">
+    MouseLeftButtonDown="DragWindow"
+    MinHeight="300"
+    MinWidth="300">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,22 +31,38 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <Button Content="{materialIcons:MaterialIconExt Kind=ArrowBack}"
-                Style="{StaticResource MaterialDesignFlatButton}"
-                HorizontalAlignment="Left" />
+        <Frame x:Name="MainFrame" 
+               NavigationUIVisibility="Hidden" 
+               Grid.Column="2" 
+               Grid.Row="1" />
+
+        <Label Content="Мастерская Аудио-оборудования: Priscilla Custom Effects"
+               Grid.ColumnSpan="2"
+               Grid.Row="0"
+               Margin="0 0 0 0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="18" />
 
         <StackPanel Orientation="Horizontal" 
                     HorizontalAlignment="Right" 
                     Grid.Column="1" 
                     Grid.Row="0">
 
-            <Button x:Name="MinButton" Content="{materialIcons:MaterialIconExt Kind=Minus}"
-                Style="{StaticResource MaterialDesignFlatButton}" 
-                Click="MinButton_Click" />
+            <Button x:Name="MinButton" 
+                    Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
+                    Style="{StaticResource MaterialDesignFlatButton}" 
+                    Click="MinButton_Click"/>
+
+            <Button x:Name="MaxButton" Content="{materialIcons:MaterialIconExt Kind=WindowMaximize}"
+                    Style="{StaticResource MaterialDesignFlatButton}" 
+                    Click="MaxButton_Click" />
 
             <Button x:Name="CloseButton" Content="{materialIcons:MaterialIconExt Kind=Close}"
-                Style="{StaticResource MaterialDesignFlatButton}" 
-                Click="CloseButton_Click" />
+                    Style="{StaticResource MaterialDesignFlatButton}" 
+                    Click="CloseButton_Click" />
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1">

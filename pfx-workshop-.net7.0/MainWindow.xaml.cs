@@ -9,6 +9,7 @@ namespace pfx_workshop_.net7._0
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Uri("Startup.xaml", UriKind.Relative));
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)
@@ -17,14 +18,26 @@ namespace pfx_workshop_.net7._0
                 this.DragMove();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
         private void MinButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void MaxButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+            {
+                WindowState = WindowState.Normal;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
