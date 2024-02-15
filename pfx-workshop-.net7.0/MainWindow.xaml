@@ -8,8 +8,8 @@
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
     Title="Priscilla Custom Effects"
-    Height="450"
-    Width="800"
+    Height="650"
+    Width="1000"
     ResizeMode="CanResize"
     WindowState="Normal"
     WindowStartupLocation="CenterScreen"
@@ -28,7 +28,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
         <Frame x:Name="MainFrame" 
@@ -39,7 +38,7 @@
         <Label Content="Мастерская Аудио-оборудования: Priscilla Custom Effects"
                Grid.ColumnSpan="2"
                Grid.Row="0"
-               Margin="0 0 0 0"
+               Margin="0 0 50 0"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
                HorizontalContentAlignment="Center"
@@ -71,6 +70,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Left">
+                
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon
                         Kind="CheckAll"
@@ -84,7 +84,9 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                HorizontalContentAlignment="Left">
+                HorizontalContentAlignment="Left"
+                Click="ProductsButton_Click">
+                
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="AudioVideo"
                         VerticalAlignment="Center"
@@ -97,7 +99,9 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                HorizontalContentAlignment="Left">
+                HorizontalContentAlignment="Left"
+                Click="ClientsButton_Click">
+                
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="AccountMultiple"
                         VerticalAlignment="Center"
@@ -110,7 +114,9 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
-                HorizontalContentAlignment="Left">
+                HorizontalContentAlignment="Left"
+                Click="SupplierButton_Click">
+                
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Shopping"
                         VerticalAlignment="Center"
@@ -124,6 +130,7 @@
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Left">
+                
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Archive"
                         VerticalAlignment="Center"
@@ -132,15 +139,21 @@
                         VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                HorizontalContentAlignment="Left"
+                Click="SettingsButton_Click">
+                
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Settings"
+                        VerticalAlignment="Center"
+                        Margin="0,0,5,0" />
+                    <TextBlock Text="Настройки"
+                        VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
         </StackPanel>
-
-
-        <StackPanel Grid.Column="0"
-            Grid.Row="2">
-
-            <Button Content="{materialIcons:MaterialIconExt Kind=Settings}"
-                Style="{StaticResource MaterialDesignFlatButton}" />
-        </StackPanel>
-
     </Grid>
 </Window>
