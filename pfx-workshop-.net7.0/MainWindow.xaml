@@ -140,12 +140,13 @@
                 </StackPanel>
             </Button>
 
+            <!--
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Center"
                 HorizontalContentAlignment="Left"
                 Click="SettingsButton_Click">
-                
+
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Settings"
                         VerticalAlignment="Center"
@@ -153,7 +154,9 @@
                     <TextBlock Text="Настройки"
                         VerticalAlignment="Center" />
                 </StackPanel>
-            </Button>
+            </Button> 
+            -->
+            
         </StackPanel>
     </Grid>
 </Window>

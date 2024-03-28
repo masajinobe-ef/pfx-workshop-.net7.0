@@ -1,27 +1,116 @@
 DROP SCHEMA public CASCADE;
 CREATE SCHEMA public;
 
+BEGIN;
 
-CREATE OR REPLACE FUNCTION supply_trigger() RETURNS TRIGGER AS $$
-BEGIN
-IF TG_OP = 'INSERT' THEN
-INSERT INTO public."Warehouse" (sp_id, w_action)
-VALUES (NEW.sp_id, 'INSERT');
-RETURN NEW;
 
-ELSIF TG_OP = 'UPDATE' THEN
-INSERT INTO public."Warehouse" (sp_id, w_action)
-VALUES (NEW.sp_id, 'UPDATE');
-RETURN NEW;
+CREATE TABLE IF NOT EXISTS public."Supplier"
+(
+    s_id serial NOT NULL,
+    s_name character varying(255) NOT NULL,
+    s_site character varying(255) NOT NULL,
+    s_description character varying(255) NOT NULL,
+    CONSTRAINT s_id PRIMARY KEY (s_id),
+    CONSTRAINT s_unique UNIQUE (s_id)
+);
 
-ELSIF TG_OP = 'DELETE' THEN
-INSERT INTO public."Warehouse" (sp_id, w_action)
-VALUES (NEW.sp_id, 'DELETE');
-RETURN NEW;
+CREATE TABLE IF NOT EXISTS public."Supply"
+(
+    sp_id serial NOT NULL,
+    sp_item character varying(255) NOT NULL,
+    sp_date character varying(255) NOT NULL,
+    sp_total integer NOT NULL,
+    s_id integer NOT NULL,
+    CONSTRAINT sp_key PRIMARY KEY (sp_id),
+    CONSTRAINT sp_unique UNIQUE (sp_id)
+);
 
-END IF;
-END;
-$$ LANGUAGE plpgsql;
+CREATE TABLE IF NOT EXISTS public."Product"
+(
+    p_id serial NOT NULL,
+    p_brand character varying(255) NOT NULL,
+    p_name character varying(255) NOT NULL,
+    p_description character varying(255) NOT NULL,
+    p_price integer NOT NULL,
+    p_category character varying(255) NOT NULL,
+    CONSTRAINT p_key PRIMARY KEY (p_id),
+    CONSTRAINT p_unique UNIQUE (p_id)
+);
+
+CREATE TABLE IF NOT EXISTS public."Order"
+(
+    o_id serial NOT NULL,
+    c_id integer,
+    p_id integer,
+    o_date character varying(255) NOT NULL,
+    CONSTRAINT o_key PRIMARY KEY (o_id),
+    CONSTRAINT o_unique UNIQUE (o_id)
+);
+
+CREATE TABLE IF NOT EXISTS public."Client"
+(
+    c_id serial NOT NULL,
+    c_fio character varying(255) NOT NULL,
+    c_city character varying(255) NOT NULL,
+    c_address character varying(255) NOT NULL,
+    c_phone character varying(255) NOT NULL,
+    CONSTRAINT c_key PRIMARY KEY (c_id),
+    CONSTRAINT c_unique UNIQUE (c_id)
+);
+
+CREATE TABLE IF NOT EXISTS public."Warehouse"
+(
+    w_id serial NOT NULL,
+    p_id integer,
+    w_action character varying(255) NOT NULL,
+    w_time timestamp without time zone NOT NULL DEFAULT NOW(),
+    CONSTRAINT w_key PRIMARY KEY (w_id),
+    CONSTRAINT w_unique UNIQUE (w_id)
+);
+
+CREATE TABLE IF NOT EXISTS public."Authorization"
+(
+    a_id serial NOT NULL,
+    a_login character varying(255) NOT NULL,
+    a_password character varying(255) NOT NULL,
+    CONSTRAINT a_key PRIMARY KEY (a_id),
+    CONSTRAINT a_unique UNIQUE (a_id)
+);
+
+ALTER TABLE IF EXISTS public."Supply"
+    ADD CONSTRAINT s_id_fk FOREIGN KEY (s_id)
+    REFERENCES public."Supplier" (s_id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Order"
+    ADD CONSTRAINT c_id_fk FOREIGN KEY (c_id)
+    REFERENCES public."Client" (c_id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Order"
+    ADD CONSTRAINT p_id_fk FOREIGN KEY (p_id)
+    REFERENCES public."Product" (p_id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public."Warehouse"
+    ADD CONSTRAINT p_id_fk FOREIGN KEY (p_id)
+    REFERENCES public."Product" (p_id) MATCH SIMPLE
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+    NOT VALID;
+
+
+-- TRIGGERS
+
 
 CREATE OR REPLACE FUNCTION product_trigger() RETURNS TRIGGER AS $$
 BEGIN
@@ -44,10 +133,6 @@ END IF;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER supply_trigger
-AFTER INSERT OR UPDATE OR DELETE ON public."Supply"
-FOR EACH ROW
-EXECUTE FUNCTION supply_trigger();
 
 CREATE TRIGGER product_trigger
 AFTER INSERT OR UPDATE OR DELETE ON public."Product"
@@ -55,65 +140,104 @@ FOR EACH ROW
 EXECUTE FUNCTION product_trigger();
 
 
+-- INSERTS
+
+INSERT INTO public."Authorization" (a_login, a_password) 
+VALUES
+('masa', '0123');
+
+
 INSERT INTO public."Product" (p_brand, p_name, p_description, p_price, p_category) 
-VALUES 
-('Priscilla Custom Effects', 'TS-S', 'Overdrive', 11800, 'Custom Effects'),
-('Priscilla Custom Effects', 'PRISCILLA', 'Overdrive-Distortion', 15200, 'Custom Effects'),
-('Priscilla Custom Effects', 'M', 'Modern Overdrive', 14200, 'Custom Effects'),
-('Priscilla Custom Effects', 'H&B', 'Booster', 3800, 'Custom Effects'),
-('Priscilla Custom Effects', 'OD-3 TK mod', 'Именная модель Toru Kitajima', 4800, 'Mods'),
-('Priscilla Custom Effects', 'BD-2 TK mod', 'Именная модель Toru Kitajima', 3800, 'Mods'),
-('Priscilla Custom Effects', 'SPH-1 SPI mod', 'Именная модель Toru Kitajima', 4800, 'Mods'),
-('Priscilla Custom Effects', 'SPH-1 WAXX mod', 'Именная модель Toru Kitajima', 4800, 'Mods'),
-('Priscilla Custom Effects', 'LS-2 TK mod', 'Именная модель Toru Kitajima', 2800, 'Mods');
+VALUES
+('Priscilla FX', 'Toshin', 'Phaser', 16200, 'Custom'),
+('Priscilla FX', 'Twin Reverb 65', 'Preamp', 16200, 'Custom'),
+('Priscilla FX', 'PRISCILLA', 'Overdrive-Distortion', 16200, 'Custom'),
+('Priscilla FX', 'M', 'Modern Overdrive', 16200, 'Custom'),
+('Priscilla FX', 'TS-S', 'Special Overdrive', 14800, 'Custom'),
+('Priscilla FX', 'OD-820 Secede from T.S. mod', 'Overdrive', 14200, 'Custom'),
+('Priscilla FX', 'OD-820', 'Overdrive', 13800, 'Custom'),
+('Priscilla FX', 'H&B', 'Booster', 5800, 'Custom'),
+('Priscilla FX', 'LS-SR', 'Line Selector', 3800, 'Custom'),
+
+('Priscilla FX', 'BD-2 TK mod', 'Toru Kitajima', 8800, 'Mods'),
+('Priscilla FX', 'SPH-1 TK (S/W) mod', 'Toru Kitajima', 7800, 'Mods'),
+('Priscilla FX', 'OD-3 TK mod', 'Toru Kitajima', 6800, 'Mods'),
+('Priscilla FX', 'LS-2 TK mod', 'Toru Kitajima', 4800, 'Mods'),
+('Priscilla FX', 'OD-820 TK mod', 'Toru Kitajima', 3800, 'Mods'),
+('Priscilla FX', 'DD-20 TK mod', 'Toru Kitajima', 2800, 'Mods'),
+('Priscilla FX', 'DA-2 TK mod', 'Toru Kitajima', 2800, 'Mods'),
+('Priscilla FX', 'OD-3 HI-FI mod', 'HI-FI', 2800, 'Mods');
+
 
 INSERT INTO public."Client" (c_fio, c_city, c_address, c_phone) 
 VALUES 
-('Akira', 'Tokyo', 'far away', '+79876543210'), 
-('couscousdude', 'Tokyo', 'far away', '+79876543210'),
-('Fu re te fu re ru', 'Tokyo', 'far away', '+79876543210'),
-('roshiajinn', 'Tokyo', 'far away', '+79876543210'),
-('aF', 'Tokyo', 'far away', '+79876543210'),
-('mc', 'Tokyo', 'far away', '+79876543210'),
-('fussedsyko', 'Tokyo', 'far away', '+79876543210'),
-('nsn', 'Tokyo', 'far away', '+79876543210'),
-('Futti Peace', 'Tokyo', 'far away', '+79876543210'),
-('霪島時雨', 'Tokyo', 'far away', '+79876543210'),
-('abnormaltrick', 'Tokyo', 'far away', '+79876543210'),
-('技craft enjoyer', 'Tokyo', 'far away', '+79876543210'),
-('TYの時雨', 'Tokyo', 'far away', '+79876543210'),
-('Toru Kitajima', 'Tokyo', 'far away', '+79876543210'),
-('345', 'Tokyo', 'far away', '+79876543210'),
-('Pierre Nakano', 'Tokyo', 'far away', '+79876543210'), 
-('Shutoku Mukai', 'Tokyo', 'far away', '+79876543210');
+('Akira', 'Москва', 'Ул.Пушкина, д.1', '+79991112233'), 
+('couscousdude', 'Санкт-Петербург', 'П.Ленина, д.6', '+79994445566'),
+('Fu re te fu re ru', 'Новосибирск', 'П.Гагарина, д.7', '+79997778899'),
+('roshiajinn', 'Екатеринбург', 'П.Революции, д.10', '+79990001122'),
+('aF', 'Казань', 'Ул.Садовая, д.5', '+79993334455'),
+('mc', 'Сочи', 'Н.Реки, д.3', '+79996667788'),
+('fussedsyko', 'Владивосток', 'П.Победы, д.15', '+79992223344'),
+('nsn', 'Калининград', 'Ул.Ленинградская, д.20', '+79995556677'),
+('Futti Peace', 'Омск', 'П.Сибирский, д.2', '+79998889900'),
+('霪島時雨', 'Краснодар', 'П.Кирова, д.4', '+79991112233'),
+('abnormaltrick', 'Уфа', 'Ул.Мира, д.6', '+79994445566'),
+('技craft enjoyer', 'Самара', 'П.Солнечный, д.8', '+79997778899'),
+('TYの時雨', 'Ростов-на-Дону', 'П.Гагарина, д.11', '+79990001122'),
+('Toru Kitajima', 'Нижний Новгород', 'Ул.Ленина, д.9', '+79993334455'),
+('345', 'Хабаровск', 'П.Пушкина, д.12', '+79996667788'),
+('Pierre Nakano', 'Волгоград', 'П.Лермонтова, д.13', '+79992223344'), 
+('Shutoku Mukai', 'Ярославль', 'Ул.Толстого, д.14', '+79995556677');
+
 
 INSERT INTO public."Order" (c_id, p_id, o_date) 
 VALUES 
-(1, 1, '24-05-2023'),
-(2, 2, '24-05-2023'),
-(3, 3, '24-05-2023'),
-(4, 4, '24-05-2023'),
-(5, 5, '24-05-2023'),
-(6, 6, '24-05-2023'),
-(7, 7, '24-05-2023'),
-(8, 8, '24-05-2023'),
-(9, 9, '24-05-2023');
+(1, 1, '28.03.2024'),
+(2, 2, '28.03.2024'),
+(3, 3, '28.03.2024'),
+(4, 4, '28.03.2024'),
+(5, 5, '28.03.2024'),
+(6, 6, '28.03.2024'),
+(7, 7, '28.03.2024'),
+(8, 8, '28.03.2024'),
+(9, 9, '28.03.2024');
+
 
 INSERT INTO public."Supplier" (s_name, s_site, s_description) 
 VALUES 
-('Автограф', 'https://avtograf72.ru', 'Типография'),
-('chipdip.', 'https://www.chipdip.ru', 'Электрокомплектующие'),
-('DIY-TUBES', 'http://diy-tubes.ru', 'Электрокомплектующие'),
-('Mouser', 'https://ru.mouser.com', 'Электрокомплектующие'),
-('Унисервис', 'https://uniservice.msk.ru', 'Электрокомплектующие');
+('ЗАО «Промэлектроника»', 'https://www.promelec.ru', 'Радиодетали'),
+('АО «ЧИП и ДИП»', 'https://www.chipdip.ru', 'Радиодетали'),
+('ООО «ПЛАТЭК»', 'https://platan.ru', 'Радиодетали'),
+('ООО «Технотрейд»', 'https://uniservice.msk.ru', 'Радиодетали'),
+('ООО «Резонит»', 'https://www.rezonit.ru', 'Печатные платы'),
+('ООО «Планар-Прибор»', 'https://planar.spb.ru', 'Радиодетали'),
+('ООО «РАДИОПРОМ»', 'https://prom72.com', 'Радиодетали'),
+('РадиоЧип', 'https://www.radiochip.ru', 'Радиодетали'),
+('Радиоремонт', 'https://www.radiochip.ru', 'Радиодетали'),
+('ВсеКомпоненты', 'https://vsekomponenti.ru', 'Радиодетали'),
+('Проконтакт', 'https://procontact74.ru', 'Радиодетали'),
+('Chipster', 'https://chipster.ru', 'Радиодетали'),
+('TAGGSM', 'https://taggsm.ru', 'Радиодетали'),
+('DIY-TUBES', 'http://diy-tubes.ru', 'Радиодетали'),
+('ГРК «Автограф»', 'https://avtograf72.ru', 'Типография');
+
 
 INSERT INTO public."Supply" (sp_item, sp_date, sp_total, s_id) 
-VALUES 
-('Наклейка', '24-05-2023', 1400, 1),
-('Резистор', '24-05-2023', 1500, 2),
-('Кондесатор', '24-05-2023', 3600, 3),
-('Потенциометр', '24-05-2023', 1200, 4),
-('Макетная плата', '24-05-2023', 800, 5);
+VALUES
+('TL072', '28.03.2024', 300, 1),
+('IC555', '28.03.2024', 1200, 2),
+('RES123', '28.03.2024', 800, 3),
+('CAP456', '28.03.2024', 600, 4),
+('DIODE789', '28.03.2024', 1000, 5),
+('TRANSISTOR321', '28.03.2024', 1500, 6),
+('INDUCTOR654', '28.03.2024', 700, 7),
+('OPAMP987', '28.03.2024', 2000, 8),
+('FUSE654', '28.03.2024', 400, 9),
+('SWITCH321', '28.03.2024', 300, 10),
+('RELAY987', '28.03.2024', 1800, 11),
+('POTENTIOMETER654', '28.03.2024', 900, 12),
+('CRYSTAL321', '28.03.2024', 1300, 13),
+('CONNECTOR987', '28.03.2024', 1100, 14);
 
 
-
+END;
