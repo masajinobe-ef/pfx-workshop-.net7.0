@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Npgsql;
+﻿using Npgsql;
 using System.IO;
 using System.Text.Json;
 using System.Windows;
@@ -36,7 +35,7 @@ namespace pfx_workshop_.net7._0
                 var password = connectionStringElement.GetProperty("Password").GetString();
                 var error = connectionStringElement.GetProperty("IncludeErrorDetail").GetString();
 
-                connectionString = $"Host={host};Port={port};Database={database};Username={username};IncludeErrorDetail={error};";
+                connectionString = $"Host={host};Port={port};Database={database};Username={username};Password={password};IncludeErrorDetail={error};";
             }
             catch (Exception ex)
             {
