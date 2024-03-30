@@ -1,12 +1,12 @@
 ﻿using pfx_workshop_.net7._0.Scripts;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace pfx_workshop_.net7._0
 {
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
@@ -24,9 +24,20 @@ namespace pfx_workshop_.net7._0
                 DragMove();
         }
 
+        private bool isDarkMode = false;
+
         private void ChangeThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            ThemeManager.Switch();
+            if (isDarkMode)
+            {
+                this.Background = new SolidColorBrush(Colors.White);
+                isDarkMode = false;
+            }
+            else
+            {
+                this.Background = new SolidColorBrush(Colors.LightPink);
+                isDarkMode = true;
+            }
         }
 
         private void MinButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +64,7 @@ namespace pfx_workshop_.net7._0
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ProductsButton_Click(object sender, RoutedEventArgs e)

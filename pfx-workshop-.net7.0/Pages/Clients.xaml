@@ -5,10 +5,11 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:pfx_workshop_.net7._0.Pages"
       mc:Ignorable="d"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
       d:DesignWidth="1024" d:DesignHeight="768"
-      Title="Clients">
+      Title="Clients"
+      Background="White"
+      xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -83,7 +84,7 @@
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
 
-                    <materialDesign:PackIcon Kind="Plus" 
+                    <materialDesign:PackIcon Kind="Plus"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              Margin="0,0,5,0" 

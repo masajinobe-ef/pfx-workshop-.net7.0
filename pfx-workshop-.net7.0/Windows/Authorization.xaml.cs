@@ -43,8 +43,7 @@ namespace pfx_workshop_.net7._0
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка получения данных SQL: " + ex.Message);
-
+                MessageBox.Show($"Ошибка получения данных SQL: {ex.Message}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -55,6 +54,7 @@ namespace pfx_workshop_.net7._0
                 Auth_Click(sender, e);
             }
         }
+
         private void DragWindow(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)

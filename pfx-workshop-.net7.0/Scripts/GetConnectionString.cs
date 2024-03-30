@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text.Json;
+using System.Windows;
 
 namespace pfx_workshop_.net7._0.Scripts
 {
@@ -40,7 +41,7 @@ namespace pfx_workshop_.net7._0.Scripts
             catch (Exception ex)
             {
                 connectionString = null;
-                throw new Exception("Ошибка при загрузке строки подключения из файла JSON: " + ex.Message);
+                MessageBox.Show($"Ошибка при загрузке строки подключения из файла JSON: {ex.Message}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
     }

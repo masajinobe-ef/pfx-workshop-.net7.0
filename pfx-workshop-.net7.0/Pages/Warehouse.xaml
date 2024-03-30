@@ -3,10 +3,11 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:local="clr-namespace:pfx_workshop_.net7._0.Pages" mc:Ignorable="d"
+    xmlns:local="clr-namespace:pfx_workshop_.net7._0.Pages" 
+    mc:Ignorable="d"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-    d:DesignHeight="650" d:DesignWidth="1000" Title="Warehouse" Background="#fff">
+    d:DesignHeight="650" d:DesignWidth="1000" Title="Warehouse" Background="White">
 
     <Grid>
         <Grid.ColumnDefinitions>
