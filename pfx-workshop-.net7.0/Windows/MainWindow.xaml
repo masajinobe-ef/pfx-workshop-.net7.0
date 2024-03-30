@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:pfx_workshop_.net7._0" mc:Ignorable="d"
+        xmlns:local="clr-namespace:pfx_workshop_.net7._0" 
+        mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         Title="Priscilla Custom Effects" 
-        Width="1024" Height="768" 
-        ResizeMode="NoResize" WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        Width="1280" Height="720" 
+        ResizeMode="NoResize" 
+        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
         Background="White"
         MouseLeftButtonDown="DragWindow">
 
@@ -31,46 +33,43 @@
                Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
                NavigationUIVisibility="Hidden" />
 
-        <Label Content="Priscilla Custom Effects"
+        <Label Content=" P r i s c i l l a  C u s t o m  E f f e c t s "
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
-               HorizontalAlignment="Center" VerticalAlignment="Center"
+               HorizontalAlignment="Center" VerticalAlignment="Top"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Background="#422776"
                Foreground="White"
-               FontSize="22pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}"
+               Width="auto" Height="64"
+               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                MouseLeftButtonDown="Label_Click" />
 
         <StackPanel Grid.Column="3" Grid.Row="0"
                     VerticalAlignment="Center" HorizontalAlignment="Right"
                     Width="auto" Height="auto"
-                    Orientation="Horizontal" >
+                    Orientation="Horizontal">
 
-            <Button x:Name="DarkTheme" 
-                    Content="{materialIcons:MaterialIconExt Kind=MoonAndStars}"
+            <Button Content="{materialIcons:MaterialIconExt Kind=MoonAndStars}"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                     Width="64" Height="64"
                     Click="ChangeThemeButton_Click" />
 
-            <Button x:Name="MinButton" 
-                    Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
+            <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                     Width="64" Height="64"
                     Click="MinButton_Click" />
 
-            <Button x:Name="MaxButton" 
-                    Content="{materialIcons:MaterialIconExt Kind=WindowMaximize}"
+            <Button Content="{materialIcons:MaterialIconExt Kind=WindowMaximize}"
                     Style="{StaticResource MaterialDesignFlatButton}" 
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
                     Width="64" Height="64"
                     Click="MaxButton_Click" />
 
-            <Button x:Name="CloseButton" 
-                    Content="{materialIcons:MaterialIconExt Kind=Close}"
+            <Button Content="{materialIcons:MaterialIconExt Kind=Close}"
                     Style="{StaticResource MaterialDesignFlatButton}"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
@@ -84,8 +83,8 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
-                    Click="OrdersButton_Click" >
+                    Width="auto" Height="64"
+                    Click="OrdersButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
@@ -93,19 +92,19 @@
                     <materialDesign:PackIcon Kind="CheckAll" 
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0"
                                              Width="32" Height="32" />
-                    
-                    <TextBlock Text="Заказы" 
+
+                    <TextBlock Text="Заказы"
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}" 
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
+                    Width="auto" Height="64"
                     Click="ProductsButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
@@ -114,19 +113,19 @@
                     <materialDesign:PackIcon Kind="AudioVideo" 
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
                     
                     <TextBlock Text="Товары" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}" 
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50" 
+                    Width="auto" Height="64"
                     Click="ClientsButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
@@ -135,19 +134,19 @@
                     <materialDesign:PackIcon Kind="AccountMultiple"
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
                     
                     <TextBlock Text="Клиенты" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}" 
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50" 
+                    Width="auto" Height="64"
                     Click="SupplierButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
@@ -156,56 +155,57 @@
                     <materialDesign:PackIcon Kind="Shopping"
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
                     
                     <TextBlock Text="Поставщики" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50" 
+                    Width="auto" Height="64"
                     Click="WarehouseButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
-                    
+
                     <materialDesign:PackIcon Kind="Archive"
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
                     <TextBlock Text="Склад" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50" 
-                    Click="RestartPostgresButton_Click">
-
-                <StackPanel Width="auto" Height="auto"
-                            Orientation="Horizontal">
-                    
-                    <materialDesign:PackIcon Kind="Restart"
-                                             VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Restart" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>
+        
+        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
+                HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                Width="auto" Height="50"
+                Grid.Column="0" Grid.Row="3"
+                Click="RestartPostgresButton_Click">
+
+            <StackPanel Width="auto" Height="auto"
+                            Orientation="Horizontal">
+
+                <materialDesign:PackIcon Kind="Restart"
+                                             VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Margin="0 0 5 0" 
+                                             Width="32" Height="32" />
+
+                <TextBlock Text="Restart" 
+                               VerticalAlignment="Center" HorizontalAlignment="Center"
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+            </StackPanel>
+        </Button>
     </Grid>
 </Window>

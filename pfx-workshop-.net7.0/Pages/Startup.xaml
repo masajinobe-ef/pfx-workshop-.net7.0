@@ -7,7 +7,7 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-      d:DesignWidth="1024" d:DesignHeight="768"
+      d:DesignWidth="1280" d:DesignHeight="720"
       Title="Startup">
 
     <Grid>
@@ -20,16 +20,21 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Content="Priscilla Custom Effects" 
-               HorizontalAlignment="Center" VerticalAlignment="Bottom" 
-               FontSize="64" 
-               Grid.Column="0" Grid.Row="0"
-               Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"/>
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Orientation="Vertical">
 
-        <Label Content="Менеджер организации процессов мастерской" 
-               HorizontalAlignment="Center" VerticalAlignment="Top" 
-               FontSize="28" 
-               Grid.Column="0" Grid.Row="1"
-               Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"/>
+            <Label Content="Priscilla Custom Effects" 
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontSize="68"
+                   Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+            <Label Content="Менеджер организации процессов мастерской"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontSize="28" 
+                   Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+        </StackPanel>
     </Grid>
 </Page>

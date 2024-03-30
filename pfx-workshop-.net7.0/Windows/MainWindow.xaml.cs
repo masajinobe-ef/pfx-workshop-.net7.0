@@ -35,7 +35,7 @@ namespace pfx_workshop_.net7._0
             }
             else
             {
-                this.Background = new SolidColorBrush(Colors.LightPink);
+                this.Background = new SolidColorBrush(Colors.WhiteSmoke);
                 isDarkMode = true;
             }
         }

@@ -34,7 +34,7 @@
                   Grid.Row="1" Grid.ColumnSpan="2"
                   IsReadOnly="False"
                   AutoGenerateColumns="False" 
-                  CanUserResizeColumns="True" CanUserResizeRows="True" CanUserReorderColumns="True"
+                  CanUserResizeColumns="True" CanUserResizeRows="True" CanUserReorderColumns="False"
                   CellEditEnding="ProductsDataGrid_CellEditEnding">
 
             <DataGrid.Columns>

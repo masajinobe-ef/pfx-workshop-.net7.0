@@ -53,6 +53,14 @@ namespace pfx_workshop_.net7._0
             {
                 Auth_Click(sender, e);
             }
+
+            // BYPASS
+            if (e.Key == Key.Space)
+            {
+                MainWindow MainWindow = new();
+                MainWindow.Show();
+                Close();
+            }
         }
 
         private void DragWindow(object sender, MouseButtonEventArgs e)

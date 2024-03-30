@@ -3,15 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:pfx_workshop_.net7._0" 
+        xmlns:local="clr-namespace:pfx_workshop_.net7._0"
+        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         mc:Ignorable="d"
         Title="Авторизация" 
         Height="350" Width="400"
-        ResizeMode="NoResize" WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ResizeMode="NoResize" 
+        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="White"
-        MouseLeftButtonDown="DragWindow" KeyDown="Auth_KeyDown"
-        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+        MouseLeftButtonDown="DragWindow" KeyDown="Auth_KeyDown">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="2"
-                    Orientation="Horizontal" HorizontalAlignment="Right" >
+                    Orientation="Horizontal" HorizontalAlignment="Right">
 
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
@@ -48,36 +48,37 @@
 
         <Image Grid.RowSpan="2" Grid.ColumnSpan="1"
                Source="/Resources/logo.png" 
-               Stretch="Fill" Width="96" Height="96"
+               Stretch="Fill" 
+               Width="96" Height="96"
                HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                    Orientation="Vertical" >
+                    Orientation="Vertical">
 
             <Label Content="Авторизация"
                    Width="auto" Height="auto"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                   FontSize="24pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <Label x:Name="label" 
                    Content="Пожалуйста, авторизуйтесь"
                    Width="auto" Height="auto"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
-                   FontSize="12pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}"
+                   FontSize="14" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                    Foreground="DimGray" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
-                    Orientation="Vertical" >
+                    Orientation="Vertical">
             
             <Label Content="Логин"
                    Width="auto" Height="auto"
                    Margin="10 0 0 0"
                    VerticalAlignment="Center" HorizontalAlignment="Left"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="14pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="login"
                      Width="380" Height="auto"
@@ -88,14 +89,14 @@
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
-                    Orientation="Vertical" >
+                    Orientation="Vertical">
             
             <Label Content="Пароль" 
                    Width="auto" Height="auto"
                    Margin="10 0 0 0"
                    VerticalAlignment="Center" HorizontalAlignment="Left"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="14pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <PasswordBox x:Name="password"
                          Width="380" Height="auto"
@@ -114,7 +115,7 @@
                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                 Foreground="White"
                 Background="#422776"
-                FontSize="24pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}"
+                FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                 Click="Auth_Click" />
     </Grid>
 </Window>
