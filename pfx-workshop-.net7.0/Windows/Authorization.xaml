@@ -1,0 +1,115 @@
+﻿<Window x:Class="pfx_workshop_.net7._0.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pfx_workshop_.net7._0" mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+        Title="Авторизация" 
+        Height="350" Width="400" 
+        ResizeMode="NoResize" WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="White"
+        MouseLeftButtonDown="DragWindow" KeyDown="Auth_KeyDown">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="2"
+                    Orientation="Horizontal" HorizontalAlignment="Right" >
+            
+            <Button x:Name="MinButton"
+                    Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Click="MinButton_Click" />
+
+            <Button x:Name="CloseButton"
+                    Content="{materialIcons:MaterialIconExt Kind=Close}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Click="CloseButton_Click" />
+        </StackPanel>
+
+        <Image Grid.RowSpan="2" Grid.ColumnSpan="1"
+               Source="/Resources/logo.png" 
+               Stretch="Fill" Width="96" Height="96"
+               HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+                    Orientation="Vertical" >
+            
+            <Label Content="Авторизация"
+                   Width="auto" Height="auto"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                   FontSize="24pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}" />
+
+            <Label x:Name="label" 
+                   Content="Пожалуйста, авторизуйтесь"
+                   Width="auto" Height="auto"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                   FontSize="12pt" FontWeight="Bold" FontStyle="Italic" FontFamily="{StaticResource NotoSans}"
+                   Foreground="DimGray" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+                    Orientation="Vertical" >
+            
+            <Label Content="Логин"
+                   Width="auto" Height="auto"
+                   Margin="10 0 0 0"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontSize="14pt" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+            <TextBox x:Name="login"
+                     Width="380" Height="auto"
+                     VerticalAlignment="Center" HorizontalAlignment="Center"
+                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     FontSize="20" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+                    Orientation="Vertical" >
+            
+            <Label Content="Пароль" 
+                   Width="auto" Height="auto"
+                   Margin="10 0 0 0"
+                   VerticalAlignment="Center" HorizontalAlignment="Left"
+                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   FontSize="14pt" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+            <PasswordBox x:Name="password"
+                         Width="380" Height="auto"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                         BorderThickness="1.5" BorderBrush="DimGray" 
+                         FontSize="20" />
+        </StackPanel>
+
+        <Button Content="Вход"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Grid.Row="4"
+                Width="380" Height="50"
+                VerticalAlignment="Center" HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                Foreground="White"
+                Background="#422776"
+                FontSize="18pt" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
+                Click="Auth_Click" />
+    </Grid>
+</Window>

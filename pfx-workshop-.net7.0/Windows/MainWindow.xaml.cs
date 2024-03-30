@@ -1,15 +1,20 @@
-﻿using System.Diagnostics;
+﻿using pfx_workshop_.net7._0.Scripts;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace pfx_workshop_.net7._0
 {
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigate(new Uri("Pages/Startup.xaml", UriKind.Relative));
+        }
+
+        private void Label_Click(object sender, MouseButtonEventArgs e)
+        {
             MainFrame.Navigate(new Uri("Pages/Startup.xaml", UriKind.Relative));
         }
 
@@ -17,6 +22,11 @@ namespace pfx_workshop_.net7._0
         {
             if (e.ChangedButton == MouseButton.Left)
                 DragMove();
+        }
+
+        private void ChangeThemeButton_Click(object sender, RoutedEventArgs e)
+        {
+            ThemeManager.Switch();
         }
 
         private void MinButton_Click(object sender, RoutedEventArgs e)
@@ -41,6 +51,16 @@ namespace pfx_workshop_.net7._0
             this.Close();
         }
 
+        private void OrdersButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ProductsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("Pages/Products.xaml", UriKind.Relative));
+        }
+
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(new Uri("Pages/Clients.xaml", UriKind.Relative));
@@ -51,14 +71,19 @@ namespace pfx_workshop_.net7._0
             MainFrame.Navigate(new Uri("Pages/Supplier.xaml", UriKind.Relative));
         }
 
-        private void ProductsButton_Click(object sender, RoutedEventArgs e)
+        private void WarehouseButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Pages/Products.xaml", UriKind.Relative));
+            MainFrame.Navigate(new Uri("Pages/Warehouse.xaml", UriKind.Relative));
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void RestartPostgresButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Pages/Settings.xaml", UriKind.Relative));
+            RestartManager.RestartPostgres();
+        }
+
+        private void RequestLogsButton_Click(object sender, RoutedEventArgs e)
+        {
+            GetLogs.RequestLogs();
         }
     }
 }
