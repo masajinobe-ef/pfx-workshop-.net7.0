@@ -1,6 +1,6 @@
 # 🧢PostgreSQL Management Program with .NET-7.0
 
-![pic](pic.png)
+![pic](pic.jpg)
 
 ## Overview
 
