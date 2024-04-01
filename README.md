@@ -4,7 +4,7 @@
 
 # 🧢Priscilla Custom Effects management program with .NET-7.0 and PostgreSQL
 
-<p style="font-size:24pt;">
+<p style="font-size:3em;">
 <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0#overview">English</a></b>
 |
 <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/tree/main?tab=readme-ov-file#%D0%BE%D0%B1%D0%B7%D0%BE%D1%80">Russian</a></b>
@@ -35,15 +35,16 @@ git clone https://github.com/masajinobe-ef/pfx-workshop-.net7.0.git
 
 Настройте подключение к базе данных PostgreSQL в файле конфигурации **appsettings.json**:
 
-```bash
+```txt
 {
     "ConnectionString": {
-        "Host": "127.0.0.1", // Адрес хоста базы данных PostgreSQL
-        "Port": "5432", // Порт, на котором работает PostgreSQL
+        "Host": "127.0.0.1",    // Адрес хоста базы данных PostgreSQL
+        "Port": "5432",         // Порт, на котором работает PostgreSQL
         "Database": "postgres", // Имя базы данных
         "Username": "postgres", // Имя пользователя для подключения к базе данных
-        "Password": "0123", // Пароль пользователя для подключения к базе данных
-        "IncludeErrorDetail": "true" // Флаг, указывающий, нужно ли включать подробные сведения об ошибках приложения
+        "Password": "0123",     // Пароль пользователя для подключения к базе данных
+        "IncludeErrorDetail": "true" 
+        // Флаг, указывающий, нужно ли включать подробные сведения об ошибках приложения
     }
 }
 ```
@@ -65,15 +66,16 @@ git clone https://github.com/masajinobe-ef/pfx-workshop-.net7.0.git
 
 Configure the connection to the PostgreSQL database in the **appsettings.json** configuration file::
 
-```bash
+```txt
 {
     "ConnectionString": {
-        "Host": "127.0.0.1", // PostgreSQL database host address
-        "Port": "5432", // Port PostgreSQL is running on
+        "Host": "127.0.0.1",    // PostgreSQL database host address
+        "Port": "5432",         // Port PostgreSQL is running on
         "Database": "postgres", // Database name
         "Username": "postgres", // Username for connecting to the database
-        "Password": "0123", // Password for the user to connect to the database
-        "IncludeErrorDetail": "true" // Flag indicating whether to include detailed application error information
+        "Password": "0123",     // Password for the user to connect to the database
+        "IncludeErrorDetail": "true"
+        // Flag indicating whether to include detailed application error information
     }
 }
 ```
