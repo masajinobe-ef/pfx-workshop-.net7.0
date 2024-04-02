@@ -11,8 +11,7 @@
         Width="1280" Height="720" 
         ResizeMode="NoResize" 
         WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        Background="White"
-        MouseLeftButtonDown="DragWindow">
+        Background="#fff">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -38,10 +37,9 @@
                HorizontalAlignment="Center" VerticalAlignment="Top"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Background="#422776"
-               Foreground="White"
+               Foreground="#fff"
                Width="auto" Height="64"
-               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
-               MouseLeftButtonDown="Label_Click" />
+               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
         <StackPanel Grid.Column="3" Grid.Row="0"
                     VerticalAlignment="Center" HorizontalAlignment="Right"
@@ -52,8 +50,8 @@
                     Style="{StaticResource MaterialDesignFlatButton}"
                     VerticalAlignment="Center" HorizontalAlignment="Center"
                     VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                    Width="64" Height="64"
-                    Click="ChangeThemeButton_Click" />
+                    Width="64" Height="64" 
+                    Click="ThemeButton_Click" />
 
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
@@ -105,7 +103,7 @@
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                     Width="auto" Height="64"
-                    Click="ProductsButton_Click">
+                    Click="PedalsButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
@@ -116,7 +114,7 @@
                                              Margin="0 0 5 0" 
                                              Width="32" Height="32" />
                     
-                    <TextBlock Text="Товары" 
+                    <TextBlock Text="Педали" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
                                FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -147,7 +145,7 @@
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                     Width="auto" Height="64"
-                    Click="SupplierButton_Click">
+                    Click="SuppliersButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
@@ -191,7 +189,7 @@
                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                 Width="auto" Height="50"
                 Grid.Column="0" Grid.Row="3"
-                Click="RestartPostgresButton_Click">
+                Click="RestartButton_Click">
 
             <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">

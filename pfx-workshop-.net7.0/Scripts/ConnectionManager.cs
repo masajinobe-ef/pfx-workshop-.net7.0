@@ -41,7 +41,7 @@ namespace pfx_workshop_.net7._0.Scripts
             catch (Exception ex)
             {
                 connectionString = null;
-                MessageBox.Show($"Ошибка при загрузке строки подключения из файла JSON: {ex.Message}", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show($"Ошибка строки подключения из файла JSON: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

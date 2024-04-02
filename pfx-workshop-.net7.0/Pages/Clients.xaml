@@ -5,11 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:pfx_workshop_.net7._0.Pages"
       mc:Ignorable="d"
-      d:DesignWidth="1024" d:DesignHeight="768"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignWidth="1280" d:DesignHeight="720"
       Title="Clients"
-      Background="White"
-      xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+      Background="#fff">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,21 +28,23 @@
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                Background="#422776"
                Foreground="White"
-               FontSize="12pt" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"/>
+               FontSize="18" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-        <DataGrid x:Name="ClientsDataGrid"
+        <DataGrid x:Name="clientsDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
                   IsReadOnly="False"
                   AutoGenerateColumns="False" 
-                  CanUserResizeColumns="True" CanUserResizeRows="True" CanUserReorderColumns="False" 
-                  CellEditEnding="ClientsDataGrid_CellEditEnding">
+                  CanUserResizeColumns="True" 
+                  CanUserResizeRows="True" 
+                  CanUserReorderColumns="False" 
+                  CanUserAddRows="False">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ИД" Binding="{Binding c_id}" Width="auto" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding c_fio}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Город" Binding="{Binding c_city}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Адрес" Binding="{Binding c_address}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Номер" Binding="{Binding c_phone}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding c_id}" Width="auto" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Город" Binding="{Binding city}" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding address}" Width="1*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding phone}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
@@ -60,7 +61,8 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50">
+                    Width="auto" Height="50"
+                    Click="RefreshButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">

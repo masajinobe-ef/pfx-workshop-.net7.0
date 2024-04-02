@@ -4,56 +4,56 @@ CREATE SCHEMA public;
 BEGIN;
 
 
-CREATE TABLE IF NOT EXISTS public."Supplier"
+CREATE TABLE IF NOT EXISTS public."Suppliers"
 (
     s_id serial NOT NULL,
-    s_name character varying(255) NOT NULL,
-    s_site character varying(255) NOT NULL,
-    s_description character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    website character varying(255) NOT NULL,
+    description character varying(255) NOT NULL,
     CONSTRAINT s_id PRIMARY KEY (s_id),
     CONSTRAINT s_unique UNIQUE (s_id)
 );
 
-CREATE TABLE IF NOT EXISTS public."Supply"
-(
-    sp_id serial NOT NULL,
-    sp_item character varying(255) NOT NULL,
-    sp_date character varying(255) NOT NULL,
-    sp_total integer NOT NULL,
-    s_id integer NOT NULL,
-    CONSTRAINT sp_key PRIMARY KEY (sp_id),
-    CONSTRAINT sp_unique UNIQUE (sp_id)
-);
-
-CREATE TABLE IF NOT EXISTS public."Product"
+CREATE TABLE IF NOT EXISTS public."Parts"
 (
     p_id serial NOT NULL,
-    p_brand character varying(255) NOT NULL,
-    p_name character varying(255) NOT NULL,
-    p_description character varying(255) NOT NULL,
-    p_price integer NOT NULL,
-    p_category character varying(255) NOT NULL,
+    item_name character varying(255) NOT NULL,
+    date character varying(255) NOT NULL,
+    quantity integer NOT NULL,
+    supplier integer NOT NULL,
     CONSTRAINT p_key PRIMARY KEY (p_id),
     CONSTRAINT p_unique UNIQUE (p_id)
 );
 
-CREATE TABLE IF NOT EXISTS public."Order"
+CREATE TABLE IF NOT EXISTS public."Pedals"
+(
+    pd_id serial NOT NULL,
+    brand character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    description character varying(255) NOT NULL,
+    price integer NOT NULL,
+    category character varying(255) NOT NULL,
+    CONSTRAINT pd_key PRIMARY KEY (pd_id),
+    CONSTRAINT pd_unique UNIQUE (pd_id)
+);
+
+CREATE TABLE IF NOT EXISTS public."Orders"
 (
     o_id serial NOT NULL,
     c_id integer,
-    p_id integer,
-    o_date character varying(255) NOT NULL,
+    pd_id integer,
+    date character varying(255) NOT NULL,
     CONSTRAINT o_key PRIMARY KEY (o_id),
     CONSTRAINT o_unique UNIQUE (o_id)
 );
 
-CREATE TABLE IF NOT EXISTS public."Client"
+CREATE TABLE IF NOT EXISTS public."Clients"
 (
     c_id serial NOT NULL,
-    c_fio character varying(255) NOT NULL,
-    c_city character varying(255) NOT NULL,
-    c_address character varying(255) NOT NULL,
-    c_phone character varying(255) NOT NULL,
+    full_name character varying(255) NOT NULL,
+    city character varying(255) NOT NULL,
+    address character varying(255) NOT NULL,
+    phone character varying(255) NOT NULL,
     CONSTRAINT c_key PRIMARY KEY (c_id),
     CONSTRAINT c_unique UNIQUE (c_id)
 );
@@ -61,9 +61,8 @@ CREATE TABLE IF NOT EXISTS public."Client"
 CREATE TABLE IF NOT EXISTS public."Warehouse"
 (
     w_id serial NOT NULL,
-    p_id integer,
-    w_action character varying(255) NOT NULL,
-    w_time timestamp without time zone NOT NULL DEFAULT NOW(),
+    item_name character varying(255) NOT NULL,
+    quantity integer NOT NULL,
     CONSTRAINT w_key PRIMARY KEY (w_id),
     CONSTRAINT w_unique UNIQUE (w_id)
 );
@@ -71,83 +70,44 @@ CREATE TABLE IF NOT EXISTS public."Warehouse"
 CREATE TABLE IF NOT EXISTS public."Authorization"
 (
     a_id serial NOT NULL,
-    a_login character varying(255) NOT NULL,
-    a_password character varying(255) NOT NULL,
+    login character varying(255) NOT NULL,
+    password character varying(255) NOT NULL,
     CONSTRAINT a_key PRIMARY KEY (a_id),
     CONSTRAINT a_unique UNIQUE (a_id)
 );
 
-ALTER TABLE IF EXISTS public."Supply"
-    ADD CONSTRAINT s_id_fk FOREIGN KEY (s_id)
-    REFERENCES public."Supplier" (s_id) MATCH SIMPLE
-    ON UPDATE CASCADE
-    ON DELETE SET NULL
+ALTER TABLE IF EXISTS public."Parts"
+    ADD CONSTRAINT s_id_fk FOREIGN KEY (supplier)
+    REFERENCES public."Suppliers" (s_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE IF EXISTS public."Order"
+ALTER TABLE IF EXISTS public."Orders"
     ADD CONSTRAINT c_id_fk FOREIGN KEY (c_id)
-    REFERENCES public."Client" (c_id) MATCH SIMPLE
+    REFERENCES public."Clients" (c_id) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE SET NULL
     NOT VALID;
 
 
-ALTER TABLE IF EXISTS public."Order"
-    ADD CONSTRAINT p_id_fk FOREIGN KEY (p_id)
-    REFERENCES public."Product" (p_id) MATCH SIMPLE
+ALTER TABLE IF EXISTS public."Orders"
+    ADD CONSTRAINT pd_id_fk FOREIGN KEY (pd_id)
+    REFERENCES public."Pedals" (pd_id) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE SET NULL
     NOT VALID;
-
-
-ALTER TABLE IF EXISTS public."Warehouse"
-    ADD CONSTRAINT p_id_fk FOREIGN KEY (p_id)
-    REFERENCES public."Product" (p_id) MATCH SIMPLE
-    ON UPDATE CASCADE
-    ON DELETE CASCADE
-    NOT VALID;
-
-
--- TRIGGERS
-
-
-CREATE OR REPLACE FUNCTION product_trigger() RETURNS TRIGGER AS $$
-BEGIN
-IF TG_OP = 'INSERT' THEN
-INSERT INTO public."Warehouse" (p_id, w_action)
-VALUES (NEW.p_id, 'INSERT');
-RETURN NEW;
-
-ELSIF TG_OP = 'UPDATE' THEN
-INSERT INTO public."Warehouse" (p_id, w_action)
-VALUES (NEW.p_id, 'UPDATE');
-RETURN NEW;
-
-ELSIF TG_OP = 'DELETE' THEN
-INSERT INTO public."Warehouse" (p_id, w_action)
-VALUES (NEW.p_id, 'DELETE');
-RETURN NEW;
-
-END IF;
-END;
-$$ LANGUAGE plpgsql;
-
-
-CREATE TRIGGER product_trigger
-AFTER INSERT OR UPDATE OR DELETE ON public."Product"
-FOR EACH ROW
-EXECUTE FUNCTION product_trigger();
 
 
 -- INSERTS
 
-INSERT INTO public."Authorization" (a_login, a_password) 
+INSERT INTO public."Authorization" (login, password) 
 VALUES
 ('masa', '0123');
 
 
-INSERT INTO public."Product" (p_brand, p_name, p_description, p_price, p_category) 
+INSERT INTO public."Pedals" (brand, name, description, price, category) 
 VALUES
 ('Priscilla FX', 'Toshin', 'Phaser', 16200, 'Custom'),
 ('Priscilla FX', 'Twin Reverb 65', 'Preamp', 16200, 'Custom'),
@@ -169,7 +129,7 @@ VALUES
 ('Priscilla FX', 'OD-3 HI-FI mod', 'HI-FI', 2800, 'Mods');
 
 
-INSERT INTO public."Client" (c_fio, c_city, c_address, c_phone) 
+INSERT INTO public."Clients" (full_name, city, address, phone) 
 VALUES 
 ('Akira', 'Москва', 'Ул.Пушкина, д.1', '+79991112233'), 
 ('couscousdude', 'Санкт-Петербург', 'П.Ленина, д.6', '+79994445566'),
@@ -190,7 +150,7 @@ VALUES
 ('Shutoku Mukai', 'Ярославль', 'Ул.Толстого, д.14', '+79995556677');
 
 
-INSERT INTO public."Order" (c_id, p_id, o_date) 
+INSERT INTO public."Orders" (c_id, pd_id, date) 
 VALUES 
 (1, 1, '28.03.2024'),
 (2, 2, '28.03.2024'),
@@ -203,7 +163,7 @@ VALUES
 (9, 9, '28.03.2024');
 
 
-INSERT INTO public."Supplier" (s_name, s_site, s_description) 
+INSERT INTO public."Suppliers" (name, website, description) 
 VALUES 
 ('ЗАО «Промэлектроника»', 'https://www.promelec.ru', 'Радиодетали'),
 ('АО «ЧИП и ДИП»', 'https://www.chipdip.ru', 'Радиодетали'),
@@ -222,7 +182,7 @@ VALUES
 ('ГРК «Автограф»', 'https://avtograf72.ru', 'Типография');
 
 
-INSERT INTO public."Supply" (sp_item, sp_date, sp_total, s_id) 
+INSERT INTO public."Parts" (item_name, date, quantity, supplier) 
 VALUES
 ('TL072', '28.03.2024', 300, 1),
 ('IC555', '28.03.2024', 1200, 2),
@@ -238,6 +198,19 @@ VALUES
 ('POTENTIOMETER654', '28.03.2024', 900, 12),
 ('CRYSTAL321', '28.03.2024', 1300, 13),
 ('CONNECTOR987', '28.03.2024', 1100, 14);
+
+
+INSERT INTO public."Warehouse" (item_name, quantity) 
+VALUES
+('Toshin', 1),
+('Twin Reverb 65', 1),
+('PRISCILLA', 1),
+('M', 1),
+('TS-S', 1),
+('OD-820 Secede from T.S. mod', 1),
+('OD-820', 1),
+('H&B', 1),
+('LS-SR', 1);
 
 
 END;

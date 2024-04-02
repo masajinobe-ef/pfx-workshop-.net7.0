@@ -1,7 +1,6 @@
 ﻿using pfx_workshop_.net7._0.Scripts;
+using pfx_workshop_.net7._0.Scripts.pfx_workshop_.net7._0.Scripts;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
 
 namespace pfx_workshop_.net7._0
 {
@@ -10,66 +9,42 @@ namespace pfx_workshop_.net7._0
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Uri("Pages/Startup.xaml", UriKind.Relative));
+            MainFrame.Navigate(new Uri("Pages/Startup.xaml", UriKind.Relative)); // Startup page
+            this.EnableDragMove(); // Drag window
         }
 
-        private void Label_Click(object sender, MouseButtonEventArgs e)
-        {
-            MainFrame.Navigate(new Uri("Pages/Startup.xaml", UriKind.Relative));
-        }
+        // WindowExtensions
 
-        private void DragWindow(object sender, MouseButtonEventArgs e)
+        private void ThemeButton_Click(object sender, RoutedEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                DragMove();
-        }
 
-        private bool isDarkMode = false;
-
-        private void ChangeThemeButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (isDarkMode)
-            {
-                this.Background = new SolidColorBrush(Colors.White);
-                isDarkMode = false;
-            }
-            else
-            {
-                this.Background = new SolidColorBrush(Colors.WhiteSmoke);
-                isDarkMode = true;
-            }
         }
 
         private void MinButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            this.MinimizeWindow();
         }
 
         private void MaxButton_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowState == WindowState.Maximized)
-            {
-                WindowState = WindowState.Normal;
-            }
-            else
-            {
-                WindowState = WindowState.Maximized;
-            }
+            this.ToggleMaximizeWindow();
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.CloseWindow();
         }
+
+        // Menu
 
         private void OrdersButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new Uri("Pages/Orders.xaml", UriKind.Relative));
         }
 
-        private void ProductsButton_Click(object sender, RoutedEventArgs e)
+        private void PedalsButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Pages/Products.xaml", UriKind.Relative));
+
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
@@ -77,24 +52,21 @@ namespace pfx_workshop_.net7._0
             MainFrame.Navigate(new Uri("Pages/Clients.xaml", UriKind.Relative));
         }
 
-        private void SupplierButton_Click(object sender, RoutedEventArgs e)
+        private void SuppliersButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Pages/Supplier.xaml", UriKind.Relative));
+
         }
 
         private void WarehouseButton_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Uri("Pages/Warehouse.xaml", UriKind.Relative));
+
         }
 
-        private void RestartPostgresButton_Click(object sender, RoutedEventArgs e)
-        {
-            RestartManager.RestartPostgres();
-        }
+        // Bottom menu
 
-        private void RequestLogsButton_Click(object sender, RoutedEventArgs e)
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
         {
-            GetLogs.RequestLogs();
+            DatabaseManager.RestartDatabase();
         }
     }
 }

@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:pfx_workshop_.net7._0"
         mc:Ignorable="d"
-        Title="Авторизация" 
-        Height="350" Width="400"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
+        Title="Priscilla Custom Effects" 
+        Width="400" Height="350" 
         ResizeMode="NoResize" 
-        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
-        Background="White"
-        MouseLeftButtonDown="DragWindow" KeyDown="Auth_KeyDown">
+        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        Background="#fff">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -60,7 +61,7 @@
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                    FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-            <Label x:Name="label" 
+            <Label x:Name="auth_label"
                    Content="Пожалуйста, авторизуйтесь"
                    Width="auto" Height="auto"
                    VerticalAlignment="Center" HorizontalAlignment="Center"
@@ -115,6 +116,6 @@
                 Foreground="White"
                 Background="#422776"
                 FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
-                Click="Auth_Click" />
+                Click="AuthButton_Click" />
     </Grid>
 </Window>
