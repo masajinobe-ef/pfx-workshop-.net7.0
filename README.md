@@ -20,8 +20,6 @@ Written by [@masajinobe](https://github.com/masajinobe-ef)
 
 </center>
 
-<center>
-
 [![Release version](https://img.shields.io/github/v/release/masajinobe-ef/pfx-workshop-.net7.0?color=brightgreen&label=Download&style=for-the-badge)](#установка "Installation")
 [![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg?style=for-the-badge)](LICENSE "License")
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://boosty.to/priscilla-custom-effects "Donate")
@@ -29,8 +27,6 @@ Written by [@masajinobe](https://github.com/masajinobe-ef)
 [![Code Size](https://img.shields.io/github/languages/code-size/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Code Size")
 [![Repository size](https://img.shields.io/github/repo-size/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Repository size")
 [![Stars](https://img.shields.io/github/languages/top/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Stars")
-
-</center>
 
 <p align="center" >
     <a href="https://priscilla-custom-effects.github.io">
