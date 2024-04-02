@@ -9,12 +9,12 @@
 </center>
 
 <p align="center">
-    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/blob/main/README-EN.md/#%EF%B8%8F-installation">English</a></b>
+    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/blob/main/README-EN.md">English</a></b>
     |
-    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0#%EF%B8%8F-установка">Russian</a></b>
+    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0">Russian</a></b>
 </p>
 
-[![Release version](https://img.shields.io/github/v/release/masajinobe-ef/pfx-workshop-.net7.0?color=brightgreen&label=Download&style=for-the-badge)](#%EF%B8%8F-installation "Installation")
+[![Release version](https://img.shields.io/github/v/release/masajinobe-ef/pfx-workshop-.net7.0?color=brightgreen&label=Download&style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0/releases "Release version")
 [![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg?style=for-the-badge)](LICENSE "License")
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://boosty.to/priscilla-custom-effects "Donate")
 [![Stars](https://img.shields.io/github/stars/masajinobe-ef/pfx-workshop-.net7.0?color=fff&labelColor=0C0E0F&style=for-the-badge)](https://boosty.to/priscilla-custom-effects "Stars")
