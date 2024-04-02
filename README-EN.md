@@ -9,9 +9,9 @@
 </center>
 
 <p align="center">
-    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/blob/main/README-EN.md">English</a></b>
+    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/blob/main/README-EN.md/#%EF%B8%8F-installation">English</a></b>
     |
-    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0#установка">Russian</a></b>
+    <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0#%EF%B8%8F-установка">Russian</a></b>
 </p>
 
 [![Release version](https://img.shields.io/github/v/release/masajinobe-ef/pfx-workshop-.net7.0?color=brightgreen&label=Download&style=for-the-badge)](#%EF%B8%8F-installation "Installation")
