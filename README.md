@@ -14,12 +14,6 @@
     <b><a href="https://github.com/masajinobe-ef/pfx-workshop-.net7.0/tree/main?tab=readme-ov-file#%D0%BE%D0%B1%D0%B7%D0%BE%D1%80">Russian</a></b>
 </p>
 
-<center>
-
-Written by [@masajinobe](https://github.com/masajinobe-ef)
-
-</center>
-
 [![Release version](https://img.shields.io/github/v/release/masajinobe-ef/pfx-workshop-.net7.0?color=brightgreen&label=Download&style=for-the-badge)](#установка "Installation")
 [![License: GPLv3](https://img.shields.io/badge/license-GPLv3-blue.svg?style=for-the-badge)](LICENSE "License")
 [![Donate](https://img.shields.io/badge/_-Donate-red.svg?logo=githubsponsors&labelColor=555555&style=for-the-badge)](https://boosty.to/priscilla-custom-effects "Donate")
@@ -30,7 +24,7 @@ Written by [@masajinobe](https://github.com/masajinobe-ef)
 
 <p align="center" >
     <a href="https://priscilla-custom-effects.github.io">
-        <img src="logo.png" alt="logo" width="200"/>
+        <img src="logo.png" alt="logo" width="256"/>
     </a>
 </p>
 
@@ -68,3 +62,5 @@ git clone https://github.com/masajinobe-ef/pfx-workshop-.net7.0.git
 ## Лицензия
 
 **This project is licensed under the GPL-3.0 license.**
+
+Written by [@masajinobe](https://github.com/masajinobe-ef)
