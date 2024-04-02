@@ -10,7 +10,7 @@
         Title="Priscilla Custom Effects" 
         Width="1280" Height="720" 
         ResizeMode="NoResize" 
-        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
         Background="#fff">
 
     <Grid>
@@ -86,7 +86,7 @@
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
-                    
+
                     <materialDesign:PackIcon Kind="CheckAll" 
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
@@ -107,13 +107,13 @@
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
-                    
+
                     <materialDesign:PackIcon Kind="AudioVideo" 
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                              Margin="0 0 5 0" 
                                              Width="32" Height="32" />
-                    
+
                     <TextBlock Text="Педали" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
                                FontSize="24" FontFamily="{StaticResource NotoSans}" />
@@ -128,35 +128,14 @@
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
-                    
+
                     <materialDesign:PackIcon Kind="AccountMultiple"
                                              VerticalAlignment="Center" HorizontalAlignment="Center"
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                              Margin="0 0 5 0" 
                                              Width="32" Height="32" />
-                    
+
                     <TextBlock Text="Клиенты" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
-                </StackPanel>
-            </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="64"
-                    Click="SuppliersButton_Click">
-
-                <StackPanel Width="auto" Height="auto"
-                            Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="Shopping"
-                                             VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-                    
-                    <TextBlock Text="Поставщики" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
                                FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -182,8 +161,50 @@
                                FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                    Width="auto" Height="64"
+                    Click="PartsButton_Click">
+
+                <StackPanel Width="auto" Height="auto"
+                            Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Chip"
+                                             VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Margin="0 0 5 0" 
+                                             Width="32" Height="32" />
+
+                    <TextBlock Text="Запчасти" 
+                               VerticalAlignment="Center" HorizontalAlignment="Center"
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                    Width="auto" Height="64"
+                    Click="SuppliersButton_Click">
+
+                <StackPanel Width="auto" Height="auto"
+                            Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Shopping"
+                                             VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Margin="0 0 5 0" 
+                                             Width="32" Height="32" />
+
+                    <TextBlock Text="Поставщики" 
+                               VerticalAlignment="Center" HorizontalAlignment="Center" 
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
         </StackPanel>
-        
+
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center"

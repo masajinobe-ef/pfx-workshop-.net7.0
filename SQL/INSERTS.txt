@@ -18,7 +18,6 @@ CREATE TABLE IF NOT EXISTS public."Parts"
 (
     p_id serial NOT NULL,
     item_name character varying(255) NOT NULL,
-    date character varying(255) NOT NULL,
     quantity integer NOT NULL,
     supplier integer NOT NULL,
     CONSTRAINT p_key PRIMARY KEY (p_id),
@@ -104,7 +103,9 @@ ALTER TABLE IF EXISTS public."Orders"
 
 INSERT INTO public."Authorization" (login, password) 
 VALUES
-('masa', '0123');
+('masa', '0123'),
+('masa', '1234'),
+('akira', '0123');
 
 
 INSERT INTO public."Pedals" (brand, name, description, price, category) 
@@ -152,15 +153,23 @@ VALUES
 
 INSERT INTO public."Orders" (c_id, pd_id, date) 
 VALUES 
-(1, 1, '28.03.2024'),
-(2, 2, '28.03.2024'),
-(3, 3, '28.03.2024'),
-(4, 4, '28.03.2024'),
-(5, 5, '28.03.2024'),
-(6, 6, '28.03.2024'),
-(7, 7, '28.03.2024'),
-(8, 8, '28.03.2024'),
-(9, 9, '28.03.2024');
+(1, 1, '02.04.2024'),
+(2, 2, '02.04.2024'),
+(3, 3, '02.04.2024'),
+(4, 4, '02.04.2024'),
+(5, 5, '02.04.2024'),
+(6, 6, '02.04.2024'),
+(7, 7, '02.04.2024'),
+(8, 8, '02.04.2024'),
+(9, 9, '02.04.2024'),
+(10, 10, '02.04.2024'),
+(11, 11, '02.04.2024'),
+(12, 12, '02.04.2024'),
+(13, 13, '02.04.2024'),
+(14, 14, '02.04.2024'),
+(15, 15, '02.04.2024'),
+(16, 16, '02.04.2024'),
+(17, 17, '02.04.2024');
 
 
 INSERT INTO public."Suppliers" (name, website, description) 
@@ -182,22 +191,24 @@ VALUES
 ('ГРК «Автограф»', 'https://avtograf72.ru', 'Типография');
 
 
-INSERT INTO public."Parts" (item_name, date, quantity, supplier) 
+INSERT INTO public."Parts" (item_name, quantity, supplier) 
 VALUES
-('TL072', '28.03.2024', 300, 1),
-('IC555', '28.03.2024', 1200, 2),
-('RES123', '28.03.2024', 800, 3),
-('CAP456', '28.03.2024', 600, 4),
-('DIODE789', '28.03.2024', 1000, 5),
-('TRANSISTOR321', '28.03.2024', 1500, 6),
-('INDUCTOR654', '28.03.2024', 700, 7),
-('OPAMP987', '28.03.2024', 2000, 8),
-('FUSE654', '28.03.2024', 400, 9),
-('SWITCH321', '28.03.2024', 300, 10),
-('RELAY987', '28.03.2024', 1800, 11),
-('POTENTIOMETER654', '28.03.2024', 900, 12),
-('CRYSTAL321', '28.03.2024', 1300, 13),
-('CONNECTOR987', '28.03.2024', 1100, 14);
+('TL072', 300, 1),
+('IC555', 1200, 2),
+('RES123', 800, 3),
+('CAP456', 600, 4),
+('DIODE789', 1000, 5),
+('TRANSISTOR321', 1500, 6),
+('INDUCTOR654', 700, 7),
+('OPAMP987', 2000, 8),
+('FUSE654', 400, 9),
+('SWITCH321', 300, 10),
+('RELAY987', 1800, 11),
+('POTENTIOMETER654', 900, 12),
+('CRYSTAL321', 1300, 13),
+('CONNECTOR987', 1100, 14),
+('Наклейки PFX', 100, 15);
+
 
 
 INSERT INTO public."Warehouse" (item_name, quantity) 

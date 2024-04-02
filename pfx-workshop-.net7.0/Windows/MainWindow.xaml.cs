@@ -17,7 +17,7 @@ namespace pfx_workshop_.net7._0
 
         private void ThemeButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ThemeManager.ToggleTheme(this);
         }
 
         private void MinButton_Click(object sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ namespace pfx_workshop_.net7._0
 
         private void PedalsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Navigate(new Uri("Pages/Pedals.xaml", UriKind.Relative));
         }
 
         private void ClientsButton_Click(object sender, RoutedEventArgs e)
@@ -52,14 +52,19 @@ namespace pfx_workshop_.net7._0
             MainFrame.Navigate(new Uri("Pages/Clients.xaml", UriKind.Relative));
         }
 
-        private void SuppliersButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void WarehouseButton_Click(object sender, RoutedEventArgs e)
         {
+            MainFrame.Navigate(new Uri("Pages/Warehouse.xaml", UriKind.Relative));
+        }
 
+        private void PartsButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+        }
+
+        private void SuppliersButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Uri("Pages/Suppliers.xaml", UriKind.Relative));
         }
 
         // Bottom menu

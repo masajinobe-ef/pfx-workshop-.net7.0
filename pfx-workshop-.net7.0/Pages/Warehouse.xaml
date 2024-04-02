@@ -1,4 +1,4 @@
-﻿<Page x:Class="pfx_workshop_.net7._0.Pages.Orders"
+﻿<Page x:Class="pfx_workshop_.net7._0.Pages.Warehouse"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,7 +7,7 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignWidth="1280" d:DesignHeight="720"
-      Title="Orders"
+      Title="Warehouse"
       Background="#fff">
 
     <Grid>
@@ -22,7 +22,7 @@
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Content="Заказы"
+        <Label Content="Склад"
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                HorizontalAlignment="Left" VerticalAlignment="Center"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -30,7 +30,7 @@
                Foreground="White"
                FontSize="18" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-        <DataGrid x:Name="ordersDataGrid"
+        <DataGrid x:Name="warehouseDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
                   IsReadOnly="False"
                   AutoGenerateColumns="False" 
@@ -40,14 +40,9 @@
                   CanUserAddRows="False">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding o_id}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Город" Binding="{Binding city}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Адрес" Binding="{Binding address}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Телефон" Binding="{Binding phone}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Педаль" Binding="{Binding name}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding date}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding w_id}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Название" Binding="{Binding item_name}" Width="auto"></DataGridTextColumn>
+                <DataGridTextColumn Header="Количество" Binding="{Binding quantity}" Width="*"></DataGridTextColumn>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
@@ -69,7 +64,7 @@
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
-                    
+
                     <materialDesign:PackIcon Kind="Refresh" 
                                              VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                                              Margin="0,0,5,0" 
