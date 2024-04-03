@@ -1,5 +1,6 @@
 ﻿using pfx_workshop_.net7._0.Scripts;
 using System.Data;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
@@ -12,6 +13,14 @@ namespace pfx_workshop_.net7._0.Pages
             LoadSuppliersData();
         }
 
+        // CRUD ОПЕРАЦИИ
+        // Добавление данных
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            // NavigationService.Navigate(new Uri("Pages/ClientAct.xaml", UriKind.Relative));
+        }
+
+        // Чтение данных
         private void LoadSuppliersData()
         {
             string sqlQuery = "SELECT * FROM public.\"Suppliers\"";
@@ -20,6 +29,13 @@ namespace pfx_workshop_.net7._0.Pages
             suppliersDataGrid.ItemsSource = clientsData.DefaultView;
         }
 
+        // Обновление данных
+        /*        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+                {
+
+                }*/
+
+        // Удаление данных
         private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             if (suppliersDataGrid.SelectedItem != null)
@@ -29,13 +45,30 @@ namespace pfx_workshop_.net7._0.Pages
 
                 string sqlQuery = "DELETE FROM public.\"Suppliers\" WHERE s_id = @id";
                 DataHelper.DeleteTable(sqlQuery, supplierId);
+
                 LoadSuppliersData();
             }
         }
 
+        // ДРУГИЕ ФУНКЦИИ
+        // Обновление данных
         private void RefreshButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             LoadSuppliersData();
+        }
+
+        // Поиск данных
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchBox.Text.ToLower();
+            string sqlQuery = "SELECT * FROM public.\"Suppliers\" " +
+                "WHERE s_id::text ILIKE @searchText " +
+                "OR name ILIKE @searchText " +
+                "OR website ILIKE @searchText " +
+                "OR description ILIKE @searchText;";
+            DataTable searchResults = SeachManager.ReadTableWithSearch(sqlQuery, searchText);
+
+            suppliersDataGrid.ItemsSource = searchResults.DefaultView;
         }
     }
 }

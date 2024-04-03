@@ -2,9 +2,9 @@
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class ClientsAdd : Page
+    public partial class ClientsAct : Page
     {
-        public ClientsAdd()
+        public ClientsAct()
         {
             InitializeComponent();
         }

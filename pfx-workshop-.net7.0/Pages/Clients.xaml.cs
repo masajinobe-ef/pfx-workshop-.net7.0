@@ -15,6 +15,12 @@ namespace pfx_workshop_.net7._0.Pages
         }
 
         // CRUD ОПЕРАЦИИ
+        // Добавление данных
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/ClientAct.xaml", UriKind.Relative));
+        }
+
         // Чтение данных
         private void LoadClientsData()
         {
@@ -22,12 +28,6 @@ namespace pfx_workshop_.net7._0.Pages
             DataTable clientsData = DataHelper.ReadTable(sqlQuery);
 
             clientsDataGrid.ItemsSource = clientsData.DefaultView;
-        }
-
-        // Добавление данных
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         // Обновление данных
@@ -51,9 +51,9 @@ namespace pfx_workshop_.net7._0.Pages
             }
         }
 
-        
+
         // ДРУГИЕ ФУНКЦИИ
-        // Обновление данных с кнопки
+        // Обновление данных
         private void RefreshButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             LoadClientsData();
@@ -63,7 +63,12 @@ namespace pfx_workshop_.net7._0.Pages
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = SearchBox.Text.ToLower();
-            string sqlQuery = "SELECT * FROM public.\"Clients\" WHERE LOWER(c_id::text) LIKE @searchText OR LOWER(full_name) LIKE @searchText OR LOWER(city) LIKE @searchText OR LOWER(address) LIKE @searchText OR LOWER(phone) LIKE @searchText";
+            string sqlQuery = "SELECT * FROM public.\"Clients\" " + 
+                "WHERE c_id::text ILIKE @searchText " +
+                "OR full_name ILIKE @searchText " +
+                "OR city ILIKE @searchText " +
+                "OR address ILIKE @searchText " +
+                "OR phone ILIKE @searchText;";
             DataTable searchResults = SeachManager.ReadTableWithSearch(sqlQuery, searchText);
 
             clientsDataGrid.ItemsSource = searchResults.DefaultView;
