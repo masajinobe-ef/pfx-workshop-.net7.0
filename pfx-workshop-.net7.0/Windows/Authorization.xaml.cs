@@ -8,26 +8,31 @@ namespace pfx_workshop_.net7._0
         public Authorization()
         {
             InitializeComponent();
-            this.EnableDragMove(); // Drag window
+
+            this.HandleEnterKeyPress(auth_button); // Вход по нажатию Enter
         }
 
-        // WindowExtensions
-
+        // ФУНКЦИИ ОКНА WindowExtensions.cs
+        // Свернуть
         private void MinButton_Click(object sender, RoutedEventArgs e)
         {
             this.MinimizeWindow();
         }
 
+        // Развернуть
         private void MaxButton_Click(object sender, RoutedEventArgs e)
         {
             this.ToggleMaximizeWindow();
         }
 
+        // Закрыть
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.CloseWindow();
         }
 
+        // АВТОРИЗАЦИЯ Authorization.cs
+        // Вход
         private void AuthButton_Click(object sender, RoutedEventArgs e)
         {
             AuthManager.Auth(login.Text, password.Password, this);

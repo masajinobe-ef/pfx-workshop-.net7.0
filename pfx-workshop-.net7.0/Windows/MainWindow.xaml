@@ -10,8 +10,9 @@
         Title="Priscilla Custom Effects" 
         Width="1280" Height="720" 
         ResizeMode="NoResize" 
-        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None"
-        Background="#fff">
+        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        Background="#fff" 
+        AllowsTransparency="True">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -36,10 +37,11 @@
                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
                HorizontalAlignment="Center" VerticalAlignment="Top"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Background="#422776"
+               Background="#673ab7"
                Foreground="#fff"
                Width="auto" Height="64"
-               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" 
+               x:Name="pfx_label"/>
 
         <StackPanel Grid.Column="3" Grid.Row="0"
                     VerticalAlignment="Center" HorizontalAlignment="Right"
@@ -207,7 +209,7 @@
 
         <Button Style="{StaticResource MaterialDesignFlatButton}"
                 HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-                HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                 Width="auto" Height="50"
                 Grid.Column="0" Grid.Row="3"
                 Click="RestartButton_Click">

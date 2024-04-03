@@ -6,6 +6,7 @@ namespace pfx_workshop_.net7._0.Scripts
     {
         private static bool isDarkTheme = false;
 
+        // Смена темы
         public static void ToggleTheme(Window window)
         {
             ResourceDictionary rd = new();
@@ -17,7 +18,7 @@ namespace pfx_workshop_.net7._0.Scripts
             }
             else
             {
-                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
+                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Pink.xaml");
                 isDarkTheme = true;
             }
 
@@ -29,6 +30,8 @@ namespace pfx_workshop_.net7._0.Scripts
             {
                 window.Resources.MergedDictionaries.Add(rd);
             }
+
+            // window.Background = isDarkTheme ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#212121")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
         }
     }
 }

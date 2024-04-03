@@ -7,29 +7,33 @@ namespace pfx_workshop_.net7._0.Scripts
     {
         public static class DatabaseManager
         {
+            // Перезапуск базы данных
             public static string RestartDatabase()
             {
                 try
                 {
-                    ReloadConfig(); // Перезапуск конфига
+                    ReloadConfig();
                     return "Restarted";
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Произошла ошибка: {ex.Message}", "Информация", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return "Error";
                 }
             }
 
+            // Перезапуск конфига
             private static void ReloadConfig()
             {
-                using (var connection = new NpgsqlConnection(ConnectionManager.GetConnectionString()))
+                string connectionString = ConnectionManager.GetConnectionString();
+
+                using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
                     using (var cmd = new NpgsqlCommand("SELECT pg_reload_conf();", connection))
                     {
                         cmd.ExecuteNonQuery();
-                        MessageBox.Show("Сервер успешно перезапущен.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("База данных успешно перезапущена.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                 }
             }

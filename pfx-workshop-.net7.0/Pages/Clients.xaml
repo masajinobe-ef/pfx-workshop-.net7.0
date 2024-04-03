@@ -7,8 +7,7 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignWidth="1280" d:DesignHeight="720"
-      Title="Clients"
-      Background="#fff">
+      Title="Clients">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,30 +25,47 @@
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                HorizontalAlignment="Left" VerticalAlignment="Center"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Background="#422776"
+               Background="#673ab7"
                Foreground="White"
-               FontSize="18" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+               FontSize="16" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
         <DataGrid x:Name="clientsDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
-                  IsReadOnly="False"
-                  AutoGenerateColumns="False" 
-                  CanUserResizeColumns="True" 
-                  CanUserResizeRows="True" 
-                  CanUserReorderColumns="False" 
-                  CanUserAddRows="False">
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserAddRows="False"
+                  RowHeight="50"
+                  ColumnWidth="auto">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding c_id}" Width="auto" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Город" Binding="{Binding city}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Адрес" Binding="{Binding address}" Width="1*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Номер" Binding="{Binding phone}" Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding c_id}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Город" Binding="{Binding city}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding address}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер" Binding="{Binding phone}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" >
+                                    <materialDesign:PackIcon Kind="Edit" 
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Width="16" Height="16" />
+                                </Button>
 
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" Click="DeleteButton_Click">
+                                    <materialDesign:PackIcon Kind="Delete" 
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Width="16" Height="16" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+            
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#422776" Foreground="#fff">
-                    <MenuItem Header="Удалить" />
+                    <MenuItem Header="Удалить" Click="DeleteButton_Click" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
@@ -74,14 +90,15 @@
 
                     <TextBlock Text="Обновить" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}" 
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Width="auto" Height="50">
+                    Width="auto" Height="50"
+                    Click="CreateButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">
@@ -94,17 +111,38 @@
 
                     <TextBlock Text="Добавить"
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>
 
-        <TextBox VerticalAlignment="Center" HorizontalAlignment="Center"
+        <StackPanel Width="auto" Height="auto"
+                    Grid.Column="0" Grid.Row="2"
+                    Margin="0 0 10 0"
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Orientation="Horizontal">
+
+            <materialDesign:PackIcon Kind="Search"
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             VerticalAlignment="Center" HorizontalAlignment="Center"
+                                             Margin="0,0,5,0" 
+                                             Width="32" Height="32" 
+                                             Foreground="#673ab7" />
+
+            <TextBlock Text="Поиск:"
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           Foreground="#673ab7"
+                           FontSize="24" FontFamily="{StaticResource NotoSans}" />
+        </StackPanel>
+
+        <TextBox x:Name="SearchBox"
+                 VerticalAlignment="Center" HorizontalAlignment="Stretch"
                  VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
                  Grid.Column="1" Grid.Row="2"
-                 Width="320" Height="50"
-                 BorderThickness="1.5"
+                 Width="auto" Height="50"
+                 BorderThickness="2"
                  BorderBrush="DarkGray"
-                 FontSize="18pt" FontFamily="{StaticResource NotoSans}" />
+                 FontSize="24" FontFamily="{StaticResource NotoSans}" 
+                 TextChanged="SearchBox_TextChanged" />
     </Grid>
 </Page>

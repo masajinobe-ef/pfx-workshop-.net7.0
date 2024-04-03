@@ -26,13 +26,13 @@
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="68"
-                   Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <Label Content="Менеджер организации процессов мастерской"
                    HorizontalAlignment="Center" VerticalAlignment="Center"
                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                    FontSize="28" 
-                   Foreground="#422776" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
         </StackPanel>
     </Grid>
 </Page>

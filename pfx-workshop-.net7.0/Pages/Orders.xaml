@@ -7,8 +7,7 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignWidth="1280" d:DesignHeight="720"
-      Title="Orders"
-      Background="#fff">
+      Title="Orders">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -26,33 +25,50 @@
                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
                HorizontalAlignment="Left" VerticalAlignment="Center"
                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Background="#422776"
+               Background="#673ab7"
                Foreground="White"
                FontSize="18" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
         <DataGrid x:Name="ordersDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
-                  IsReadOnly="False"
-                  AutoGenerateColumns="False" 
-                  CanUserResizeColumns="True" 
-                  CanUserResizeRows="True" 
-                  CanUserReorderColumns="False" 
-                  CanUserAddRows="False">
+                  IsReadOnly="True"
+                  AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False" CanUserAddRows="False"
+                  RowHeight="50"
+                  ColumnWidth="auto">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding o_id}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Город" Binding="{Binding city}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Адрес" Binding="{Binding address}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Телефон" Binding="{Binding phone}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Педаль" Binding="{Binding name}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Цена" Binding="{Binding price}" Width="auto"></DataGridTextColumn>
-                <DataGridTextColumn Header="Дата" Binding="{Binding date}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding o_id}" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding full_name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Город" Binding="{Binding city}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Адрес" Binding="{Binding address}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Телефон" Binding="{Binding phone}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Педаль" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Цена" Binding="{Binding price}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата" Binding="{Binding date}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" >
+                                    <materialDesign:PackIcon Kind="Edit" 
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Width="16" Height="16" />
+                                </Button>
+
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" Click="DeleteButton_Click">
+                                    <materialDesign:PackIcon Kind="Delete" 
+                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                                             Width="16" Height="16" />
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
 
             <DataGrid.ContextMenu>
                 <ContextMenu Background="#422776" Foreground="#fff">
-                    <MenuItem Header="Удалить" />
+                    <MenuItem Header="Удалить" Click="DeleteButton_Click" />
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>

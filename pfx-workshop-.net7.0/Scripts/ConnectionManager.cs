@@ -6,23 +6,18 @@ namespace pfx_workshop_.net7._0.Scripts
 {
     public static class ConnectionManager
     {
-        private static string? connectionString;
-
         public static string GetConnectionString()
-        {
-            if (string.IsNullOrEmpty(connectionString))
-            {
-                LoadConnectionString();
-            }
-
-            return connectionString ?? throw new Exception("Строка подключения равна null.");
-        }
-
-        private static void LoadConnectionString()
         {
             try
             {
                 string jsonFilePath = "Settings/appsettings.json";
+
+                if (!File.Exists(jsonFilePath))
+                {
+                    MessageBox.Show("Файл настроек не найден. Пожалуйста, убедитесь, что файл appsettings.json находится в папке Settings.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Environment.Exit(0);
+                }
+
                 string jsonString = File.ReadAllText(jsonFilePath);
 
                 var jsonDocument = JsonDocument.Parse(jsonString);
@@ -36,12 +31,12 @@ namespace pfx_workshop_.net7._0.Scripts
                 var password = connectionStringElement.GetProperty("Password").GetString();
                 var error = connectionStringElement.GetProperty("IncludeErrorDetail").GetString();
 
-                connectionString = $"Host={host};Port={port};Database={database};Username={username};Password={password};IncludeErrorDetail={error};";
+                return $"Host={host};Port={port};Database={database};Username={username};Password={password};IncludeErrorDetail={error};";
             }
             catch (Exception ex)
             {
-                connectionString = null;
                 MessageBox.Show($"Ошибка строки подключения из файла JSON: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return string.Empty;
             }
         }
     }

@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:pfx_workshop_.net7._0"
         mc:Ignorable="d"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         Title="Priscilla Custom Effects" 
         Width="400" Height="350" 
         ResizeMode="NoResize" 
         WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        Background="#fff">
+        Background="#fff"
+        AllowsTransparency="True">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -29,43 +28,33 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="2"
-                    Orientation="Horizontal" HorizontalAlignment="Right">
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right">
 
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                    VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                    Width="auto" Height="auto"
                     Click="MinButton_Click" />
 
             <Button Content="{materialIcons:MaterialIconExt Kind=Close}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    VerticalAlignment="Center" HorizontalAlignment="Center"
-                    VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch"
-                    Width="auto" Height="auto"
                     Click="CloseButton_Click" />
         </StackPanel>
 
-        <Image Grid.RowSpan="2" Grid.ColumnSpan="1"
+        <Image Grid.RowSpan="2"
                Source="/Resources/logo.png" 
                Stretch="Fill" 
-               Width="96" Height="96"
-               HorizontalAlignment="Center" VerticalAlignment="Center" />
+               Width="96" Height="96" />
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                     Orientation="Vertical">
 
             <Label Content="Авторизация"
-                   Width="auto" Height="auto"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" 
                    FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <Label x:Name="auth_label"
                    Content="Пожалуйста, авторизуйтесь"
-                   Width="auto" Height="auto"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center"
                    FontSize="14" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                    Foreground="DimGray" />
         </StackPanel>
@@ -74,16 +63,13 @@
                     Orientation="Vertical">
             
             <Label Content="Логин"
-                   Width="auto" Height="auto"
                    Margin="10 0 0 0"
-                   VerticalAlignment="Center" HorizontalAlignment="Left"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   HorizontalAlignment="Left"
                    FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="login"
-                     Width="380" Height="auto"
-                     VerticalAlignment="Center" HorizontalAlignment="Center"
-                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                     Width="380"
+                     HorizontalContentAlignment="Center"
                      BorderThickness="1.5" BorderBrush="DimGray" 
                      FontSize="24" />
         </StackPanel>
@@ -92,29 +78,22 @@
                     Orientation="Vertical">
             
             <Label Content="Пароль" 
-                   Width="auto" Height="auto"
                    Margin="10 0 0 0"
-                   VerticalAlignment="Center" HorizontalAlignment="Left"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                   HorizontalAlignment="Left"
                    FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <PasswordBox x:Name="password"
-                         Width="380" Height="auto"
-                         VerticalAlignment="Center" HorizontalAlignment="Center"
-                         HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                         Width="380"
+                         HorizontalContentAlignment="Center"
                          BorderThickness="1.5" BorderBrush="DimGray" 
                          FontSize="24" />
         </StackPanel>
 
-        <Button Content="Вход"
-                Grid.Column="0"
-                Grid.ColumnSpan="3"
-                Grid.Row="4"
-                Width="380" Height="60"
-                VerticalAlignment="Center" HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                Foreground="White"
-                Background="#422776"
+        <Button x:Name="auth_button"
+                Content="Вход"
+                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"
+                Width="380" Height="50"
+                Foreground="White" Background="#673ab7"
                 FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                 Click="AuthButton_Click" />
     </Grid>
