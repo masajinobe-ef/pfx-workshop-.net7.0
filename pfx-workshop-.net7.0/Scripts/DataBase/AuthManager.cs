@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace pfx_workshop_.net7._0.Scripts
+namespace pfx_workshop_.net7._0.Scripts.DataBase
 {
     public static class AuthManager
     {

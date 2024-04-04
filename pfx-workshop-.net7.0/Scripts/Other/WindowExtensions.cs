@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace pfx_workshop_.net7._0.Scripts
+namespace pfx_workshop_.net7._0.Scripts.Other
 {
     public static class WindowExtensions
     {
@@ -53,14 +53,14 @@ namespace pfx_workshop_.net7._0.Scripts
             {
                 if (e.Key == Key.Enter)
                 {
-                    targetButton.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+                    targetButton.RaiseEvent(new RoutedEventArgs(System.Windows.Controls.Primitives.ButtonBase.ClickEvent));
                 }
 
                 // ОБХОД АВТОРИЗАЦИИ!!!
                 if (e.Key == Key.Space)
                 {
                     new MainWindow().Show();
-                    CloseWindow(window);
+                    window.CloseWindow();
                 }
             };
         }

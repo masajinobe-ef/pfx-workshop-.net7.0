@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace pfx_workshop_.net7._0.Scripts
+namespace pfx_workshop_.net7._0.Scripts.DataBase
 {
     public class SeachManager
     {

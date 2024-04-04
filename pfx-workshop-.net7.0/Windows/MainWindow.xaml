@@ -213,7 +213,7 @@
 
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
-                    Click="SSHButton_Click">
+                    >
 
                 <StackPanel Orientation="Horizontal">
 

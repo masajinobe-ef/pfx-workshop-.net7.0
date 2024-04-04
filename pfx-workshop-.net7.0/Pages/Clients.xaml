@@ -109,10 +109,10 @@
                                      Width="32" Height="32"
                                      Foreground="#673ab7" />
 
-            <Label Content="Поиск:"
-                   VerticalAlignment="Center"
-                   Foreground="#673ab7"
-                   FontSize="22" FontFamily="{StaticResource NotoSans}" />
+            <TextBlock Text="Поиск:"
+                       VerticalAlignment="Center"
+                       Foreground="#673ab7"
+                       FontSize="22" FontFamily="{StaticResource NotoSans}" />
         </StackPanel>
 
         <TextBox x:Name="SearchBox"

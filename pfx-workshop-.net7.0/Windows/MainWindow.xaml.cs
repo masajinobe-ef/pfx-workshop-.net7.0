@@ -1,6 +1,5 @@
-﻿using pfx_workshop_.net7._0.Scripts;
+﻿using pfx_workshop_.net7._0.Scripts.Other;
 using pfx_workshop_.net7._0.Scripts.pfx_workshop_.net7._0.Scripts;
-using pfx_workshop_.net7._0.Windows;
 using System.Windows;
 
 namespace pfx_workshop_.net7._0
@@ -81,8 +80,7 @@ namespace pfx_workshop_.net7._0
         // SSH
         private void SSHButton_Click(object sender, RoutedEventArgs e)
         {
-            SSH sshWindow = new();
-            sshWindow.Show();
+
         }
 
         // Перезапуск базы данных

@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using pfx_workshop_.net7._0.Scripts.DataBase;
 using System.Windows;
 
 namespace pfx_workshop_.net7._0.Scripts
