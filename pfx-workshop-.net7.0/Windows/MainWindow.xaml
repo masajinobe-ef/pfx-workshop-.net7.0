@@ -97,7 +97,7 @@
 
                     <TextBlock Text="Заказы"
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
@@ -118,7 +118,7 @@
 
                     <TextBlock Text="Педали" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
@@ -139,7 +139,7 @@
 
                     <TextBlock Text="Клиенты" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
@@ -160,7 +160,7 @@
 
                     <TextBlock Text="Склад" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
@@ -181,7 +181,7 @@
 
                     <TextBlock Text="Запчасти" 
                                VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
 
@@ -202,31 +202,44 @@
 
                     <TextBlock Text="Поставщики" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>
 
-        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-                HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                Width="auto" Height="50"
-                Grid.Column="0" Grid.Row="3"
-                Click="RestartButton_Click">
+        <StackPanel Grid.Column="0" Grid.Row="3" 
+                    Orientation="Vertical"
+                    VerticalAlignment="Bottom">
 
-            <StackPanel Width="auto" Height="auto"
-                            Orientation="Horizontal">
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    Height="50"
+                    Click="SSHButton_Click">
 
-                <materialDesign:PackIcon Kind="Restart"
-                                             VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Terminal"
                                              Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
-                <TextBlock Text="Restart" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
-            </StackPanel>
-        </Button>
+                    <TextBlock Text="SSH" 
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    Height="50"
+                    Click="RestartButton_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Restart"
+                                             Margin="0 0 5 0" 
+                                             Width="32" Height="32" />
+
+                    <TextBlock Text="Restart" 
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

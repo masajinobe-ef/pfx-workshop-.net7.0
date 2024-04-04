@@ -17,13 +17,13 @@ namespace pfx_workshop_.net7._0.Pages
         // Добавление данных
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            // NavigationService.Navigate(new Uri("Pages/ClientAct.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/Actions/WarehouseAct.xaml", UriKind.Relative));
         }
 
         // Чтение данных
         private void LoadWarehouseData()
         {
-            string sqlQuery = "SELECT * FROM public.\"Warehouse\"";
+            string sqlQuery = "SELECT * FROM public.\"Warehouse\";";
             DataTable clientsData = DataHelper.ReadTable(sqlQuery);
 
             warehouseDataGrid.ItemsSource = clientsData.DefaultView;
@@ -43,7 +43,7 @@ namespace pfx_workshop_.net7._0.Pages
                 DataRowView selectedRow = (DataRowView)warehouseDataGrid.SelectedItem;
                 int warehouseId = Convert.ToInt32(selectedRow["w_id"]);
 
-                string sqlQuery = "DELETE FROM public.\"Warehouse\" WHERE w_id = @id";
+                string sqlQuery = "DELETE FROM public.\"Warehouse\" WHERE w_id = @id;";
                 DataHelper.DeleteTable(sqlQuery, warehouseId);
 
                 LoadWarehouseData();

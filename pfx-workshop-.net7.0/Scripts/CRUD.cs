@@ -6,6 +6,33 @@ namespace pfx_workshop_.net7._0.Scripts
 {
     public class DataHelper
     {
+        // Добавление данных
+        public static void CreateTable(string sqlQuery, Dictionary<string, object> textBoxValues)
+        {
+            string connectionString = ConnectionManager.GetConnectionString();
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+                    using (var cmd = new NpgsqlCommand(sqlQuery, connection))
+                    {
+                        foreach (var textBoxValue in textBoxValues)
+                        {
+                            cmd.Parameters.AddWithValue(textBoxValue.Key, textBoxValue.Value);
+                        }
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при добавлении данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         // Чтение данных
         public static DataTable ReadTable(string sqlQuery)
         {
@@ -31,7 +58,7 @@ namespace pfx_workshop_.net7._0.Scripts
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Произошла ошибка: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Произошла ошибка при чтении данных: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return dataTable;
