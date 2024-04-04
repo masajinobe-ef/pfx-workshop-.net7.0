@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace pfx_workshop_.net7._0.Scripts
 {
@@ -18,7 +20,7 @@ namespace pfx_workshop_.net7._0.Scripts
             }
             else
             {
-                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Pink.xaml");
+                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
                 isDarkTheme = true;
             }
 
@@ -31,7 +33,29 @@ namespace pfx_workshop_.net7._0.Scripts
                 window.Resources.MergedDictionaries.Add(rd);
             }
 
-            // window.Background = isDarkTheme ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#212121")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+            window.Background = isDarkTheme ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+            /*UpdateLabelStyles(window);*/
         }
+
+/*        private static void UpdateLabelStyles(DependencyObject depObj)
+        {
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+
+                if (child is Button button)
+                {
+                    button.Foreground = isDarkTheme ? Brushes.White : Brushes.Black;
+                }
+
+                if (child is Label label)
+                {
+                    label.Foreground = isDarkTheme ? Brushes.Black : Brushes.White;
+                    label.Background = isDarkTheme ? Brushes.White : Brushes.Black;
+                }
+
+                UpdateLabelStyles(child);
+            }
+        }*/
     }
 }
