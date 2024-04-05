@@ -1,17 +1,15 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace pfx_workshop_.net7._0.Scripts.Other
 {
     public static class ThemeManager
     {
-/*        private static bool isDarkTheme = false;*/
+        private static bool isDarkTheme = false;
 
         // Смена темы
         public static void ToggleTheme(Window window)
         {
- /*           ResourceDictionary rd = new();
+            ResourceDictionary rd = new();
 
             if (isDarkTheme)
             {
@@ -33,8 +31,8 @@ namespace pfx_workshop_.net7._0.Scripts.Other
                 window.Resources.MergedDictionaries.Add(rd);
             }
 
-            window.Background = isDarkTheme ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));*/
-            /*UpdateLabelStyles(window);*/
+            // window.Background = isDarkTheme ? new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000")) : new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFF"));
+            // UpdateLabelStyles(window);
         }
 
         /*        private static void UpdateLabelStyles(DependencyObject depObj)

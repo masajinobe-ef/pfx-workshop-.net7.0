@@ -1,0 +1,6 @@
+Импорт/экспорт базы данных
+pg_dump -U postgres -d postgres > workshop_backup.sql
+psql -U postgres -d postgres -f workshop_backup.sql
+
+Логирование
+cd C:\Users\masa\scoop\persist\postgresql\data\pg_log && dir

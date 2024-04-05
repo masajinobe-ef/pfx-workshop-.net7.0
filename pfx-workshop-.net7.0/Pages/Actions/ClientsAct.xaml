@@ -73,13 +73,10 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-                    Width="auto" Height="auto"
                     Orientation="Horizontal">
 
             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
+                    Height="50"
                     Click="AcceptButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
@@ -97,9 +94,7 @@
             </Button>
 
             <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
+                    Height="50"
                     Click="CancelButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
