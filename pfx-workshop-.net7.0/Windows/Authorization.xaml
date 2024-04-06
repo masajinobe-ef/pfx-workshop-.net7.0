@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
         Title="Priscilla Custom Effects" 
-        Width="400" Height="350" 
+        Width="400" Height="400" 
         ResizeMode="NoResize" 
         WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
         Background="#fff"
@@ -33,17 +33,21 @@
 
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="64" Height="64"
                     Click="MinButton_Click" />
 
             <Button Content="{materialIcons:MaterialIconExt Kind=Close}"
                     Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="64" Height="64"
                     Click="CloseButton_Click" />
         </StackPanel>
 
         <Image Grid.RowSpan="2"
                Source="/Resources/logo.png" 
                Stretch="Fill" 
-               Width="96" Height="96" />
+               Margin="10 0 0 0"
+               Width="120" Height="120" 
+               Grid.Column="0" Grid.Row="0"/>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
                     Orientation="Vertical">
@@ -65,13 +69,13 @@
             <Label Content="Логин"
                    Margin="10 0 0 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="login"
                      Width="380"
                      HorizontalContentAlignment="Center"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" />
+                     FontSize="22" />
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
@@ -80,13 +84,13 @@
             <Label Content="Пароль" 
                    Margin="10 0 0 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <PasswordBox x:Name="password"
                          Width="380"
                          HorizontalContentAlignment="Center"
                          BorderThickness="1.5" BorderBrush="DimGray" 
-                         FontSize="24" />
+                         FontSize="22" />
         </StackPanel>
 
         <Button x:Name="auth_button"
@@ -94,7 +98,7 @@
                 Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"
                 Width="380" Height="50"
                 Foreground="White" Background="#673ab7"
-                FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
+                FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
                 Click="AuthButton_Click" />
     </Grid>
 </Window>

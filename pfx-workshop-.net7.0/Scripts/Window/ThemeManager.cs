@@ -18,7 +18,7 @@ namespace pfx_workshop_.net7._0.Scripts.Other
             }
             else
             {
-                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Yellow.xaml");
+                rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
                 isDarkTheme = true;
             }
 

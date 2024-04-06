@@ -9,7 +9,9 @@
         Height="600" Width="600"
         ResizeMode="NoResize" 
         WindowState="Normal" WindowStartupLocation="CenterScreen"
-        Background="#fff">
+        Background="#fff"
+        AllowsTransparency="False">
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -28,28 +30,28 @@
             <Label Content="Хост (IP/Domain)"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="hostTextbox"
                      Text="127.0.0.1"
                      Margin="5 0 5 0"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" />
+                     FontSize="22" />
 
             <Label Content="Порт"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="portTextbox"
                      Text="22"
                      Margin="5 0 5 0"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" />
+                     FontSize="22" />
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1" 
@@ -58,26 +60,26 @@
             <Label Content="Логин"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="loginTextbox"
                      Margin="5 0 5 0"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" />
+                     FontSize="22" />
 
             <Label Content="Пароль"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <PasswordBox x:Name="passwordTextbox"
                          Margin="5 0 5 0"
                          HorizontalAlignment="Stretch"
-                         HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                         HorizontalContentAlignment="Left"
                          BorderThickness="1.5" BorderBrush="DimGray" 
-                         FontSize="24" />
+                         FontSize="22" />
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
@@ -86,55 +88,52 @@
             <Label Content="Запрос"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <TextBox x:Name="commandTextbox"
                      Margin="5 0 5 0"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     HorizontalContentAlignment="Left"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" />
+                     FontSize="22" />
 
             <Label Content="Вывод:"
                    Margin="5 0 5 0"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="True">
+                
                 <TextBox x:Name="returnTextbox"
-                         FontFamily="Arial"
                          IsReadOnly="True"
                          Margin="5 0 5 0"
                          Height="250"
                          HorizontalAlignment="Stretch"
                          HorizontalContentAlignment="Left" VerticalAlignment="Top"
                          BorderThickness="1.5" BorderBrush="DimGray" 
-                         FontSize="14" 
+                         FontSize="14" FontFamily="{StaticResource NotoSans}"
                          DockPanel.Dock="Top"
                          TextWrapping="Wrap"
-                         Padding="3" 
+                         Padding="3"
                          Text=""/>
             </ScrollViewer>
-
-
         </StackPanel>
 
         <Button Style="{StaticResource MaterialDesignFlatButton}"
-                    Height="50"
-                    Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-                    Click="SendButton_Click">
+                Height="50"
+                Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                Click="SendButton_Click">
 
                 <StackPanel Orientation="Horizontal">
 
                 <materialDesign:PackIcon Kind="Send" 
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
+                                         Margin="0,0,5,0" 
+                                         Width="32" Height="32" />
 
                     <TextBlock Text="Отправить" 
                                VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
-            </Button>
+        </Button>
     </Grid>
 </Window>

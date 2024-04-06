@@ -17,7 +17,7 @@ namespace pfx_workshop_.net7._0.Pages
         // Добавление данных
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Actions/SuppliersAct.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/Actions/Add/SuppliersAdd.xaml", UriKind.Relative));
         }
 
         // Чтение данных

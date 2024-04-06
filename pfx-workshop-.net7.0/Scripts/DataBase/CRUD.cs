@@ -16,6 +16,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand(sqlQuery, connection))
                     {
                         foreach (var textBoxValue in textBoxValues)
@@ -44,6 +45,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand(sqlQuery, connection))
                     {
                         using (var reader = cmd.ExecuteReader())
@@ -64,6 +66,34 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
             return dataTable;
         }
 
+        // Редактирование данные
+        public static void UpdateRecord(string sqlQuery, Dictionary<string, object> parameters)
+        {
+            string connectionString = ConnectionManager.GetConnectionString();
+
+            try
+            {
+                using (var connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (var cmd = new NpgsqlCommand(sqlQuery, connection))
+                    {
+                        foreach (var param in parameters)
+                        {
+                            cmd.Parameters.AddWithValue("@" + param.Key, param.Value);
+                        }
+
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при редактировании записи: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         // Удаление данных
         public static void DeleteTable(string sqlQuery, int id)
         {
@@ -74,6 +104,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand(sqlQuery, connection))
                     {
                         cmd.Parameters.AddWithValue("@id", id);

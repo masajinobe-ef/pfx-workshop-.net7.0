@@ -31,6 +31,7 @@ namespace pfx_workshop_.net7._0.Scripts
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand("SELECT pg_reload_conf();", connection))
                     {
                         cmd.ExecuteNonQuery();

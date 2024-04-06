@@ -1,13 +1,10 @@
-﻿using pfx_workshop_.net7._0.Scripts;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class PartsAct : Page
+    public partial class PartsEdit : Page
     {
-        public PartsAct()
+        public PartsEdit()
         {
             InitializeComponent();
         }
@@ -79,6 +76,11 @@ namespace pfx_workshop_.net7._0.Pages
 
                     [GeneratedRegex("[^0-9]+")]
                     private static partial Regex MyRegex();*/
+        }
+
+        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
         }
     }
 }

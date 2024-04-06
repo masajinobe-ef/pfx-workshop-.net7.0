@@ -17,6 +17,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
                 using (var connection = new NpgsqlConnection(connectionString))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand(sqlQuery, connection))
                     {
                         cmd.Parameters.AddWithValue("@searchText", $"%{searchText}%");

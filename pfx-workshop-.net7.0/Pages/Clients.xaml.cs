@@ -18,7 +18,7 @@ namespace pfx_workshop_.net7._0.Pages
         // Добавление данных
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Actions/ClientsAct.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/Actions/Add/ClientsAdd.xaml", UriKind.Relative));
         }
 
         // Чтение данных
@@ -31,10 +31,16 @@ namespace pfx_workshop_.net7._0.Pages
         }
 
         // Обновление данных
-        /*        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-                {
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientsDataGrid.SelectedItem != null)
+            {
+                DataRowView selectedRow = (DataRowView)clientsDataGrid.SelectedItem;
+                int clientId = Convert.ToInt32(selectedRow["c_id"]);
 
-                }*/
+                NavigationService.Navigate(new Uri($"Pages/Actions/Edit/ClientsEdit.xaml?id={clientId}", UriKind.Relative));
+            }
+        }
 
         // Удаление данных
         private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -63,7 +69,7 @@ namespace pfx_workshop_.net7._0.Pages
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = SearchBox.Text.ToLower();
-            string sqlQuery = "SELECT * FROM public.\"Clients\" " + 
+            string sqlQuery = "SELECT * FROM public.\"Clients\" " +
                 "WHERE c_id::text ILIKE @searchText " +
                 "OR full_name ILIKE @searchText " +
                 "OR city ILIKE @searchText " +

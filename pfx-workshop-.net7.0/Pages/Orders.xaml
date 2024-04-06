@@ -3,7 +3,6 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:pfx_workshop_.net7._0.Pages"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignWidth="1280" d:DesignHeight="720"
@@ -25,7 +24,7 @@
                Grid.Column="0" Grid.Row="0"
                HorizontalAlignment="Left"
                Background="#673ab7" Foreground="White"
-               FontSize="16" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
         <DataGrid x:Name="ordersDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
@@ -48,11 +47,19 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource MaterialDesignFlatButton}" >
-                                    <materialDesign:PackIcon Kind="Edit" Width="16" Height="16" />
+                                
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                        >
+
+                                    <materialDesign:PackIcon Kind="Edit"  
+                                                             Width="16" Height="16" />
                                 </Button>
-                                <Button Style="{StaticResource MaterialDesignFlatButton}" Click="DeleteButton_Click">
-                                    <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" />
+
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                        Click="DeleteButton_Click">
+
+                                    <materialDesign:PackIcon Kind="Delete" 
+                                                             Width="16" Height="16" />
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
@@ -78,7 +85,7 @@
                             Orientation="Horizontal">
 
                     <materialDesign:PackIcon Kind="Refresh" 
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
                     <TextBlock Text="Обновить" 
@@ -93,7 +100,7 @@
                 <StackPanel Orientation="Horizontal">
 
                     <materialDesign:PackIcon Kind="Plus"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
                     <TextBlock Text="Добавить"
@@ -103,13 +110,13 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2"
-                    Margin="0 0 10 0"
+                    Margin="0 0 5 0"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
 
             <materialDesign:PackIcon Kind="Search"
                                      VerticalAlignment="Center"
-                                     Margin="0,0,5,0" 
+                                     Margin="0 0 5 0" 
                                      Width="32" Height="32"
                                      Foreground="#673ab7" />
 

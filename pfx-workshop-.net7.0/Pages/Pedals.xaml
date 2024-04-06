@@ -24,7 +24,7 @@
                Grid.Column="0" Grid.Row="0"
                HorizontalAlignment="Left"
                Background="#673ab7" Foreground="White"
-               FontSize="16" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
         <DataGrid x:Name="pedalsDataGrid"
                   Grid.Row="1" Grid.ColumnSpan="2"
@@ -45,11 +45,19 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Style="{StaticResource MaterialDesignFlatButton}" >
-                                    <materialDesign:PackIcon Kind="Edit" Width="16" Height="16" />
+                                
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                        >
+
+                                    <materialDesign:PackIcon Kind="Edit" 
+                                                             Width="16" Height="16" />
                                 </Button>
-                                <Button Style="{StaticResource MaterialDesignFlatButton}" Click="DeleteButton_Click">
-                                    <materialDesign:PackIcon Kind="Delete" Width="16" Height="16" />
+
+                                <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                                        Click="DeleteButton_Click">
+
+                                    <materialDesign:PackIcon Kind="Delete" 
+                                                             Width="16" Height="16" />
                                 </Button>
                             </StackPanel>
                         </DataTemplate>
@@ -75,10 +83,10 @@
                             Orientation="Horizontal">
 
                     <materialDesign:PackIcon Kind="Refresh" 
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
-                    <TextBlock Text="Обновить" 
+                    <TextBlock Text="Обновить"
                                FontSize="22" FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -90,7 +98,7 @@
                 <StackPanel Orientation="Horizontal">
 
                     <materialDesign:PackIcon Kind="Plus"
-                                             Margin="0,0,5,0" 
+                                             Margin="0 0 5 0" 
                                              Width="32" Height="32" />
 
                     <TextBlock Text="Добавить"
@@ -100,7 +108,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2"
-                    Margin="0 0 10 0"
+                    Margin="0 0 5 0"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
 

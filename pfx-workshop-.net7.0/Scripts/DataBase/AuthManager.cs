@@ -14,6 +14,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
                 using (var connection = new NpgsqlConnection(ConnectionManager.GetConnectionString()))
                 {
                     connection.Open();
+
                     using (var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM public.\"Authorization\" WHERE login = @login AND password = @password;", connection))
                     {
                         cmd.Parameters.AddWithValue("@login", login);

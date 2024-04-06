@@ -1,0 +1,89 @@
+﻿<Page x:Class="pfx_workshop_.net7._0.Pages.WarehouseAdd"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignWidth="1280" d:DesignHeight="720"
+      Title="WarehouseAdd"
+      Background="#fff">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Content="Склад"
+               Grid.Column="0" Grid.Row="0"
+               HorizontalAlignment="Left"
+               Background="#673ab7" Foreground="White"
+               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+        <StackPanel Grid.Row="1" Grid.Column="0" 
+                    Orientation="Vertical">
+
+            <Label Content="Название"
+                   HorizontalAlignment="Left"
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+            <TextBox x:Name="item_name"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     FontSize="22" />
+
+            <Label Content="Количество"
+                   HorizontalAlignment="Left"
+                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+
+            <TextBox x:Name="quantity"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     FontSize="22" 
+                     TextChanged="CheckIsInteger" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    Height="50"
+                    Click="AcceptButton_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Done" 
+                                             Margin="0 0 5 0" 
+                                             Width="32" Height="32" />
+
+                    <TextBlock Text="Готово" 
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+
+            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+                    Height="50"
+                    Click="CancelButton_Click">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <materialDesign:PackIcon Kind="Cancel"
+                                             Margin="0 0 5 0"
+                                             Width="32" Height="32" />
+
+                    <TextBlock Text="Отмена"
+                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>

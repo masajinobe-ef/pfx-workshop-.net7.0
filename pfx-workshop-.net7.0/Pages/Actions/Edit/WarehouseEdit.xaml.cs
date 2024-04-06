@@ -5,9 +5,9 @@ using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class WarehouseAct : Page
+    public partial class WarehouseEdit : Page
     {
-        public WarehouseAct()
+        public WarehouseEdit()
         {
             InitializeComponent();
         }
