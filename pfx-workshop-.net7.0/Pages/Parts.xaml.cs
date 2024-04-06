@@ -23,8 +23,9 @@ namespace pfx_workshop_.net7._0.Pages
         // Чтение данных
         private void LoadPartsData()
         {
-            string sqlQuery = "SELECT * FROM public.\"Parts\" " +
-                "LEFT JOIN public.\"Suppliers\" ON public.\"Parts\".p_id = public.\"Suppliers\".s_id;";
+            string sqlQuery = "SELECT Parts.p_id, Parts.item_name, Parts.quantity, Suppliers.name " +
+                      "FROM public.\"Parts\" Parts " +
+                      "JOIN public.\"Suppliers\" Suppliers ON Parts.supplier = Suppliers.s_id;";
             DataTable clientsData = DataHelper.ReadTable(sqlQuery);
 
             partsDataGrid.ItemsSource = clientsData.DefaultView;

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using pfx_workshop_.net7._0.Scripts.DataBase;
+using System.Data;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
@@ -8,14 +10,22 @@ namespace pfx_workshop_.net7._0.Pages
         public PartsAdd()
         {
             InitializeComponent();
+            PartsComboBox();
         }
 
-        private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void PartsComboBox()
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(item_name.Text) 
-                || string.IsNullOrWhiteSpace(quantity.Text) 
-                || string.IsNullOrWhiteSpace(supplier.Text))
+            string sqlQuery = "SELECT name FROM public.\"Suppliers\";";
+            DataTable supplierDataTable = DataHelper.ReadTable(sqlQuery);
+
+            supplierComboBox.ItemsSource = supplierDataTable?.DefaultView;
+        }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(item_name.Text)
+                || string.IsNullOrWhiteSpace(quantity.Text)
+                || supplierComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Значение наименования, количества и поставщика не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
@@ -27,57 +37,61 @@ namespace pfx_workshop_.net7._0.Pages
                 return;
             }
 
-
-            if (!int.TryParse(supplier.Text, out int supplierValue))
+            if (supplierComboBox.SelectedItem is not DataRowView selectedSupplier)
             {
-                MessageBox.Show("Значение поставщика должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Не удалось получить выбранного поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            string? selectedSupplierName = selectedSupplier["name"] as string;
 
-            // Атрибуты таблицы и их привязка к textbox
+            if (string.IsNullOrWhiteSpace(selectedSupplierName))
+            {
+                MessageBox.Show("Не удалось получить имя выбранного поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            int supplierId = GetSupplierId(selectedSupplierName);
+
+            if (supplierId == -1)
+            {
+                MessageBox.Show("Не удалось получить идентификатор поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             Dictionary<string, object> textBoxValues = new()
             {
                 { "item_name", item_name.Text },
                 { "quantity", quantityValue },
-                { "supplier", supplierValue },
+                { "supplier", supplierId }
             };
 
-/*            string sqlQuery = "INSERT INTO public.\"Parts\" " +
+            string sqlQuery = "INSERT INTO public.\"Parts\" " +
                 "(item_name, quantity, supplier) " +
                 "VALUES (@item_name, @quantity, @supplier);";
-            DataHelper.CreateTable(sqlQuery, textBoxValues);*/
+            DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-            NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+        }
+
+        private static int GetSupplierId(string supplierName)
+        {
+            string sqlQuery = $"SELECT s_id FROM public.\"Suppliers\" WHERE name = '{supplierName}';";
+            DataTable resultTable = DataHelper.ReadTable(sqlQuery);
+
+            if (resultTable?.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultTable.Rows[0]["s_id"]);
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
         }
     }
 }
-
-/*       private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-       {
-           NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
-       }
-
-       private static readonly Regex _regex = MyRegex();
-
-       private void CheckIsInteger(object sender, TextChangedEventArgs e)
-       {
-           var textBox1 = sender as TextBox;
-           quantity.Text = _regex.Replace(textBox1.Text, "");
-           var textBox2 = sender as TextBox;
-           supplier.Text = _regex.Replace(textBox2.Text, "");
-       }
-
-       [GeneratedRegex("[^0-9]+")]
-       private static partial Regex MyRegex();
-   }
-
-   private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-   {
-       NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
-   }*/
