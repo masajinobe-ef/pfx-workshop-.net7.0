@@ -10,10 +10,10 @@ namespace pfx_workshop_.net7._0.Pages
         public PartsAdd()
         {
             InitializeComponent();
-            PartsComboBox();
+            SupplierComboBox();
         }
 
-        private void PartsComboBox()
+        private void SupplierComboBox()
         {
             string sqlQuery = "SELECT name FROM public.\"Suppliers\";";
             DataTable supplierDataTable = DataHelper.ReadTable(sqlQuery);

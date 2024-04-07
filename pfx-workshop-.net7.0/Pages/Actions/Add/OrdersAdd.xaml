@@ -30,31 +30,35 @@
         <StackPanel Grid.Row="1" Grid.Column="0" 
                     Orientation="Vertical">
 
-            <Label Content="Название"
+            <Label Content="Клиент"
                    HorizontalAlignment="Left"
                    FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-            <TextBox x:Name="item_name"
-                     HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="22" />
+            <ComboBox x:Name="clientComboBox" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                      BorderThickness="1.5" BorderBrush="DimGray" 
+                      FontSize="22"
+                      DisplayMemberPath="full_name" 
+                      SelectedValuePath="c_id" />
 
-            <Label Content="Количество"
+            <Label Content="Педаль"
                    HorizontalAlignment="Left"
                    FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-            <TextBox x:Name="quantity"
-                     HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="22" />
+            <ComboBox x:Name="pedalComboBox" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                      BorderThickness="1.5" BorderBrush="DimGray" 
+                      FontSize="22"
+                      DisplayMemberPath="name" 
+                      SelectedValuePath="pd_id" />
 
-            <Label Content="Поставщик"
+            <Label Content="Дата"
                    HorizontalAlignment="Left"
                    FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-            <TextBox x:Name="supplier"
+            <TextBox x:Name="date"
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                      BorderThickness="1.5" BorderBrush="DimGray" 

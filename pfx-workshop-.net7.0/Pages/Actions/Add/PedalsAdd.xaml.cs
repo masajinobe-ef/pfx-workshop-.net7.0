@@ -1,5 +1,4 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,11 +13,10 @@ namespace pfx_workshop_.net7._0.Pages
 
         private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(brand.Text) 
-                || string.IsNullOrWhiteSpace(name.Text) 
-                || string.IsNullOrWhiteSpace(description.Text) 
-                || string.IsNullOrWhiteSpace(price.Text) 
+            if (string.IsNullOrWhiteSpace(brand.Text)
+                || string.IsNullOrWhiteSpace(name.Text)
+                || string.IsNullOrWhiteSpace(description.Text)
+                || string.IsNullOrWhiteSpace(price.Text)
                 || string.IsNullOrWhiteSpace(category.Text))
             {
                 MessageBox.Show("Значения бренда, наименования, описания, цены и категории не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -31,8 +29,6 @@ namespace pfx_workshop_.net7._0.Pages
                 return;
             }
 
-
-            // Атрибуты таблицы и их привязка к textbox
             Dictionary<string, object> textBoxValues = new()
             {
                 { "brand", brand.Text },
@@ -54,16 +50,5 @@ namespace pfx_workshop_.net7._0.Pages
         {
             NavigationService.Navigate(new Uri("Pages/Pedals.xaml", UriKind.Relative));
         }
-
-        private static readonly Regex _regex = MyRegex();
-
-        private void CheckIsInteger(object sender, TextChangedEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            price.Text = _regex.Replace(textBox.Text, "");
-        }
-
-        [GeneratedRegex("[^0-9]+")]
-        private static partial Regex MyRegex();
     }
 }

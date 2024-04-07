@@ -3,7 +3,6 @@ using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
-
 namespace pfx_workshop_.net7._0.Pages
 {
     public partial class Clients : Page
@@ -38,7 +37,7 @@ namespace pfx_workshop_.net7._0.Pages
                 DataRowView selectedRow = (DataRowView)clientsDataGrid.SelectedItem;
                 int clientId = Convert.ToInt32(selectedRow["c_id"]);
 
-                NavigationService.Navigate(new Uri($"Pages/Actions/Edit/ClientsEdit.xaml?id={clientId}", UriKind.Relative));
+                NavigationService.Navigate(new Uri($"Pages/Actions/Edit/ClientsEdit.xaml?c_id={clientId}", UriKind.Relative));
             }
         }
 

@@ -17,15 +17,18 @@ namespace pfx_workshop_.net7._0.Pages
         // Добавление данных
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            // NavigationService.Navigate(new Uri("Pages/ClientAct.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/Actions/Add/OrdersAdd.xaml", UriKind.Relative));
         }
 
         // Чтение данных
         private void LoadOrdersData()
         {
-            string sqlQuery = "SELECT * FROM public.\"Orders\" " +
-            "LEFT JOIN public.\"Clients\" ON public.\"Orders\".c_id = public.\"Clients\".c_id " +
-            "LEFT JOIN public.\"Pedals\" ON public.\"Orders\".pd_id = public.\"Pedals\".pd_id;";
+            string sqlQuery = "SELECT Orders.o_id AS o_id, Orders.c_id AS c_id, Orders.pd_id AS pd_id, Orders.date AS date, " +
+                              "Clients.full_name AS full_name, Pedals.name AS name, Clients.city AS city, " +
+                              "Clients.address AS address, Clients.phone AS phone, Pedals.price AS price " +
+                              "FROM public.\"Orders\" Orders " +
+                              "LEFT JOIN public.\"Clients\" Clients ON Orders.c_id = Clients.c_id " +
+                              "LEFT JOIN public.\"Pedals\" Pedals ON Orders.pd_id = Pedals.pd_id;";
             DataTable clientsData = DataHelper.ReadTable(sqlQuery);
 
             ordersDataGrid.ItemsSource = clientsData.DefaultView;

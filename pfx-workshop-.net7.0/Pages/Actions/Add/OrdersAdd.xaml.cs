@@ -1,5 +1,5 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
-using System.Text.RegularExpressions;
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -10,65 +10,115 @@ namespace pfx_workshop_.net7._0.Pages
         public OrdersAdd()
         {
             InitializeComponent();
+            ClientComboBox();
+            PedalComboBox();
+            date.Text = DateTime.Now.ToString();
         }
 
-        private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void ClientComboBox()
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(item_name.Text)
-                || string.IsNullOrWhiteSpace(quantity.Text)
-                || string.IsNullOrWhiteSpace(supplier.Text))
+            string sqlQuery = "SELECT full_name FROM public.\"Clients\";";
+            DataTable clientDataTable = DataHelper.ReadTable(sqlQuery);
+
+            clientComboBox.ItemsSource = clientDataTable?.DefaultView;
+        }
+
+        private void PedalComboBox()
+        {
+            string sqlQuery = "SELECT name FROM public.\"Pedals\";";
+            DataTable pedalDataTable = DataHelper.ReadTable(sqlQuery);
+
+            pedalComboBox.ItemsSource = pedalDataTable?.DefaultView;
+        }
+
+        private void AcceptButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (clientComboBox.SelectedItem == null ||
+                pedalComboBox.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(date.Text))
             {
-                MessageBox.Show("Значение наименования, количества и поставщика не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Значение клиента, педали и даты не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
-            if (!int.TryParse(quantity.Text, out int quantityValue))
+            if (clientComboBox.SelectedItem is not DataRowView selectedClient)
             {
-                MessageBox.Show("Значение количества должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Не удалось получить выбранного клиента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-
-            if (!int.TryParse(supplier.Text, out int supplierValue))
+            if (pedalComboBox.SelectedItem is not DataRowView selectedPedal)
             {
-                MessageBox.Show("Значение поставщика должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Не удалось получить выбранную педаль.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
+            string? selectedClientName = selectedClient["full_name"] as string;
+            string? selectedPedalName = selectedPedal["name"] as string;
 
-            // Атрибуты таблицы и их привязка к textbox
+            if (string.IsNullOrWhiteSpace(selectedClientName) || string.IsNullOrWhiteSpace(selectedPedalName))
+            {
+                MessageBox.Show("Не удалось получить имя клиента или педали.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            int clientId = GetClientId(selectedClientName);
+            int pedalId = GetPedalId(selectedPedalName);
+
+            if (clientId == -1 || pedalId == -1)
+            {
+                MessageBox.Show("Не удалось получить идентификатор клиента или педали.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             Dictionary<string, object> textBoxValues = new()
             {
-                { "item_name", item_name.Text },
-                { "quantity", quantityValue },
-                { "supplier", supplierValue },
+                { "c_id", clientId },
+                { "pd_id", pedalId },
+                { "date", date.Text }
             };
 
-            string sqlQuery = "INSERT INTO public.\"Parts\" " +
-                "(item_name, quantity, supplier) " +
-                "VALUES (@item_name, @quantity, @supplier);";
+            string sqlQuery = "INSERT INTO public.\"Orders\" " +
+                "(c_id, pd_id, date) " +
+                "VALUES (@c_id, @pd_id, @date);";
             DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-            NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+            NavigationService?.Navigate(new Uri("Pages/Orders.xaml", UriKind.Relative));
         }
 
-        private static readonly Regex _regex = MyRegex();
-
-        private void CheckIsInteger(object sender, TextChangedEventArgs e)
+        private static int GetClientId(string clientName)
         {
-            var textBox1 = sender as TextBox;
-            quantity.Text = _regex.Replace(textBox1.Text, "");
-            var textBox2 = sender as TextBox;
-            supplier.Text = _regex.Replace(textBox2.Text, "");
+            string sqlQuery = $"SELECT c_id FROM public.\"Clients\" WHERE full_name = '{clientName}';";
+            DataTable resultTable = DataHelper.ReadTable(sqlQuery);
+
+            if (resultTable?.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultTable.Rows[0]["c_id"]);
+            }
+            else
+            {
+                return -1;
+            }
         }
 
-        [GeneratedRegex("[^0-9]+")]
-        private static partial Regex MyRegex();
+        private static int GetPedalId(string pedalName)
+        {
+            string sqlQuery = $"SELECT pd_id FROM public.\"Pedals\" WHERE name = '{pedalName}';";
+            DataTable resultTable = DataHelper.ReadTable(sqlQuery);
+
+            if (resultTable?.Rows.Count > 0)
+            {
+                return Convert.ToInt32(resultTable.Rows[0]["pd_id"]);
+            }
+            else
+            {
+                return -1;
+            }
+        }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("Pages/Orders.xaml", UriKind.Relative));
         }
     }
 }

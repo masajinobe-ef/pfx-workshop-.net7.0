@@ -68,8 +68,7 @@
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                      BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="22" 
-                     TextChanged="CheckIsInteger" />
+                     FontSize="22" />
 
             <Label Content="Категория"
                    HorizontalAlignment="Left"

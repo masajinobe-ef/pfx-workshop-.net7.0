@@ -1,5 +1,4 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -14,16 +13,14 @@ namespace pfx_workshop_.net7._0.Pages
 
         private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(name.Text) 
-                || string.IsNullOrWhiteSpace(website.Text) 
+            if (string.IsNullOrWhiteSpace(name.Text)
+                || string.IsNullOrWhiteSpace(website.Text)
                 || string.IsNullOrWhiteSpace(description.Text))
             {
                 MessageBox.Show("Значения наименования, сайта, описания не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
-            // Атрибуты таблицы и их привязка к textbox
             Dictionary<string, object> textBoxValues = new()
             {
                 { "name", name.Text },
