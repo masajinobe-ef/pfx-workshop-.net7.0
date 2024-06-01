@@ -20,7 +20,7 @@
 [![Stars](https://img.shields.io/github/stars/masajinobe-ef/pfx-workshop-.net7.0?color=fff&labelColor=0C0E0F&style=for-the-badge)](https://boosty.to/priscilla-custom-effects "Stars")
 [![Code Size](https://img.shields.io/github/languages/code-size/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Code Size")
 [![Repository size](https://img.shields.io/github/repo-size/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Repository size")
-[![Stars](https://img.shields.io/github/languages/top/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Stars")
+[![Top language](https://img.shields.io/github/languages/top/masajinobe-ef/pfx-workshop-.net7.0.svg?style=for-the-badge)](https://github.com/masajinobe-ef/pfx-workshop-.net7.0 "Top language")
 
 <p align="center" >
     <a href="https://priscilla-custom-effects.github.io">
