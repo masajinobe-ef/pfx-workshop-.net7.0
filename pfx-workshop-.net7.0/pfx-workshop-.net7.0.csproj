@@ -7,31 +7,33 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>src\Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
 
   <ItemGroup>
-    <Content Include="icon.ico" />
-
-    <Resource Include="Resources\logo.png">
+    <Resource Include="src\Resources\icon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
 
-    <Content Include="Settings\appsettings.json">
+    <Resource Include="src\Resources\logo.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+
+    <Content Include="src\Settings\appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 
-    <Resource Include="Fonts\NotoSans-Regular.ttf">
+    <Resource Include="src\Fonts\NotoSans-Regular.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Fonts\NotoSans-Italic.ttf">
+    <Resource Include="src\Fonts\NotoSans-Italic.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Fonts\NotoSans-BoldItalic.ttf">
+    <Resource Include="src\Fonts\NotoSans-BoldItalic.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Fonts\NotoSans-Bold.ttf">
+    <Resource Include="src\Fonts\NotoSans-Bold.ttf">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     

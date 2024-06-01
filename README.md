@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="pic.png" alt="pic"/>
+    <img src="pics/pic.png" alt="pic"/>
 </p>
 
 <center>
@@ -24,7 +24,7 @@
 
 <p align="center" >
     <a href="https://priscilla-custom-effects.github.io">
-        <img src="db.png" alt="db"/>
+        <img src="pics/db.png" alt="db"/>
     </a>
 </p>
 
@@ -34,7 +34,7 @@
 
 <p align="center" >
     <a href="https://priscilla-custom-effects.github.io">
-        <img src="logo.png" alt="logo" width="256"/>
+        <img src="pics/logo.png" alt="logo" width="256"/>
     </a>
 </p>
 

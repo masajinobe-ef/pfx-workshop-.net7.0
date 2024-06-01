@@ -2,13 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:pfx_workshop_.net7._0"
-             StartupUri="/Windows/Authorization.xaml"
+             StartupUri="src/Windows/Authorization.xaml"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
 
     <Application.Resources>
 
         <ResourceDictionary>
-            <FontFamily x:Key="NotoSans">pack://application:,,,/Fonts/#Noto Sans</FontFamily>
+            <FontFamily x:Key="NotoSans">pack://application:,,,src/Fonts/#Noto Sans</FontFamily>
             <ResourceDictionary.MergedDictionaries>
                 <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="DeepPurple" SecondaryColor="Lime" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
