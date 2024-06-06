@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-        Title="Priscilla Custom Effects" 
-        Width="400" Height="400" 
-        ResizeMode="NoResize" 
-        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
+        Title="Priscilla Custom Effects"
+        Width="400"
+        Height="400"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         Background="#fff"
         AllowsTransparency="True">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
@@ -26,79 +27,92 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.Column="2"
-                    Orientation="Horizontal" 
+        <StackPanel Grid.Row="0"
+                    Grid.Column="2"
+                    Orientation="Horizontal"
                     HorizontalAlignment="Right">
-
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Width="64" Height="64"
+                    Width="64"
+                    Height="64"
                     Click="MinButton_Click" />
-
             <Button Content="{materialIcons:MaterialIconExt Kind=Close}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Width="64" Height="64"
+                    Width="64"
+                    Height="64"
                     Click="CloseButton_Click" />
         </StackPanel>
-
         <Image Grid.RowSpan="2"
                Source="/src/Resources/logo.png"
-               Stretch="Fill" 
+               Stretch="Fill"
                Margin="10 0 0 0"
-               Width="120" Height="120" 
-               Grid.Column="0" Grid.Row="0"/>
-
-        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
+               Width="120"
+               Height="120"
+               Grid.Column="0"
+               Grid.Row="0" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
                     Orientation="Vertical">
-
             <Label Content="Авторизация"
-                   HorizontalContentAlignment="Center" 
-                   FontSize="32" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   HorizontalContentAlignment="Center"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <Label x:Name="auth_label"
                    Content="Пожалуйста, авторизуйтесь"
                    HorizontalContentAlignment="Center"
-                   FontSize="14" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
+                   FontSize="14"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}"
                    Foreground="DimGray" />
         </StackPanel>
-
-        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"
+        <StackPanel Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Orientation="Vertical">
-            
             <Label Content="Логин"
                    Margin="10 0 0 0"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="login"
                      Width="380"
                      HorizontalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
         </StackPanel>
-
-        <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"
+        <StackPanel Grid.Row="3"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
                     Orientation="Vertical">
-            
-            <Label Content="Пароль" 
+            <Label Content="Пароль"
                    Margin="10 0 0 0"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <PasswordBox x:Name="password"
                          Width="380"
                          HorizontalContentAlignment="Center"
-                         BorderThickness="1.5" BorderBrush="DimGray" 
+                         BorderThickness="1.5"
+                         BorderBrush="DimGray"
                          FontSize="22" />
         </StackPanel>
-
         <Button x:Name="auth_button"
                 Content="Вход"
-                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"
-                Width="380" Height="50"
-                Foreground="White" Background="#673ab7"
-                FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}"
+                Grid.Column="0"
+                Grid.Row="4"
+                Grid.ColumnSpan="3"
+                Width="380"
+                Height="50"
+                Foreground="White"
+                Background="#673ab7"
+                FontSize="22"
+                FontWeight="Bold"
+                FontFamily="{StaticResource NotoSans}"
                 Click="AuthButton_Click" />
     </Grid>
 </Window>

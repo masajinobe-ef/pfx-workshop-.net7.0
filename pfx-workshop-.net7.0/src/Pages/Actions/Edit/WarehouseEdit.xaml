@@ -5,96 +5,112 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="WarehouseEdit"
       Background="#fff">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-
         <Label Content="Склад"
-               Grid.Column="0" Grid.Row="0"
+               Grid.Column="0"
+               Grid.Row="0"
                HorizontalAlignment="Left"
                Background="#673ab7"
                Foreground="White"
-               FontSize="16" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-        <StackPanel Grid.Row="1" Grid.Column="0" 
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
                     Orientation="Vertical">
-
             <Label Content="Название"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="item_name"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="24" />
-
             <Label Content="Количество"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="quantity"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
+                     FontSize="24"
                      TextChanged="CheckIsInteger" />
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-                    Width="auto" Height="auto"
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Width="auto"
+                    Height="auto"
                     Orientation="Horizontal">
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Left"
+                    VerticalContentAlignment="Center"
+                    Width="auto"
+                    Height="50"
                     Click="EditButton_Click">
-
-                <StackPanel Width="auto" Height="auto"
+                <StackPanel Width="auto"
+                            Height="auto"
                             Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="Done" 
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Готово" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                    <materialDesign:PackIcon Kind="Done"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalContentAlignment="Center"
+                                             Margin="0,0,5,0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Готово"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="24"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                    HorizontalAlignment="Stretch" VerticalAlignment="Center"
-                    HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                    Width="auto" Height="50"
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Width="auto"
+                    Height="50"
                     Click="CancelButton_Click">
-
-                <StackPanel Width="auto" Height="auto"
+                <StackPanel Width="auto"
+                            Height="auto"
                             Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Cancel"
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             VerticalAlignment="Center" HorizontalAlignment="Center"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
+                                             VerticalContentAlignment="Center"
+                                             HorizontalContentAlignment="Center"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"
+                                             Margin="0,0,5,0"
+                                             Width="32"
+                                             Height="32" />
                     <TextBlock Text="Отмена"
-                               VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="24"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>

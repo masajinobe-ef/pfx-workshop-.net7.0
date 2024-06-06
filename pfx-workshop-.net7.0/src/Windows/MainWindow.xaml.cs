@@ -10,7 +10,7 @@ namespace pfx_workshop_.net7._0
     public MainWindow()
     {
       InitializeComponent();
-
+    
       /* Стартовая страница */
       MainFrame.Navigate(new Uri("src/Pages/Startup.xaml", UriKind.Relative));
 

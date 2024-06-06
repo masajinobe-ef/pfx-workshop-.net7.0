@@ -5,60 +5,73 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="Parts">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-      <RowDefinition Height="*"></RowDefinition>
-    </Grid.RowDefinitions>
-
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
         <Label Content="О программе"
-               Grid.Column="0" Grid.Row="0"
+               Grid.Column="0"
+               Grid.Row="0"
                HorizontalAlignment="Left"
-               Background="#673ab7" Foreground="White"
-               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-    <Label Content="Менеджер организации процессов мастерской"
-           Grid.Row="1" Grid.ColumnSpan="2"
-           
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-           Margin="0 0 0 500"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="28" 
-                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-    <Label            Grid.Row="1" Grid.ColumnSpan="2"
-                      HorizontalAlignment="Center" VerticalAlignment="Center"
-           Margin="0 0 20 300"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="28" 
-                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}">
-      
-      <Label.Content>
-        <AccessText TextWrapping="Wrap" Text="Программное обеспечение представляет собой инструмент для управления процессами и операциями, связанными с производством, заказами и инвентаризацией."/>
-      </Label.Content>
-    </Label>
-
-    <Label            Grid.Row="1" Grid.ColumnSpan="2"
-                      HorizontalAlignment="Center" VerticalAlignment="Center"
-           Margin="0 0 20 100"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="24" 
-                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}">
-
-      <Label.Content>
-        <AccessText TextWrapping="Wrap" Text="Программный продукт разработал: Колесов Арсений Дмитриевич ПКСт-20-(9)-2"/>
-      </Label.Content>
-    </Label>
-
-
-    <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
-                    Orientation="Horizontal"/>
-  </Grid>
+               Background="#673ab7"
+               Foreground="White"
+               FontSize="22"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <Label Content="Менеджер организации процессов мастерской"
+               Grid.Row="1"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="0 0 0 500"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="28"
+               Foreground="#673ab7"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <Label Grid.Row="1"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="0 0 20 300"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="28"
+               Foreground="#673ab7"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap"
+                            Text="Программное обеспечение представляет собой инструмент для управления процессами и операциями, связанными с производством, заказами и инвентаризацией." />
+            </Label.Content>
+        </Label>
+        <Label Grid.Row="1"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="0 0 20 100"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="24"
+               Foreground="#673ab7"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}">
+            <Label.Content>
+                <AccessText TextWrapping="Wrap"
+                            Text="Программный продукт разработал: Колесов Арсений Дмитриевич ПКСт-20-(9)-2" />
+            </Label.Content>
+        </Label>
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal" />
+    </Grid>
 </Page>

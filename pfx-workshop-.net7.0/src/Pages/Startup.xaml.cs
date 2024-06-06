@@ -2,11 +2,11 @@
 
 namespace pfx_workshop_.net7._0
 {
-    public partial class Startup : Page
+  public partial class Startup : Page
+  {
+    public Startup()
     {
-        public Startup()
-        {
-            InitializeComponent();
-        }
+      InitializeComponent();
     }
+  }
 }

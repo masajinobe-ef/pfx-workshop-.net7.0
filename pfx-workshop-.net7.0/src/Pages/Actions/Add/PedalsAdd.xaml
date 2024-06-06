@@ -5,115 +5,127 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="PedalsAdd"
       Background="#fff">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-
         <Label Content="Педали"
-               Grid.Column="0" Grid.Row="0"
+               Grid.Column="0"
+               Grid.Row="0"
                HorizontalAlignment="Left"
-               Background="#673ab7" Foreground="White"
-               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-        <StackPanel Grid.Row="1" Grid.Column="0" 
+               Background="#673ab7"
+               Foreground="White"
+               FontSize="22"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
                     Orientation="Vertical">
-
             <Label Content="Бренд"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="brand"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
-
             <Label Content="Название"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="name"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
-
             <Label Content="Описание"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="description"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
-            
             <Label Content="Цена"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="price"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
-
             <Label Content="Категория"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="category"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
                     Orientation="Horizontal">
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     Click="AcceptButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="Done" 
-                                             VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Готово" 
-                               VerticalAlignment="Center" HorizontalAlignment="Center" 
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                    <materialDesign:PackIcon Kind="Done"
+                                             VerticalContentAlignment="Center"
+                                             HorizontalContentAlignment="Center"
+                                             Margin="0,0,5,0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Готово"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     Click="CancelButton_Click">
-
-                <StackPanel Width="auto" Height="auto"
+                <StackPanel Width="auto"
+                            Height="auto"
                             Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Cancel"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
                     <TextBlock Text="Отмена"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>

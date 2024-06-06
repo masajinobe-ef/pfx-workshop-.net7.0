@@ -5,97 +5,101 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="OrdersAdd"
       Background="#fff">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-
         <Label Content="Заказы"
-               Grid.Column="0" Grid.Row="0"
+               Grid.Column="0"
+               Grid.Row="0"
                HorizontalAlignment="Left"
-               Background="#673ab7" Foreground="White"
-               FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-        <StackPanel Grid.Row="1" Grid.Column="0" 
+               Background="#673ab7"
+               Foreground="White"
+               FontSize="22"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
                     Orientation="Vertical">
-
             <Label Content="Клиент"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-            <ComboBox x:Name="clientComboBox" 
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
+            <ComboBox x:Name="clientComboBox"
                       HorizontalAlignment="Stretch"
-                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                      BorderThickness="1.5" BorderBrush="DimGray" 
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      BorderThickness="1.5"
+                      BorderBrush="DimGray"
                       FontSize="22"
-                      DisplayMemberPath="full_name" 
+                      DisplayMemberPath="full_name"
                       SelectedValuePath="c_id" />
-
             <Label Content="Педаль"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-            <ComboBox x:Name="pedalComboBox" 
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
+            <ComboBox x:Name="pedalComboBox"
                       HorizontalAlignment="Stretch"
-                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                      BorderThickness="1.5" BorderBrush="DimGray" 
+                      HorizontalContentAlignment="Left"
+                      VerticalContentAlignment="Center"
+                      BorderThickness="1.5"
+                      BorderBrush="DimGray"
                       FontSize="22"
-                      DisplayMemberPath="name" 
+                      DisplayMemberPath="name"
                       SelectedValuePath="pd_id" />
-
             <Label Content="Дата"
                    HorizontalAlignment="Left"
-                   FontSize="22" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="22"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="date"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="22" />
-
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
                     Orientation="Horizontal">
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                    Height="50" 
+                    Height="50"
                     Click="AcceptButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="Done" 
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Готово" 
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                    <materialDesign:PackIcon Kind="Done"
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Готово"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     Click="CancelButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Cancel"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
                     <TextBlock Text="Отмена"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>

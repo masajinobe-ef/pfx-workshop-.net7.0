@@ -6,13 +6,15 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialIcons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
-        Title="Priscilla Custom Effects" 
-        Width="1280" Height="720" 
-        ResizeMode="NoResize" 
-        WindowState="Normal" WindowStartupLocation="CenterScreen" WindowStyle="None" 
-        Background="#fff" 
+        Title="Priscilla Custom Effects"
+        Width="1280"
+        Height="720"
+        ResizeMode="NoResize"
+        WindowState="Normal"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="#fff"
         AllowsTransparency="True">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" />
@@ -20,202 +22,200 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <Frame x:Name="MainFrame"
-               Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="3"
+               Grid.Column="1"
+               Grid.Row="1"
+               Grid.ColumnSpan="3"
+               Grid.RowSpan="3"
                NavigationUIVisibility="Hidden" />
-
         <Label Content="P r i s c i l l a  C u s t o m  E f f e c t s"
                x:Name="pfx_label"
-               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"
+               Grid.Row="0"
+               Grid.Column="0"
+               Grid.ColumnSpan="4"
                VerticalAlignment="Top"
-               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-               Background="#673ab7" Foreground="#fff"
-               Width="720" Height="64"
-               FontSize="36" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-        <StackPanel Grid.Column="3" Grid.Row="0"
+               HorizontalContentAlignment="Center"
+               VerticalContentAlignment="Center"
+               Background="#673ab7"
+               Foreground="#fff"
+               Width="720"
+               Height="64"
+               FontSize="36"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <StackPanel Grid.Column="3"
+                    Grid.Row="0"
                     HorizontalAlignment="Right"
                     Orientation="Horizontal">
-
             <Button Content="{materialIcons:MaterialIconExt Kind=MoonAndStars}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Width="64" Height="64"
+                    Width="64"
+                    Height="64"
                     Click="ThemeButton_Click" />
-
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMinimize}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Width="64" Height="64"
+                    Width="64"
+                    Height="64"
                     Click="MinButton_Click" />
-
             <Button Content="{materialIcons:MaterialIconExt Kind=WindowMaximize}"
-                    Style="{StaticResource MaterialDesignFlatButton}" 
-                    Width="64" Height="64"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="64"
+                    Height="64"
                     Click="MaxButton_Click" />
-
             <Button Content="{materialIcons:MaterialIconExt Kind=Close}"
                     Style="{StaticResource MaterialDesignFlatButton}"
-                    Width="64" Height="64"
+                    Width="64"
+                    Height="64"
                     Click="CloseButton_Click" />
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="1">
-
+        <StackPanel Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="1">
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
                     Click="OrdersButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="CheckAll" 
+                    <materialDesign:PackIcon Kind="CheckAll"
                                              Margin="0 0 5 0"
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="Заказы" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Заказы"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                    HorizontalContentAlignment="Left" 
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    HorizontalContentAlignment="Left"
                     Height="50"
                     Click="PedalsButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="AudioVideo" 
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="Педали" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                    <materialDesign:PackIcon Kind="AudioVideo"
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Педали"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
                     Click="ClientsButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="AccountMultiple"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="Клиенты" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Клиенты"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
                     Click="WarehouseButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Archive"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="Склад" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Склад"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
                     Click="PartsButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Chip"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="Запчасти" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Запчасти"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
                     Click="SuppliersButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Shopping"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Поставщики" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Поставщики"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="3" 
+        <StackPanel Grid.Column="0"
+                    Grid.Row="3"
                     Orientation="Vertical"
                     VerticalAlignment="Bottom">
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                    Height="50" 
+                    Height="50"
                     HorizontalContentAlignment="Left"
                     Click="SSHButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Terminal"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="SSH" VerticalAlignment="Center"
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="SSH"
+                               VerticalAlignment="Center"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     HorizontalContentAlignment="Left"
                     Click="RestartButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Restart"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Restart" 
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Restart"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-          
-        <Button Style="{StaticResource MaterialDesignFlatButton}"
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     HorizontalContentAlignment="Left"
                     Click="InfoButton_Click">
-
-        <StackPanel Orientation="Horizontal">
-
-          <materialDesign:PackIcon Kind="Info"
-                                             Margin="0 0 5 0" 
-                                             Width="32" Height="32" />
-
-          <TextBlock Text="О программе" 
-                               FontSize="22" FontFamily="{StaticResource NotoSans}" />
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Info"
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="О программе"
+                               FontSize="22"
+                               FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
         </StackPanel>
-      </Button>
-    </StackPanel>
     </Grid>
 </Window>

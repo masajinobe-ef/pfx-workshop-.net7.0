@@ -5,34 +5,41 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="Startup">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition />
+            <RowDefinition />
         </Grid.RowDefinitions>
-
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
-                    HorizontalAlignment="Center" VerticalAlignment="Center"
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                     Orientation="Vertical">
-
-            <Label Content="Priscilla Custom Effects" 
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+            <Label Content="Priscilla Custom Effects"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
                    FontSize="68"
-                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   Foreground="#673ab7"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <Label Content="Менеджер организации процессов мастерской"
-                   HorizontalAlignment="Center" VerticalAlignment="Center"
-                   HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                   FontSize="28" 
-                   Foreground="#673ab7" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   VerticalContentAlignment="Center"
+                   FontSize="28"
+                   Foreground="#673ab7"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
         </StackPanel>
     </Grid>
 </Page>

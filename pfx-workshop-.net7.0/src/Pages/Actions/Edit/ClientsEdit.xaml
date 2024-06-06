@@ -5,103 +5,109 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignWidth="1280" d:DesignHeight="720"
+      d:DesignWidth="1280"
+      d:DesignHeight="720"
       Title="ClientsEdit"
       Background="#fff">
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-
         <Label Content="Клиенты"
-               Grid.Column="0" Grid.Row="0"
+               Grid.Column="0"
+               Grid.Row="0"
                HorizontalAlignment="Left"
                Background="#673ab7"
                Foreground="White"
-               FontSize="16" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
-        <StackPanel Grid.Row="1" Grid.Column="0" 
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="{StaticResource NotoSans}" />
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
                     Orientation="Vertical">
-
             <Label Content="ФИО"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="full_name"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="24" />
-
             <Label Content="Город"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="city"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="24" />
-
             <Label Content="Адрес"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="address"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="24" />
-
             <Label Content="Телефон"
                    HorizontalAlignment="Left"
-                   FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
-
+                   FontSize="20"
+                   FontWeight="Bold"
+                   FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="phone"
                      HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     BorderThickness="1.5"
+                     BorderBrush="DimGray"
                      FontSize="24" />
         </StackPanel>
-
-        <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
+        <StackPanel Grid.Column="0"
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
                     Orientation="Horizontal">
-
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     Click="EditButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
-                    <materialDesign:PackIcon Kind="Autorenew" 
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
-                    <TextBlock Text="Обновить" 
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                    <materialDesign:PackIcon Kind="Autorenew"
+                                             Margin="0,0,5,0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Обновить"
+                               FontSize="24"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
-
-            <Button Style="{StaticResource MaterialDesignFlatButton}" 
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
                     Height="50"
                     Click="CancelButton_Click">
-
                 <StackPanel Orientation="Horizontal">
-
                     <materialDesign:PackIcon Kind="Cancel"
-                                             Margin="0,0,5,0" 
-                                             Width="32" Height="32" />
-
+                                             Margin="0,0,5,0"
+                                             Width="32"
+                                             Height="32" />
                     <TextBlock Text="Отмена"
-                               FontSize="24" FontFamily="{StaticResource NotoSans}" />
+                               FontSize="24"
+                               FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
         </StackPanel>
