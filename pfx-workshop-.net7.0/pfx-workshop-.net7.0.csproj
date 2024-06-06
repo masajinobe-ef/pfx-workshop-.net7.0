@@ -20,7 +20,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
 
-    <Content Include="src\Settings\appsettings.json">
+    <Content Include="Settings\appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
 

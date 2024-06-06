@@ -32,12 +32,14 @@ namespace pfx_workshop_.net7._0.Pages
     /* Редактирование (Update) */
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-      if (clientsDataGrid.SelectedItem != null)
+      if (sender is Button button)
       {
-        DataRowView selectedRow = (DataRowView)clientsDataGrid.SelectedItem;
-        int clientId = Convert.ToInt32(selectedRow["c_id"]);
+        if (button.DataContext is DataRowView rowView)
+        {
+          var clientId = rowView["c_id"];
 
-        NavigationService.Navigate(new Uri($"Pages/Actions/Edit/ClientsEdit.xaml?c_id={clientId}", UriKind.Relative));
+          NavigationService.Navigate(new Uri($"src/Pages/Actions/Edit/ClientsEdit.xaml?c_id={clientId}", UriKind.Relative));
+        }
       }
     }
     /* Удаление (Delete) */

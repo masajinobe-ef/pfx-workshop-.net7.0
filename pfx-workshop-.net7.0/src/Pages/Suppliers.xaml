@@ -45,7 +45,7 @@
                             <StackPanel Orientation="Horizontal">
                                 
                                 <Button Style="{StaticResource MaterialDesignFlatButton}" 
-                                        >
+                                        Click="UpdateButton_Click">
 
                                     <materialDesign:PackIcon Kind="Edit" 
                                                              Width="16" Height="16" />

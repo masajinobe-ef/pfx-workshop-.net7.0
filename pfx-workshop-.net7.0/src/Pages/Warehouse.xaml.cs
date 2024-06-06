@@ -30,10 +30,18 @@ namespace pfx_workshop_.net7._0.Pages
       warehouseDataGrid.ItemsSource = clientsData.DefaultView;
     }
     /* Редактирование (Update) */
-    /*        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-            {
+    private void UpdateButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (sender is Button button)
+      {
+        if (button.DataContext is DataRowView rowView)
+        {
+          var warehouseId = rowView["w_id"];
 
-            }*/
+          NavigationService.Navigate(new Uri($"src/Pages/Actions/Edit/WarehouseEdit.xaml?w_id={warehouseId}", UriKind.Relative));
+        }
+      }
+    }
     /* Удаление (Delete) */
     private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {

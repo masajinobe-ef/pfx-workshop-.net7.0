@@ -1,68 +1,128 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
+using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class WarehouseEdit : Page
+  public partial class WarehouseEdit : Page
+  {
+    private string warehouseId;
+
+    public WarehouseEdit()
     {
-        public WarehouseEdit()
+      InitializeComponent();
+
+      this.Loaded += WarehouseEdit_Loaded;
+    }
+
+
+    private void WarehouseEdit_Loaded(object sender, RoutedEventArgs e)
+    {
+      if (NavigationService != null)
+      {
+        var uri = NavigationService.CurrentSource;
+        var parameters = GetQueryParameters(uri.ToString());
+
+        if (parameters.TryGetValue("w_id", out var id))
         {
-            InitializeComponent();
+          warehouseId = id;
+          LoadWarehouseData(warehouseId);
         }
+      }
+    }
 
-        private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
+    private void LoadWarehouseData(string clientId)
+    {
+      try
+      {
+        string sqlQuery = $"SELECT item_name, quantity FROM public.\"Warehouse\" WHERE w_id = {warehouseId}";
+        DataTable dataTable = DataHelper.ReadTable(sqlQuery);
+
+        if (dataTable.Rows.Count > 0)
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(item_name.Text))
-            {
-                MessageBox.Show("Значение наименования не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+          DataRow row = dataTable.Rows[0];
 
-            if (string.IsNullOrWhiteSpace(quantity.Text))
-            {
-                MessageBox.Show("Значение количества не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+          item_name.Text = row["item_name"].ToString();
+          quantity.Text = row["quantity"].ToString();
+        }
+        else
+        {
+          MessageBox.Show("Данные склада не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при заполнении полей: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
+    }
 
-            if (!int.TryParse(quantity.Text, out int quantityValue))
-            {
-                MessageBox.Show("Значение количества должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+    private static Dictionary<string, string> GetQueryParameters(string query)
+    {
+      var parameters = new Dictionary<string, string>();
+      if (query.Contains('?'))
+      {
+        var queryString = query.Split('?')[1];
+        var pairs = queryString.Split('&');
+        foreach (var pair in pairs)
+        {
+          var keyValue = pair.Split('=');
+          if (keyValue.Length == 2)
+          {
+            parameters[keyValue[0]] = keyValue[1];
+          }
+        }
+      }
+      return parameters;
+    }
 
+    private void EditButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (string.IsNullOrWhiteSpace(item_name.Text)
+          || string.IsNullOrWhiteSpace(quantity.Text))
+      {
+        MessageBox.Show("Значения предмета и количества не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+      }
 
-            // Атрибуты таблицы и их привязка к textbox
-            Dictionary<string, object> textBoxValues = new()
+      Dictionary<string, object> textBoxValues = new()
             {
                 { "item_name", item_name.Text },
-                { "quantity", quantityValue }
+                { "quantity", int.Parse(quantity.Text) },
+                { "id", warehouseId }
             };
 
-            string sqlQuery = "INSERT INTO public.\"Warehouse\" " +
-                "(item_name, quantity) " +
-                "VALUES (@item_name, @quantity);";
-            DataHelper.CreateTable(sqlQuery, textBoxValues);
+      string sqlQuery = "UPDATE public.\"Warehouse\" " +
+          "SET item_name = @item_name, quantity = @quantity " +
+          "WHERE w_id = @id::integer;";
 
-            NavigationService.Navigate(new Uri("Pages/Warehouse.xaml", UriKind.Relative));
-        }
-
-        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Pages/Warehouse.xaml", UriKind.Relative));
-        }
-
-        private static readonly Regex _regex = MyRegex();
-
-        private void CheckIsInteger(object sender, TextChangedEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            quantity.Text = _regex.Replace(textBox.Text, "");
-        }
-
-        [GeneratedRegex("[^0-9]+")]
-        private static partial Regex MyRegex();
+      try
+      {
+        DataHelper.UpdateTable(sqlQuery, textBoxValues);
+        MessageBox.Show("Данные склада успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        NavigationService.Navigate(new Uri("src/Pages/Warehouse.xaml", UriKind.Relative));
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при обновлении данных клиента: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
     }
+
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+      NavigationService.Navigate(new Uri("src/Pages/Warehouse.xaml", UriKind.Relative));
+    }
+
+    private static readonly Regex _regex = MyRegex();
+
+    private void CheckIsInteger(object sender, TextChangedEventArgs e)
+    {
+      var textBox = sender as TextBox;
+      quantity.Text = _regex.Replace(textBox.Text, "");
+    }
+
+    [GeneratedRegex("[^0-9]+")]
+    private static partial Regex MyRegex();
+  }
 }

@@ -1,89 +1,136 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
+using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class PedalsEdit : Page
+  public partial class PedalsEdit : Page
+  {
+    private string pedalId;
+
+    public PedalsEdit()
     {
-        public PedalsEdit()
+      InitializeComponent();
+
+      this.Loaded += PedalsEdit_Loaded;
+    }
+
+    private void PedalsEdit_Loaded(object sender, RoutedEventArgs e)
+    {
+      if (NavigationService != null)
+      {
+        var uri = NavigationService.CurrentSource;
+        var parameters = GetQueryParameters(uri.ToString());
+
+        if (parameters.TryGetValue("pd_id", out var id))
         {
-            InitializeComponent();
+          pedalId = id;
+          LoadPedalData(pedalId);
         }
+      }
+    }
 
-        private void AcceptButton_Click(object sender, System.Windows.RoutedEventArgs e)
+    private void LoadPedalData(string pedalId)
+    {
+      try
+      {
+        string sqlQuery = $"SELECT brand, name, description, price, category FROM public.\"Pedals\" WHERE pd_id = {pedalId}";
+        DataTable dataTable = DataHelper.ReadTable(sqlQuery);
+
+        if (dataTable.Rows.Count > 0)
         {
-            // Предикт isNull и ошибок
-            if (string.IsNullOrWhiteSpace(brand.Text))
-            {
-                MessageBox.Show("Значение бренда не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+          DataRow row = dataTable.Rows[0];
 
-            if (string.IsNullOrWhiteSpace(name.Text))
-            {
-                MessageBox.Show("Значение наименования не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+          brand.Text = row["brand"].ToString();
+          name.Text = row["name"].ToString();
+          description.Text = row["description"].ToString();
+          price.Text = row["price"].ToString();
+          category.Text = row["category"].ToString();
+        }
+        else
+        {
+          MessageBox.Show("Данные педали не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при заполнении полей: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
+    }
 
-            if (string.IsNullOrWhiteSpace(description.Text))
-            {
-                MessageBox.Show("Значение описания не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+    private static Dictionary<string, string> GetQueryParameters(string query)
+    {
+      var parameters = new Dictionary<string, string>();
+      if (query.Contains('?'))
+      {
+        var queryString = query.Split('?')[1];
+        var pairs = queryString.Split('&');
+        foreach (var pair in pairs)
+        {
+          var keyValue = pair.Split('=');
+          if (keyValue.Length == 2)
+          {
+            parameters[keyValue[0]] = keyValue[1];
+          }
+        }
+      }
+      return parameters;
+    }
 
-            if (string.IsNullOrWhiteSpace(price.Text))
-            {
-                MessageBox.Show("Значение цены не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+    private void EditButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (string.IsNullOrWhiteSpace(brand.Text)
+          || string.IsNullOrWhiteSpace(name.Text)
+          || string.IsNullOrWhiteSpace(description.Text)
+          || string.IsNullOrWhiteSpace(price.Text)
+          || string.IsNullOrWhiteSpace(category.Text))
+      {
+        MessageBox.Show("Значения бренда, названия, описания, цены и категории не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+      }
 
-            if (!int.TryParse(price.Text, out int priceValue))
-            {
-                MessageBox.Show("Значение количества должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-
-            if (string.IsNullOrWhiteSpace(category.Text))
-            {
-                MessageBox.Show("Значение описания не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
-
-
-            // Атрибуты таблицы и их привязка к textbox
-            Dictionary<string, object> textBoxValues = new()
+      Dictionary<string, object> textBoxValues = new()
             {
                 { "brand", brand.Text },
                 { "name", name.Text },
                 { "description", description.Text },
-                { "price", priceValue },
-                { "category", category.Text }
+                { "price", int.Parse(price.Text) },
+                { "category", category.Text },
+                { "id", pedalId }
             };
 
-            string sqlQuery = "INSERT INTO public.\"Pedals\" " +
-                "(brand, name, description, price, category) " +
-                "VALUES (@brand, @name, @description, @price, @category);";
-            DataHelper.CreateTable(sqlQuery, textBoxValues);
+      string sqlQuery = "UPDATE public.\"Pedals\" " +
+    "SET brand = @brand, name = @name, description = @description, price = @price, category = @category " +
+    "WHERE pd_id = @id::integer;";
 
-            NavigationService.Navigate(new Uri("Pages/Pedals.xaml", UriKind.Relative));
-        }
-
-        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Pages/Pedals.xaml", UriKind.Relative));
-        }
-
-        private static readonly Regex _regex = MyRegex();
-
-        private void CheckIsInteger(object sender, TextChangedEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            price.Text = _regex.Replace(textBox.Text, "");
-        }
-
-        [GeneratedRegex("[^0-9]+")]
-        private static partial Regex MyRegex();
+      try
+      {
+        DataHelper.UpdateTable(sqlQuery, textBoxValues);
+        MessageBox.Show("Данные педали успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        NavigationService.Navigate(new Uri("src/Pages/Pedals.xaml", UriKind.Relative));
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при обновлении данных педали: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
     }
+
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+      NavigationService.Navigate(new Uri("src/Pages/Pedals.xaml", UriKind.Relative));
+    }
+
+    private static readonly Regex _regex = MyRegex();
+
+    private void CheckIsInteger(object sender, TextChangedEventArgs e)
+    {
+      var textBox = sender as TextBox;
+      price.Text = _regex.Replace(textBox.Text, "");
+    }
+
+    [GeneratedRegex("[^0-9]+")]
+    private static partial Regex MyRegex();
+  }
 }

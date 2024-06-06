@@ -30,10 +30,18 @@ namespace pfx_workshop_.net7._0.Pages
       pedalsDataGrid.ItemsSource = clientsData.DefaultView;
     }
     /* Редактирование (Update) */
-    /*        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-            {
+    private void EditButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (sender is Button button)
+      {
+        if (button.DataContext is DataRowView rowView)
+        {
+          var pedalId = rowView["pd_id"];
 
-            }*/
+          NavigationService.Navigate(new Uri($"src/Pages/Actions/Edit/PedalsEdit.xaml?pd_id={pedalId}", UriKind.Relative));
+        }
+      }
+    }
     /* Удаление (Delete) */
     private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {

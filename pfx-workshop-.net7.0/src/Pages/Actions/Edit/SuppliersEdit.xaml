@@ -70,7 +70,7 @@
                     HorizontalAlignment="Stretch" VerticalAlignment="Center"
                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                     Width="auto" Height="50"
-                    Click="AcceptButton_Click">
+                    Click="EditButton_Click">
 
                 <StackPanel Width="auto" Height="auto"
                             Orientation="Horizontal">

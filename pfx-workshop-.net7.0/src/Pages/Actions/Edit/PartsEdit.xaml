@@ -56,14 +56,15 @@
                    HorizontalAlignment="Left"
                    FontSize="20" FontWeight="Bold" FontFamily="{StaticResource NotoSans}" />
 
-            <TextBox x:Name="supplier"
-                     HorizontalAlignment="Stretch"
-                     HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
-                     BorderThickness="1.5" BorderBrush="DimGray" 
-                     FontSize="24" 
-                     />
+            <ComboBox x:Name="supplierComboBox" 
+                      HorizontalAlignment="Stretch"
+                      HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                      BorderThickness="1.5" BorderBrush="DimGray" 
+                      FontSize="22"
+                      DisplayMemberPath="name" 
+                      SelectedValuePath="s_id" />
 
-        </StackPanel>
+    </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"
                     Width="auto" Height="auto"

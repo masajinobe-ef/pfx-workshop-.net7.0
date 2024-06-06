@@ -87,5 +87,9 @@ namespace pfx_workshop_.net7._0
     {
       DatabaseManager.RestartDatabase();
     }
+    private void InfoButton_Click(object sender, RoutedEventArgs e)
+    {
+      MainFrame.Navigate(new Uri("src/Pages/Info.xaml", UriKind.Relative));
+    }
   }
 }

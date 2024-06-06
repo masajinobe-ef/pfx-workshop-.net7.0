@@ -66,7 +66,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
       return dataTable;
     }
     /* Редактирование (Update) */
-/*    public static void UpdateRecord(string sqlQuery, Dictionary<string, object> parameters)
+    public static void UpdateTable(string sqlQuery, Dictionary<string, object> parameters)
     {
       string connectionString = ConnectionManager.GetConnectionString();
 
@@ -91,7 +91,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
       {
         MessageBox.Show($"Произошла ошибка при редактировании записи: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
       }
-    }*/
+    }
     /* Удаление (Delete) */
     public static void DeleteTable(string sqlQuery, int id)
     {

@@ -6,56 +6,90 @@ using System.Windows.Navigation;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-    public partial class ClientsEdit : Page
+  public partial class ClientsEdit : Page
+  {
+    private string clientId;
+
+    public ClientsEdit()
     {
-        private int clientId;
+      InitializeComponent();
 
-        public ClientsEdit(int c_id)
+      this.Loaded += ClientsEdit_Loaded;
+    }
+
+    private void ClientsEdit_Loaded(object sender, RoutedEventArgs e)
+    {
+      if (NavigationService != null)
+      {
+        var uri = NavigationService.CurrentSource;
+        var parameters = GetQueryParameters(uri.ToString());
+
+        if (parameters.TryGetValue("c_id", out var id))
         {
-            InitializeComponent();
-            clientId = c_id;
-            PopulateFields();
+          clientId = id;
+          LoadClientData(clientId);
         }
+      }
+    }
 
-        private void PopulateFields()
+    private void LoadClientData(string clientId)
+    {
+      try
+      {
+        string sqlQuery = $"SELECT full_name, city, address, phone FROM public.\"Clients\" WHERE c_id = {clientId}";
+        DataTable dataTable = DataHelper.ReadTable(sqlQuery);
+
+        if (dataTable.Rows.Count > 0)
         {
-            try
-            {
-                string sqlQuery = $"SELECT full_name, city, address, phone FROM Clients WHERE c_id = {clientId}";
-                DataTable dataTable = DataHelper.ReadTable(sqlQuery);
+          DataRow row = dataTable.Rows[0];
 
-                if (dataTable.Rows.Count > 0)
-                {
-                    DataRow row = dataTable.Rows[0];
-
-                    full_name.Text = row["full_name"].ToString();
-                    city.Text = row["city"].ToString();
-                    address.Text = row["address"].ToString();
-                    phone.Text = row["phone"].ToString();
-                }
-                else
-                {
-                    MessageBox.Show("Данные клиента не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Произошла ошибка при заполнении полей: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+          full_name.Text = row["full_name"].ToString();
+          city.Text = row["city"].ToString();
+          address.Text = row["address"].ToString();
+          phone.Text = row["phone"].ToString();
         }
-
-        private void EditButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        else
         {
-            if (string.IsNullOrWhiteSpace(full_name.Text)
-                || string.IsNullOrWhiteSpace(city.Text)
-                || string.IsNullOrWhiteSpace(address.Text)
-                || string.IsNullOrWhiteSpace(phone.Text))
-            {
-                MessageBox.Show("Значения ФИО, города, адреса и телефона не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
-                return;
-            }
+          MessageBox.Show("Данные клиента не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при заполнении полей: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
+    }
 
-            Dictionary<string, object> textBoxValues = new()
+    private static Dictionary<string, string> GetQueryParameters(string query)
+    {
+      var parameters = new Dictionary<string, string>();
+      if (query.Contains('?'))
+      {
+        var queryString = query.Split('?')[1];
+        var pairs = queryString.Split('&');
+        foreach (var pair in pairs)
+        {
+          var keyValue = pair.Split('=');
+          if (keyValue.Length == 2)
+          {
+            parameters[keyValue[0]] = keyValue[1];
+          }
+        }
+      }
+      return parameters;
+    }
+
+    private void EditButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (string.IsNullOrWhiteSpace(full_name.Text)
+          || string.IsNullOrWhiteSpace(city.Text)
+          || string.IsNullOrWhiteSpace(address.Text)
+          || string.IsNullOrWhiteSpace(phone.Text))
+      {
+        MessageBox.Show("Значения ФИО, города, адреса и телефона не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+      }
+
+      Dictionary<string, object> textBoxValues = new()
             {
                 { "full_name", full_name.Text },
                 { "city", city.Text },
@@ -64,18 +98,25 @@ namespace pfx_workshop_.net7._0.Pages
                 { "id", clientId }
             };
 
-            string sqlQuery = "UPDATE public.\"Clients\" " +
-                "SET full_name = @full_name, city = @city, address = @address, phone = @phone " +
-                "WHERE c_id = @id;";
-            DataHelper.CreateTable(sqlQuery, textBoxValues);
+      string sqlQuery = "UPDATE public.\"Clients\" " +
+          "SET full_name = @full_name, city = @city, address = @address, phone = @phone " +
+          "WHERE c_id = @id::integer;";
 
-            NavigationService.Navigate(new Uri("Pages/Clients.xaml", UriKind.Relative));
-        }
-
-        private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("Pages/Clients.xaml", UriKind.Relative));
-        }
+      try
+      {
+        DataHelper.UpdateTable(sqlQuery, textBoxValues);
+        MessageBox.Show("Данные клиента успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        NavigationService.Navigate(new Uri("src/Pages/Clients.xaml", UriKind.Relative));
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show($"Произошла ошибка при обновлении данных клиента: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+      }
     }
-}
 
+    private void CancelButton_Click(object sender, RoutedEventArgs e)
+    {
+      NavigationService.Navigate(new Uri("src/Pages/Clients.xaml", UriKind.Relative));
+    }
+  }
+}

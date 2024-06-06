@@ -32,10 +32,18 @@ namespace pfx_workshop_.net7._0.Pages
       partsDataGrid.ItemsSource = clientsData.DefaultView;
     }
     /* Редактирование (Update) */
-    /*        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-            {
+    private void UpdateButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (sender is Button button)
+      {
+        if (button.DataContext is DataRowView rowView)
+        {
+          var partId = rowView["p_id"];
 
-            }*/
+          NavigationService.Navigate(new Uri($"src/Pages/Actions/Edit/PartsEdit.xaml?p_id={partId}", UriKind.Relative));
+        }
+      }
+    }
     /* Удаление (Delete) */
     private void DeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {

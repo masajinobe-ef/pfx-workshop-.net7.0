@@ -38,7 +38,7 @@ namespace pfx_workshop_.net7._0.Pages
 
         private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Suppliers.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("src/Pages/Suppliers.xaml", UriKind.Relative));
         }
     }
 }

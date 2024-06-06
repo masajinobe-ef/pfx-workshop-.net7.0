@@ -118,7 +118,7 @@ namespace pfx_workshop_.net7._0.Pages
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("Pages/Orders.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("src/Pages/Orders.xaml", UriKind.Relative));
         }
     }
 }
