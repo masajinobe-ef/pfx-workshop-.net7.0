@@ -48,7 +48,7 @@
                                     Binding="{Binding city}" />
                 <DataGridTextColumn Header="Адрес"
                                     Binding="{Binding address}" />
-                <DataGridTextColumn Header="Номер"
+                <DataGridTextColumn Header="Телефон"
                                     Binding="{Binding phone}" />
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -92,7 +92,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Обновить"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -105,7 +106,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Добавить"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -134,7 +136,7 @@
                  BorderBrush="DarkGray"
                  HorizontalContentAlignment="Center"
                  VerticalContentAlignment="Center"
-                 FontSize="22"
+                 FontSize="24"
                  FontFamily="{StaticResource NotoSans}"
                  TextChanged="SearchBox_TextChanged" />
     </Grid>

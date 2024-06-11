@@ -25,7 +25,7 @@
                HorizontalAlignment="Left"
                Background="#673ab7"
                Foreground="White"
-               FontSize="16"
+               FontSize="22"
                FontWeight="Bold"
                FontFamily="{StaticResource NotoSans}" />
         <StackPanel Grid.Row="1"
@@ -33,7 +33,7 @@
                     Orientation="Vertical">
             <Label Content="Название"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="item_name"
@@ -45,7 +45,7 @@
                      FontSize="24" />
             <Label Content="Количество"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="quantity"
@@ -54,10 +54,11 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="24" />
+                     FontSize="24"
+                     TextChanged="CheckIsInteger" />
             <Label Content="Поставщик"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <ComboBox x:Name="supplierComboBox"
@@ -66,7 +67,7 @@
                       VerticalContentAlignment="Center"
                       BorderThickness="1.5"
                       BorderBrush="DimGray"
-                      FontSize="22"
+                      FontSize="24"
                       DisplayMemberPath="name"
                       SelectedValuePath="s_id" />
         </StackPanel>
@@ -82,7 +83,8 @@
                     HorizontalContentAlignment="Left"
                     VerticalContentAlignment="Center"
                     Width="auto"
-                    Height="50">
+                    Height="50"
+                    Click="EditButton_Click">
                 <StackPanel Width="auto"
                             Height="auto"
                             Orientation="Horizontal">
@@ -94,7 +96,6 @@
                                              Height="32" />
                     <TextBlock Text="Готово"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -120,7 +121,6 @@
                                              Height="32" />
                     <TextBlock Text="Отмена"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>

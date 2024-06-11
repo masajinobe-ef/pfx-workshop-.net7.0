@@ -27,13 +27,13 @@ namespace pfx_workshop_.net7._0.Pages
           || string.IsNullOrWhiteSpace(quantity.Text)
           || supplierComboBox.SelectedItem == null)
       {
-        MessageBox.Show("Значение наименования, количества и поставщика не может быть пустым.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Наименование, количество и поставщик не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
       if (!int.TryParse(quantity.Text, out int quantityValue))
       {
-        MessageBox.Show("Значение количества должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Количество должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -65,13 +65,12 @@ namespace pfx_workshop_.net7._0.Pages
                 { "quantity", quantityValue },
                 { "supplier", supplierId }
             };
-
       string sqlQuery = "INSERT INTO public.\"Parts\" " +
           "(item_name, quantity, supplier) " +
           "VALUES (@item_name, @quantity, @supplier);";
       DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-      NavigationService?.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
     }
 
     private static int GetSupplierId(string supplierName)
@@ -91,7 +90,7 @@ namespace pfx_workshop_.net7._0.Pages
 
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
-      NavigationService?.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
     }
   }
 }

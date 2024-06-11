@@ -93,7 +93,6 @@
                                              Height="32" />
                     <TextBlock Text="Готово"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -119,7 +118,6 @@
                                              Height="32" />
                     <TextBlock Text="Отмена"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>

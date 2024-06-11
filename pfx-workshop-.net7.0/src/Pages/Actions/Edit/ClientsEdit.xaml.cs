@@ -85,7 +85,7 @@ namespace pfx_workshop_.net7._0.Pages
           || string.IsNullOrWhiteSpace(address.Text)
           || string.IsNullOrWhiteSpace(phone.Text))
       {
-        MessageBox.Show("Значения ФИО, города, адреса и телефона не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("ФИО, город, адрес и телефон не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -97,7 +97,6 @@ namespace pfx_workshop_.net7._0.Pages
                 { "phone", phone.Text },
                 { "id", clientId }
             };
-
       string sqlQuery = "UPDATE public.\"Clients\" " +
           "SET full_name = @full_name, city = @city, address = @address, phone = @phone " +
           "WHERE c_id = @id::integer;";
@@ -106,6 +105,7 @@ namespace pfx_workshop_.net7._0.Pages
       {
         DataHelper.UpdateTable(sqlQuery, textBoxValues);
         MessageBox.Show("Данные клиента успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+
         NavigationService.Navigate(new Uri("src/Pages/Clients.xaml", UriKind.Relative));
       }
       catch (Exception ex)

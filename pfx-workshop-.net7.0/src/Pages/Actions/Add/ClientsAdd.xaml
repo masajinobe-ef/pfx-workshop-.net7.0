@@ -42,7 +42,7 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="22" />
+                     FontSize="24" />
             <Label Content="Город"
                    HorizontalAlignment="Left"
                    FontSize="22"
@@ -54,7 +54,7 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="22" />
+                     FontSize="24" />
             <Label Content="Адрес"
                    HorizontalAlignment="Left"
                    FontSize="22"
@@ -66,7 +66,7 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="22" />
+                     FontSize="24" />
             <Label Content="Телефон"
                    HorizontalAlignment="Left"
                    FontSize="22"
@@ -78,7 +78,7 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="22" />
+                     FontSize="24" />
         </StackPanel>
         <StackPanel Grid.Column="0"
                     Grid.Row="2"
@@ -93,7 +93,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Готово"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -106,7 +107,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Отмена"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>

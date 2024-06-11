@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
+using System.Windows.Media;
 
 namespace pfx_workshop_.net7._0.Scripts.Other
 {
@@ -6,26 +8,56 @@ namespace pfx_workshop_.net7._0.Scripts.Other
   {
     /* Менеджер смены тем */
     private static bool isDarkTheme = false;
+
     public static void ToggleTheme(Window window)
     {
-      ResourceDictionary rd = new();
+      ResourceDictionary themeDictionary = new();
+
+      try
+      {
+        if (isDarkTheme)
+        {
+          themeDictionary.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml", UriKind.Absolute);
+          isDarkTheme = false;
+        }
+        else
+        {
+          themeDictionary.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml", UriKind.Absolute);
+          isDarkTheme = true;
+        }
+
+        window.Resources.MergedDictionaries.Clear();
+        window.Resources.MergedDictionaries.Add(themeDictionary);
+
+        UpdateTheme(window);
+      }
+      catch (IOException ex)
+      {
+        MessageBox.Show($"Error loading theme: {ex.Message}");
+      }
+    }
+
+    private static void UpdateTheme(Window window)
+    {
       if (isDarkTheme)
       {
-        rd.Source = new Uri("pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml");
-        isDarkTheme = false;
+        window.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF303030"));
       }
       else
       {
-        rd.Source = new Uri("pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Green.xaml");
-        isDarkTheme = true;
+        window.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFFFFFFF"));
       }
-      if (window.Resources.MergedDictionaries.Count > 0)
+
+      foreach (var child in LogicalTreeHelper.GetChildren(window))
       {
-        window.Resources.MergedDictionaries[0] = rd;
-      }
-      else
-      {
-        window.Resources.MergedDictionaries.Add(rd);
+        if (child is FrameworkElement frameworkElement)
+        {
+          frameworkElement.Resources.MergedDictionaries.Clear();
+          foreach (var dict in window.Resources.MergedDictionaries)
+          {
+            frameworkElement.Resources.MergedDictionaries.Add(dict);
+          }
+        }
       }
     }
   }

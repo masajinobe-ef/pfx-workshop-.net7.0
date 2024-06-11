@@ -89,7 +89,7 @@
                                              Height="32" />
                     <TextBlock Text="Заказы"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -104,7 +104,7 @@
                                              Height="32" />
                     <TextBlock Text="Педали"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -119,7 +119,7 @@
                                              Height="32" />
                     <TextBlock Text="Клиенты"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -134,7 +134,7 @@
                                              Height="32" />
                     <TextBlock Text="Склад"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -149,7 +149,7 @@
                                              Height="32" />
                     <TextBlock Text="Запчасти"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -164,7 +164,7 @@
                                              Height="32" />
                     <TextBlock Text="Поставщики"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -184,7 +184,7 @@
                                              Height="32" />
                     <TextBlock Text="SSH"
                                VerticalAlignment="Center"
-                               FontSize="22"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -198,7 +198,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Restart"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>
@@ -212,7 +213,8 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="О программе"
-                               FontSize="22"
+                               VerticalAlignment="Center"
+                               FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
             </Button>

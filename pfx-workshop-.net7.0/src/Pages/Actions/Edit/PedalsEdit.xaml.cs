@@ -87,7 +87,7 @@ namespace pfx_workshop_.net7._0.Pages
           || string.IsNullOrWhiteSpace(price.Text)
           || string.IsNullOrWhiteSpace(category.Text))
       {
-        MessageBox.Show("Значения бренда, названия, описания, цены и категории не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Бренд, название, описание, цена и категория не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -100,7 +100,6 @@ namespace pfx_workshop_.net7._0.Pages
                 { "category", category.Text },
                 { "id", pedalId }
             };
-
       string sqlQuery = "UPDATE public.\"Pedals\" " +
     "SET brand = @brand, name = @name, description = @description, price = @price, category = @category " +
     "WHERE pd_id = @id::integer;";

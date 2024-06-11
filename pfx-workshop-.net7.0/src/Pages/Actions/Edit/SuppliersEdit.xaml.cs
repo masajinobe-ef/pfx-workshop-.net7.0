@@ -82,7 +82,7 @@ namespace pfx_workshop_.net7._0.Pages
           || string.IsNullOrWhiteSpace(website.Text)
           || string.IsNullOrWhiteSpace(description.Text))
       {
-        MessageBox.Show("Значения названия, сайта и описания не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Название, сайт и описание не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -93,7 +93,6 @@ namespace pfx_workshop_.net7._0.Pages
                 { "description", description.Text },
                 { "id", supplierId }
             };
-
       string sqlQuery = "UPDATE public.\"Suppliers\" " +
           "SET name = @name, website = @website, description = @description " +
           "WHERE s_id = @id::integer;";

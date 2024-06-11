@@ -17,7 +17,6 @@ namespace pfx_workshop_.net7._0.Pages
       this.Loaded += WarehouseEdit_Loaded;
     }
 
-
     private void WarehouseEdit_Loaded(object sender, RoutedEventArgs e)
     {
       if (NavigationService != null)
@@ -82,7 +81,7 @@ namespace pfx_workshop_.net7._0.Pages
       if (string.IsNullOrWhiteSpace(item_name.Text)
           || string.IsNullOrWhiteSpace(quantity.Text))
       {
-        MessageBox.Show("Значения предмета и количества не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Предмет и количество не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -92,7 +91,6 @@ namespace pfx_workshop_.net7._0.Pages
                 { "quantity", int.Parse(quantity.Text) },
                 { "id", warehouseId }
             };
-
       string sqlQuery = "UPDATE public.\"Warehouse\" " +
           "SET item_name = @item_name, quantity = @quantity " +
           "WHERE w_id = @id::integer;";

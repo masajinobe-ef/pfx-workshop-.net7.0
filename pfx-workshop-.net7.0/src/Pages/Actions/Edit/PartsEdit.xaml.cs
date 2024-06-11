@@ -1,25 +1,27 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
 using System.Data;
+using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace pfx_workshop_.net7._0.Pages
 {
   public partial class PartsEdit : Page
   {
-/*    private string partId;*/
+    private string partId;
 
     public PartsEdit()
     {
       InitializeComponent();
 
-/*      this.Loaded += PartsEdit_Loaded;
+      SupplierComboBox();
 
-      SupplierComboBox();*/
+      this.Loaded += PartsEdit_Loaded;
     }
 
-/*    private void SupplierComboBox()
+    private void SupplierComboBox()
     {
       string sqlQuery = "SELECT name FROM public.\"Suppliers\";";
       DataTable supplierDataTable = DataHelper.ReadTable(sqlQuery);
@@ -57,7 +59,7 @@ namespace pfx_workshop_.net7._0.Pages
       }
     }
 
-    private void LoadPartData(string clientId)
+    private void LoadPartData(string partId)
     {
       try
       {
@@ -70,7 +72,7 @@ namespace pfx_workshop_.net7._0.Pages
 
           item_name.Text = row["item_name"].ToString();
           quantity.Text = row["quantity"].ToString();
-          supplier.Text = row["supplier"].ToString();
+          supplierComboBox.Text = row["supplier"].ToString();
         }
         else
         {
@@ -106,20 +108,47 @@ namespace pfx_workshop_.net7._0.Pages
     {
       if (string.IsNullOrWhiteSpace(item_name.Text)
           || string.IsNullOrWhiteSpace(quantity.Text)
-          || string.IsNullOrWhiteSpace(supplier.Text))
+          || supplierComboBox.SelectedItem == null)
       {
-        MessageBox.Show("Значения названия, количества и поставщика не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Название, количество и поставщик не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+      }
+
+      if (!int.TryParse(quantity.Text, out int quantityValue))
+      {
+        MessageBox.Show("Количество должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        return;
+      }
+
+      if (supplierComboBox.SelectedItem is not DataRowView selectedSupplier)
+      {
+        MessageBox.Show("Не удалось получить выбранного поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
+
+      string? selectedSupplierName = selectedSupplier["name"] as string;
+
+      if (string.IsNullOrWhiteSpace(selectedSupplierName))
+      {
+        MessageBox.Show("Не удалось получить имя выбранного поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+        return;
+      }
+
+      int supplierId = GetSupplierId(selectedSupplierName);
+
+      if (supplierId == -1)
+      {
+        MessageBox.Show("Не удалось получить идентификатор поставщика.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         return;
       }
 
       Dictionary<string, object> textBoxValues = new()
-      {
+            {
                 { "item_name", item_name.Text },
-                { "quantity", int.Parse(quantity.Text) },
-                { "supplier", int.Parse(supplier.Text) },
+                { "quantity", quantityValue },
+                { "supplier", supplierId },
                 { "id", partId }
             };
-
       string sqlQuery = "UPDATE public.\"Parts\" " +
           "SET item_name = @item_name, quantity = @quantity, supplier = @supplier " +
           "WHERE p_id = @id::integer;";
@@ -128,6 +157,7 @@ namespace pfx_workshop_.net7._0.Pages
       {
         DataHelper.UpdateTable(sqlQuery, textBoxValues);
         MessageBox.Show("Данные запчасти успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+
         NavigationService.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
       }
       catch (Exception ex)
@@ -135,13 +165,13 @@ namespace pfx_workshop_.net7._0.Pages
         MessageBox.Show($"Произошла ошибка при обновлении данных запчасти: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
       }
     }
-*/
+
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
       NavigationService.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
     }
 
-/*    private static readonly Regex _regex = MyRegex();
+    private static readonly Regex _regex = MyRegex();
 
     private void CheckIsInteger(object sender, TextChangedEventArgs e)
     {
@@ -150,6 +180,6 @@ namespace pfx_workshop_.net7._0.Pages
     }
 
     [GeneratedRegex("[^0-9]+")]
-    private static partial Regex MyRegex();*/
+    private static partial Regex MyRegex();
   }
 }

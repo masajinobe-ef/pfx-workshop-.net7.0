@@ -25,7 +25,7 @@
                HorizontalAlignment="Left"
                Background="#673ab7"
                Foreground="White"
-               FontSize="16"
+               FontSize="22"
                FontWeight="Bold"
                FontFamily="{StaticResource NotoSans}" />
         <StackPanel Grid.Row="1"
@@ -33,7 +33,7 @@
                     Orientation="Vertical">
             <Label Content="Бренд"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="24"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="brand"
@@ -45,7 +45,7 @@
                      FontSize="24" />
             <Label Content="Название"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="name"
@@ -57,7 +57,7 @@
                      FontSize="24" />
             <Label Content="Описание"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="description"
@@ -69,7 +69,7 @@
                      FontSize="24" />
             <Label Content="Цена"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="price"
@@ -82,7 +82,7 @@
                      TextChanged="CheckIsInteger" />
             <Label Content="Категория"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="category"
@@ -118,7 +118,6 @@
                                              Height="32" />
                     <TextBlock Text="Готово"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -144,7 +143,6 @@
                                              Height="32" />
                     <TextBlock Text="Отмена"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>

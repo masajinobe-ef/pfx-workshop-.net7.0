@@ -25,7 +25,7 @@
                HorizontalAlignment="Left"
                Background="#673ab7"
                Foreground="White"
-               FontSize="16"
+               FontSize="22"
                FontWeight="Bold"
                FontFamily="{StaticResource NotoSans}" />
         <StackPanel Grid.Row="1"
@@ -33,7 +33,7 @@
                     Orientation="Vertical">
             <Label Content="ФИО"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="full_name"
@@ -45,7 +45,7 @@
                      FontSize="24" />
             <Label Content="Город"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="city"
@@ -57,7 +57,7 @@
                      FontSize="24" />
             <Label Content="Адрес"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="address"
@@ -69,7 +69,7 @@
                      FontSize="24" />
             <Label Content="Телефон"
                    HorizontalAlignment="Left"
-                   FontSize="20"
+                   FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}" />
             <TextBox x:Name="phone"
@@ -93,6 +93,7 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Обновить"
+                               VerticalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
@@ -106,6 +107,7 @@
                                              Width="32"
                                              Height="32" />
                     <TextBlock Text="Отмена"
+                               VerticalAlignment="Center"
                                FontSize="24"
                                FontFamily="{StaticResource NotoSans}" />
                 </StackPanel>
