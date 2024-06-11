@@ -1,5 +1,6 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
 using System.Data;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -70,7 +71,7 @@ namespace pfx_workshop_.net7._0.Pages
           "VALUES (@item_name, @quantity, @supplier);";
       DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-      NavigationService.Navigate(new Uri("Pages/Parts.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
     }
 
     private static int GetSupplierId(string supplierName)
@@ -92,5 +93,16 @@ namespace pfx_workshop_.net7._0.Pages
     {
       NavigationService.Navigate(new Uri("src/Pages/Parts.xaml", UriKind.Relative));
     }
+
+    private static readonly Regex _regex = MyRegex();
+
+    private void CheckIsInteger(object sender, TextChangedEventArgs e)
+    {
+      var textBox = sender as TextBox;
+      quantity.Text = _regex.Replace(textBox.Text, "");
+    }
+
+    [GeneratedRegex("[^0-9]+")]
+    private static partial Regex MyRegex();
   }
 }

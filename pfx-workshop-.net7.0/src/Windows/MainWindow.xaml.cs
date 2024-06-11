@@ -63,6 +63,10 @@ namespace pfx_workshop_.net7._0
     {
       MainFrame.Navigate(new Uri("src/Pages/Warehouse.xaml", UriKind.Relative));
     }
+    private void RepairsButton_Click(object sender, RoutedEventArgs e)
+    {
+      MainFrame.Navigate(new Uri("src/Pages/Repairs.xaml", UriKind.Relative));
+    }
     /* Запчасти */
     private void PartsButton_Click(object sender, RoutedEventArgs e)
     {

@@ -75,6 +75,19 @@ CREATE TABLE IF NOT EXISTS public."Authorization"
     CONSTRAINT a_unique UNIQUE (a_id)
 );
 
+CREATE TABLE IF NOT EXISTS public."Repairs"
+(
+    r_id serial NOT NULL,
+    master_name character varying(255) NOT NULL DEFAULT 'masajinobe',
+    repair_date character varying(255) NOT NULL,
+    repair_reason character varying(255) NOT NULL,
+    repair_cost integer NOT NULL,
+    repair_status character varying(255) NOT NULL,
+    CONSTRAINT r_key PRIMARY KEY (r_id),
+    CONSTRAINT r_unique UNIQUE (r_id)
+);
+
+
 ALTER TABLE IF EXISTS public."Parts"
     ADD CONSTRAINT s_id_fk FOREIGN KEY (supplier)
     REFERENCES public."Suppliers" (s_id) MATCH SIMPLE
@@ -105,7 +118,8 @@ INSERT INTO public."Authorization" (login, password)
 VALUES
 ('masa', '0123'),
 ('masa', '1234'),
-('akira', '0123');
+('masajinobe', '0123'),
+('masajinobe', '1234');
 
 
 INSERT INTO public."Pedals" (brand, name, description, price, category) 
@@ -210,7 +224,6 @@ VALUES
 ('Наклейки PFX', 100, 15);
 
 
-
 INSERT INTO public."Warehouse" (item_name, quantity) 
 VALUES
 ('Toshin', 1),
@@ -222,6 +235,14 @@ VALUES
 ('OD-820', 1),
 ('H&B', 1),
 ('LS-SR', 1);
+
+
+INSERT INTO public."Repairs" (repair_date, repair_reason, repair_cost, repair_status)
+VALUES 
+('02.04.2024', 'Замена потенциометров на OD-820', 500, 'Успешно'),
+('02.04.2024', 'Замена штекера питания на Priscilla', 500, 'Успешно'),
+('02.04.2024', 'Замена кнопки включения на TS-S', 500, 'Успешно'),
+('02.04.2024', 'Перекраска BD-2', 2000, 'Успешно');
 
 
 END;

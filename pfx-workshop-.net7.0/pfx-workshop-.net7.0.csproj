@@ -1,51 +1,48 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <RootNamespace>pfx_workshop_.net7._0</RootNamespace>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UseWPF>true</UseWPF>
-    <ApplicationIcon>src\Resources\icon.ico</ApplicationIcon>
-  </PropertyGroup>
-
-
-  <ItemGroup>
-    <Resource Include="src\Resources\icon.ico">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-
-    <Resource Include="src\Resources\logo.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-
-    <Content Include="Settings\appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-
-    <Resource Include="src\Fonts\NotoSans-Regular.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="src\Fonts\NotoSans-Italic.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="src\Fonts\NotoSans-BoldItalic.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="src\Fonts\NotoSans-Bold.ttf">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Material.Icons.WPF" Version="2.1.0" />
-    <PackageReference Include="MaterialDesignColors" Version="3.0.0" />
-    <PackageReference Include="MaterialDesignThemes" Version="5.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
-    <PackageReference Include="SSH.NET" Version="2024.0.0" />
-  </ItemGroup>
-
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <RootNamespace>pfx_workshop_.net7._0</RootNamespace>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <ApplicationIcon>src\Resources\icon.ico</ApplicationIcon>
+    </PropertyGroup>
+    <ItemGroup>
+        <Resource Include="src\Resources\icon.ico">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+        <Resource Include="src\Resources\logo.png">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+        <Content Include="Settings\appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </Content>
+        <Resource Include="src\Fonts\NotoSans-Regular.ttf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+        <Resource Include="src\Fonts\NotoSans-Italic.ttf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+        <Resource Include="src\Fonts\NotoSans-BoldItalic.ttf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+        <Resource Include="src\Fonts\NotoSans-Bold.ttf">
+            <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+        </Resource>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Material.Icons.WPF"
+                          Version="2.1.0" />
+        <PackageReference Include="MaterialDesignColors"
+                          Version="3.0.0" />
+        <PackageReference Include="MaterialDesignThemes"
+                          Version="5.0.0" />
+        <PackageReference Include="Newtonsoft.Json"
+                          Version="13.0.3" />
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL"
+                          Version="7.0.11" />
+        <PackageReference Include="SSH.NET"
+                          Version="2024.0.0" />
+    </ItemGroup>
 </Project>

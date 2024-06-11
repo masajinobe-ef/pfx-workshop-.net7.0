@@ -53,7 +53,7 @@ git clone https://github.com/masajinobe-ef/pfx-workshop-.net7.0.git
         "Database": "postgres", // Имя базы данных
         "Username": "postgres", // Имя пользователя для подключения к базе данных
         "Password": "0123",     // Пароль пользователя для подключения к базе данных
-        "IncludeErrorDetail": "true" 
+        "IncludeErrorDetail": "true"
         // Флаг, указывающий, нужно ли включать подробные сведения об ошибках приложения
     }
 }

@@ -6,49 +6,51 @@ using System.Windows.Controls;
 
 namespace pfx_workshop_.net7._0.Pages
 {
-  public partial class WarehouseEdit : Page
+  public partial class RepairsEdit : Page
   {
-    private string warehouseId;
+    private string repairId;
 
-    public WarehouseEdit()
+    public RepairsEdit()
     {
       InitializeComponent();
 
-      this.Loaded += WarehouseEdit_Loaded;
+      this.Loaded += RepairsEdit_Loaded;
     }
 
-    private void WarehouseEdit_Loaded(object sender, RoutedEventArgs e)
+    private void RepairsEdit_Loaded(object sender, RoutedEventArgs e)
     {
       if (NavigationService != null)
       {
         var uri = NavigationService.CurrentSource;
         var parameters = GetQueryParameters(uri.ToString());
 
-        if (parameters.TryGetValue("w_id", out var id))
+        if (parameters.TryGetValue("r_id", out var id))
         {
-          warehouseId = id;
-          LoadWarehouseData(warehouseId);
+          repairId = id;
+          LoadRepairsData(repairId);
         }
       }
     }
 
-    private void LoadWarehouseData(string warehouseId)
+    private void LoadRepairsData(string repairId)
     {
       try
       {
-        string sqlQuery = $"SELECT item_name, quantity FROM public.\"Warehouse\" WHERE w_id = {warehouseId}";
+        string sqlQuery = $"SELECT repair_date, repair_reason, repair_cost, repair_status FROM public.\"Repairs\" WHERE r_id = {repairId}";
         DataTable dataTable = DataHelper.ReadTable(sqlQuery);
 
         if (dataTable.Rows.Count > 0)
         {
           DataRow row = dataTable.Rows[0];
 
-          item_name.Text = row["item_name"].ToString();
-          quantity.Text = row["quantity"].ToString();
+          repair_date.Text = row["repair_date"].ToString();
+          repair_reason.Text = row["repair_reason"].ToString();
+          repair_cost.Text = row["repair_cost"].ToString();
+          repair_status.Text = row["repair_status"].ToString();
         }
         else
         {
-          MessageBox.Show("Данные склада не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+          MessageBox.Show("Данные ремонта не найдены.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
         }
       }
       catch (Exception ex)
@@ -78,29 +80,33 @@ namespace pfx_workshop_.net7._0.Pages
 
     private void EditButton_Click(object sender, RoutedEventArgs e)
     {
-      if (string.IsNullOrWhiteSpace(item_name.Text)
-          || string.IsNullOrWhiteSpace(quantity.Text))
+      if (string.IsNullOrWhiteSpace(repair_date.Text)
+          || string.IsNullOrWhiteSpace(repair_reason.Text)
+          || string.IsNullOrWhiteSpace(repair_cost.Text)
+          || string.IsNullOrWhiteSpace(repair_status.Text))
       {
-        MessageBox.Show("Предмет и количество не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Дата, причина, цена и статус не могут быть пустыми.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
       Dictionary<string, object> textBoxValues = new()
-            {
-                { "item_name", item_name.Text },
-                { "quantity", int.Parse(quantity.Text) },
-                { "id", warehouseId }
-            };
-      string sqlQuery = "UPDATE public.\"Warehouse\" " +
-          "SET item_name = @item_name, quantity = @quantity " +
-          "WHERE w_id = @id::integer;";
+          {
+              { "repair_date", repair_date.Text },
+              { "repair_reason", repair_reason.Text },
+              { "repair_cost", int.Parse(repair_cost.Text) },
+              { "repair_status", repair_status.Text },
+              { "id", repairId }
+          };
+      string sqlQuery = "UPDATE public.\"Repairs\" " +
+          "SET repair_date = @repair_date, repair_reason = @repair_reason, repair_cost = @repair_cost, repair_status = @repair_status " +
+          "WHERE r_id = @id::integer;";
 
       try
       {
         DataHelper.UpdateTable(sqlQuery, textBoxValues);
-        MessageBox.Show("Данные склада успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Данные ремонта успешно обновлены.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
 
-        NavigationService.Navigate(new Uri("src/Pages/Warehouse.xaml", UriKind.Relative));
+        NavigationService.Navigate(new Uri("src/Pages/Repairs.xaml", UriKind.Relative));
       }
       catch (Exception ex)
       {
@@ -110,7 +116,7 @@ namespace pfx_workshop_.net7._0.Pages
 
     private void CancelButton_Click(object sender, RoutedEventArgs e)
     {
-      NavigationService.Navigate(new Uri("src/Pages/Warehouse.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("src/Pages/Repairs.xaml", UriKind.Relative));
     }
 
     private static readonly Regex _regex = MyRegex();
@@ -118,7 +124,7 @@ namespace pfx_workshop_.net7._0.Pages
     private void CheckIsInteger(object sender, TextChangedEventArgs e)
     {
       var textBox = sender as TextBox;
-      quantity.Text = _regex.Replace(textBox.Text, "");
+      repair_cost.Text = _regex.Replace(textBox.Text, "");
     }
 
     [GeneratedRegex("[^0-9]+")]

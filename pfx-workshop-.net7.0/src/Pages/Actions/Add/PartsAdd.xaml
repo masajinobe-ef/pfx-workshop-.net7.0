@@ -54,7 +54,8 @@
                      VerticalContentAlignment="Center"
                      BorderThickness="1.5"
                      BorderBrush="DimGray"
-                     FontSize="24" />
+                     FontSize="24"
+                     TextChanged="CheckIsInteger" />
             <Label Content="Поставщик"
                    HorizontalAlignment="Left"
                    FontSize="22"

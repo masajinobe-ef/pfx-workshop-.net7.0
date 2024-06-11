@@ -84,7 +84,7 @@ namespace pfx_workshop_.net7._0.Pages
           "VALUES (@c_id, @pd_id, @date);";
       DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-      NavigationService.Navigate(new Uri("Pages/Orders.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("src/Pages/Orders.xaml", UriKind.Relative));
     }
 
     private static int GetClientId(string clientName)

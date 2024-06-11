@@ -1,4 +1,5 @@
 ﻿using pfx_workshop_.net7._0.Scripts.DataBase;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -25,7 +26,7 @@ namespace pfx_workshop_.net7._0.Pages
 
       if (!int.TryParse(price.Text, out int priceValue))
       {
-        MessageBox.Show("Количество должно быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
+        MessageBox.Show("Цена должна быть целым числом.", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         return;
       }
 
@@ -42,12 +43,23 @@ namespace pfx_workshop_.net7._0.Pages
           "VALUES (@brand, @name, @description, @price, @category);";
       DataHelper.CreateTable(sqlQuery, textBoxValues);
 
-      NavigationService.Navigate(new Uri("Pages/Pedals.xaml", UriKind.Relative));
+      NavigationService.Navigate(new Uri("src/Pages/Pedals.xaml", UriKind.Relative));
     }
 
     private void CancelButton_Click(object sender, System.Windows.RoutedEventArgs e)
     {
       NavigationService.Navigate(new Uri("src/Pages/Pedals.xaml", UriKind.Relative));
     }
+
+    private static readonly Regex _regex = MyRegex();
+
+    private void CheckIsInteger(object sender, TextChangedEventArgs e)
+    {
+      var textBox = sender as TextBox;
+      price.Text = _regex.Replace(textBox.Text, "");
+    }
+
+    [GeneratedRegex("[^0-9]+")]
+    private static partial Regex MyRegex();
   }
 }

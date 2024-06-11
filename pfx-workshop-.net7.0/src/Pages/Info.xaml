@@ -16,7 +16,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-    <Label Content="О программе"
+        <Label Content="О программе"
                Grid.Column="0"
                Grid.Row="0"
                HorizontalAlignment="Left"
@@ -25,5 +25,5 @@
                FontSize="22"
                FontWeight="Bold"
                FontFamily="{StaticResource NotoSans}" />
-  </Grid>
+    </Grid>
 </Page>

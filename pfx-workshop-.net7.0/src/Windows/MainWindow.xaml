@@ -141,6 +141,21 @@
             <Button Style="{StaticResource MaterialDesignFlatButton}"
                     HorizontalContentAlignment="Left"
                     Height="50"
+                    Click="RepairsButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Build"
+                                             Margin="0 0 5 0"
+                                             Width="32"
+                                             Height="32" />
+                    <TextBlock Text="Ремонт"
+                               VerticalAlignment="Center"
+                               FontSize="24"
+                               FontFamily="{StaticResource NotoSans}" />
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource MaterialDesignFlatButton}"
+                    HorizontalContentAlignment="Left"
+                    Height="50"
                     Click="PartsButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Chip"
