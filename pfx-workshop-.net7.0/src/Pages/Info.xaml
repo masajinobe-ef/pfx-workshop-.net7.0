@@ -7,27 +7,27 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignWidth="1280"
       d:DesignHeight="720"
-      Title="Parts">
-  <Grid>
-    <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="*" />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-      <RowDefinition Height="auto" />
-    </Grid.RowDefinitions>
-    <Label Content="О программе:"
+      Title="Info">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Label Content="О программе:"
                Grid.Column="0"
                Grid.Row="0"
                HorizontalAlignment="Left"
@@ -36,7 +36,7 @@
                FontSize="22"
                FontWeight="Bold"
                FontFamily="{StaticResource NotoSans}" />
-    <TextBlock Text="&#x20;"
+        <TextBlock Text=" "
                    Grid.Column="0"
                    Grid.Row="1"
                    HorizontalAlignment="Stretch"
@@ -45,7 +45,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="Priscilla Custom Effects Workshop - это программное обеспечение, разработанное для управления процессами и операциями, связанными с производством, заказами и инвентаризацией в мастерской по созданию индивидуальных эффектов для музыкальных инструментов."
+        <TextBlock Text="Priscilla Custom Effects Workshop - это программное обеспечение, разработанное для управления процессами и операциями, связанными с производством, заказами и инвентаризацией в мастерской по созданию индивидуальных эффектов для музыкальных инструментов."
                    Grid.Column="0"
                    Grid.Row="2"
                    HorizontalAlignment="Stretch"
@@ -54,7 +54,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="&#x20;"
+        <TextBlock Text=" "
                    Grid.Column="0"
                    Grid.Row="3"
                    HorizontalAlignment="Stretch"
@@ -63,7 +63,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="Особенности:"
+        <TextBlock Text="Особенности:"
                    Grid.Column="0"
                    Grid.Row="4"
                    HorizontalAlignment="Center"
@@ -72,7 +72,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="- Интеграция с базой данных PostgreSQL для хранения и обработки данных"
+        <TextBlock Text="- Интеграция с базой данных PostgreSQL для хранения и обработки данных"
                    Grid.Column="0"
                    Grid.Row="5"
                    HorizontalAlignment="Stretch"
@@ -81,7 +81,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="- Лицензия GPL-3.0, позволяющая свободно использовать, изучать, распространять и модифицировать программное обеспечение"
+        <TextBlock Text="- Лицензия GPL-3.0, позволяющая свободно использовать, изучать, распространять и модифицировать программное обеспечение"
                    Grid.Column="0"
                    Grid.Row="6"
                    HorizontalAlignment="Stretch"
@@ -89,8 +89,8 @@
                    FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
-                   TextWrapping="Wrap"  />
-    <TextBlock Text="&#x20;"
+                   TextWrapping="Wrap" />
+        <TextBlock Text=" "
                    Grid.Column="0"
                    Grid.Row="7"
                    HorizontalAlignment="Stretch"
@@ -99,7 +99,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="Лицензия:"
+        <TextBlock Text="Лицензия:"
                    Grid.Column="0"
                    Grid.Row="8"
                    HorizontalAlignment="Center"
@@ -108,7 +108,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="Данный проект распространяется под лицензией GPL-3.0. Подробнее см. в файле LICENSE."
+        <TextBlock Text="Данный проект распространяется под лицензией GPL-3.0. Подробнее см. в файле LICENSE."
                    Grid.Column="0"
                    Grid.Row="9"
                    HorizontalAlignment="Center"
@@ -117,8 +117,8 @@
                    FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
-                   TextWrapping="Wrap"  />
-    <TextBlock Text="&#x20;"
+                   TextWrapping="Wrap" />
+        <TextBlock Text=" "
                    Grid.Column="0"
                    Grid.Row="10"
                    HorizontalAlignment="Stretch"
@@ -127,7 +127,7 @@
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
                    TextWrapping="Wrap" />
-    <TextBlock Text="Автор:"
+        <TextBlock Text="Автор:"
                    Grid.Column="0"
                    Grid.Row="11"
                    HorizontalAlignment="Center"
@@ -135,8 +135,8 @@
                    FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
-                   TextWrapping="Wrap"  />
-    <TextBlock Text="Разработал @masajinobe-ef (Колесов Арсений)."
+                   TextWrapping="Wrap" />
+        <TextBlock Text="Разработал @masajinobe-ef (Колесов Арсений)."
                    Grid.Column="0"
                    Grid.Row="12"
                    HorizontalAlignment="Center"
@@ -145,6 +145,6 @@
                    FontSize="22"
                    FontWeight="Bold"
                    FontFamily="{StaticResource NotoSans}"
-                   TextWrapping="Wrap"  />
-  </Grid>
+                   TextWrapping="Wrap" />
+    </Grid>
 </Page>
