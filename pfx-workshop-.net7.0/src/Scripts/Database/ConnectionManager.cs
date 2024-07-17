@@ -31,7 +31,7 @@ namespace pfx_workshop_.net7._0.Scripts.DataBase
         var password = connectionStringElement.GetProperty("Password").GetString();
         var error = connectionStringElement.GetProperty("IncludeErrorDetail").GetString();
 
-        return $"Host={host};Port={port};Database={database};Username={username};Password={password};IncludeErrorDetail={error};";
+        return $"Host={host};Port={port};Database={database};Username={username};Password={password};IncludeErrorDetail={error};Pooling=true;SSL Mode=Prefer;Trust Server Certificate=true;";
       }
       catch (Exception ex)
       {
